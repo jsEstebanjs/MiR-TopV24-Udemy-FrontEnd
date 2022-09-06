@@ -1,0 +1,1 @@
+estilos de las paginas principales que se encuentran en src/pages
