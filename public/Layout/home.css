@@ -1,0 +1,679 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root{
+  --Georgia:'Noto Serif Georgian', serif;
+  --Sans:'Noto Sans', sans-serif;
+  --textNavColor:#1c1d1f;
+  --hoverNav:#5624d0;
+  --White:white;
+  --gray:#6a6f73;
+}
+html{
+  font-size: 62.5%;
+  /*rem=10px*/
+}
+body{
+  font-size: 1.6rem;
+  font-family: 'Noto Serif Georgian', serif;
+  font-family: 'Noto Sans', sans-serif;
+}
+body::-webkit-scrollbar{
+  background-color: transparent;
+}
+/*Nav code*/
+body header{
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+body header .nav{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-size: 2.4rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 4.8rem;
+}
+body header .nav .nav-container-phone{
+display: flex;
+width: 100%;
+position: relative;
+align-items: center;
+padding: 1.5rem 1rem;
+}
+body header .nav .nav-container-desktop{
+  display: none;
+}
+body header .nav .nav-container-phone .button-hamburguer{
+  position: absolute;
+  left: calc(0% +1rem);
+}
+body header .nav .img-nav{
+  width: 75px;
+  height: 28px;
+  position: absolute;
+  left: calc(50% - 37px);
+}
+body header .nav .button-search{
+  position: absolute;
+  right: calc(0% + 5rem);
+}
+body header .nav .button-shopping{
+  position: absolute;
+  right:calc(0% + 1rem);
+}
+body header .nav button{
+  font-size: 1.8rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 200;
+}
+/*termina codigo nav*/
+body main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main .main-search-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap:1rem;
+  max-width: 1340px;
+
+}
+body main .main-search-container img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+body main .main-search-container div{
+  width: 100%;
+  padding: 0 2.4rem;
+
+}
+body main .main-search-container div h2{
+  font-family: var(--Georgia);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+body main .main-search-container div p{
+  font-family: var(--Sans);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--textNavColor);
+}
+body main .main-search-container div button{
+  font-family: var(--Sans);
+  font-size: 1.4rem;
+  font-weight: 400;
+  width: 100%;
+  border: 1px solid black;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.6rem;
+  color: grey;
+  margin-top: 1.6rem;
+  cursor: pointer;
+}
+body main .main-search-container div button span{
+  width: 100%;
+  text-align: start;
+  padding: 1rem  1rem 1rem 1rem;
+
+}
+body main .main-search-container div button i{
+  padding: 1rem  1.5rem 1rem 1rem;
+  color: var(--textNavColor);
+
+}
+
+body main .main-selection-courses{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 2.4rem;
+  margin-top: 2.4rem;
+  max-width: 1340px;
+
+}
+body main .main-selection-courses h2{
+  font-family: var(--Georgia);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+
+}
+body main .main-selection-courses p{
+  font-family: var(--Sans);
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--textNavColor);
+
+}
+body main .main-selection-courses .main-selection-courses-courses{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.4rem;
+
+}
+body main .main-selection-courses .main-selection-courses-courses div{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1.6rem 0;
+  border-top: 1px solid gray;
+  align-items: center;
+
+}
+body main .main-selection-courses .main-selection-courses-courses .div-course-finish{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1.6rem 0;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  align-items: center;
+
+}
+body main .main-selection-courses .main-selection-courses-courses div p{
+  font-weight: 700;
+  font-size: 1.6rem;
+
+}
+body main .main-selection-courses .info-courses{
+display: none;
+max-width: 1292px;
+position: relative;
+}
+body main .main-selection-courses .info-courses .button-left{
+  position: absolute;
+  border-radius: 50%;
+  width: 4.8rem;
+  height: 4.8rem;
+  left: 1rem;
+  top: 50%;
+  font-size: 2rem;
+  color: var(--White);
+  background-color: var(--textNavColor);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%)
+}
+body main .main-selection-courses .info-courses .button-right{
+  position: absolute;
+  border-radius: 50%;
+  width: 4.8rem;
+  height: 4.8rem;
+  right: 1rem;
+  top: 50%;
+  font-size: 2rem;
+  color: var(--White);
+  background-color: var(--textNavColor);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%)
+}
+body main .main-selection-courses .info-courses .Explore{
+  font-size: 1.4rem;
+  font-family: var(--Sans);
+  font-weight: 700;
+  height: 40px;
+  margin-top: 1rem;
+  width: max-content;
+  color: var(--textNavColor);
+  border: 1px solid black;
+  padding: 0 0.5rem;
+  background-color: transparent;
+}
+body main .main-selection-courses .info-courses .carousel-courses{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  margin: 2rem 0;
+  gap: 2rem;
+  overflow-x: auto;
+}
+body main .main-selection-courses .info-courses .carousel-courses::-webkit-scrollbar{
+  background-color: transparent;
+}
+
+body main .main-selection-courses .info-courses .carousel-courses .container-info-course{
+  width: max-content;
+
+}
+body main .main-selection-courses .info-courses .carousel-courses .container-info-course .container-img-course img{
+  width: 100%;
+
+}
+body main .main-selection-courses .info-courses .carousel-courses .container-info-course .container-description-course .title-course{
+font-size: 1.6rem;
+margin: 0;
+}
+body main .main-selection-courses .info-courses .carousel-courses .container-info-course .container-description-course .create-course{
+  color: var(--gray);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+body main .main-selection-courses .info-courses .carousel-courses .container-info-course .container-description-course .prices-course{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+body main .main-selection-courses .info-courses .carousel-courses .container-info-course .container-description-course .prices-course .price-course {
+  font-size: 1.6rem;
+  color: var(--textNavColor);
+  font-weight: 700;
+}
+body main .main-selection-courses .info-courses .carousel-courses .container-info-course .container-description-course .prices-course .last-price-course{
+  font-size: 1.6rem;
+  color: var(--gray);
+  font-weight:400;
+  text-decoration: line-through;
+}
+body main .top-categories{
+  width: 100%;
+  padding: 0 2.4rem;
+  margin-top: 2.4rem;
+  max-width: 1340px;
+}
+body main .top-categories .top-categories-container{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+gap: 1rem;
+margin-top: 2rem;
+width: 100%;
+}
+body main .top-categories .top-categories-container div{
+  width: max-content;
+  border-radius: 20px;
+  border: 1px solid black;
+  padding: 1rem 12px;
+}
+body main .top-categories .top-categories-container div a{
+  text-decoration: none;
+  color: var(--textNavColor);
+  font-family: var(--Sans);
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+body main .top-categories .top-categories-container div img{
+  display: none;
+}
+body main .become-instructor{
+  display: flex;
+  flex-direction: column;
+  padding: 0 2.4rem;
+  width: 100%;
+  margin-top: 2.8rem;
+  margin-bottom: 2rem;
+}
+body main .become-instructor .img-instructor{
+  width: 100%;
+}
+body main .become-instructor .img-instructor img{
+  width: 100%;
+}
+body main .become-instructor .info-instructor{
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main .become-instructor .info-instructor h2{
+  font-family: var(--Georgia);
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+body main .become-instructor .info-instructor p{
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
+}
+body main .become-instructor .info-instructor button{
+  font-weight: 700;
+  font-size: 1.6rem;
+  background-color: var(--textNavColor);
+  border: none;
+  padding: 1.4rem ;
+  width: 100%;
+  color: var(--White);
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  max-width: 548px;
+  cursor: pointer;
+
+}
+body main .trusted-companies{
+  width: 100%;
+  padding: 0 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+body main .trusted-companies h2{
+  font-family: var(--Georgia);
+  font-size: 2.4rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+body main .trusted-companies .companies-img{
+  align-items: center;
+  justify-items: center;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3,3fr);
+  gap: 1.6rem;
+  max-width: 37rem;
+}
+body main .trusted-companies .companies-img img{
+  object-fit: contain;
+  width: 100%;
+  max-height: 40px;
+}
+@media (min-width: 800px){
+  body header .nav .nav-container-phone{
+      display: none;
+  }
+  body header .nav{
+      height: 7.2rem;
+      padding: 0;
+  }
+  body header .nav .nav-container-desktop{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0 2rem;
+      width: 100%;
+      height: 100%;
+  }
+  body header .nav .nav-container-desktop .img-nav{
+      width: 91px;
+      height: 34px;
+      position: relative;
+      left: 0;
+  }
+  body header .nav .nav-container-desktop .button-categories{
+      font-size: 1.4rem;
+      margin: 0 1.2rem;
+      font-family: var(--Sans);
+      color: var(--textNavColor);
+      font-weight: 400;
+      padding: 10px;
+  }
+  body header .nav .nav-container-desktop form{
+      display: flex;
+      flex-direction: row;
+      border: 1px solid black;
+      border-radius: 20px;
+      padding: 1rem;
+      width: calc(100% - 300px);
+  }
+  body header .nav .nav-container-desktop form .button-search{
+      position: initial;
+      color: #757575;
+      margin: 0 0.5rem;
+
+  }
+  body header .nav .nav-container-desktop .button-Tech{
+      font-size: 1.4rem;
+      font-family: var(--Sans);
+      color: var(--textNavColor);
+      font-weight: 400;
+      padding: 10px;
+
+  }
+  body header .nav .nav-container-desktop .login-nav{
+  font-size: 1.4rem;
+  font-family: var(--Sans);
+  font-weight: 700;
+  height: 40px;
+  width: 80px;
+  margin-left: 1rem;
+  color: var(--textNavColor);
+  border: 1px solid black;
+  padding: 0 0.5rem;
+
+  }
+  body header .nav .nav-container-desktop .Sing-up-nav{
+      font-size: 1.4rem;
+      font-family: var(--Sans);
+      font-weight: 700;
+      margin-left: 1rem;
+      height: 40px;
+      width: 80px;
+      color: var(--White);
+      background-color: var(--textNavColor);
+      border: 1px solid black;
+      padding: 0 0.5rem;
+      }
+  body header .nav .nav-container-desktop form input{
+      border: none;
+      margin-left: 1rem;
+      flex: 1;
+      outline: none;
+
+
+  }
+  body header .nav .nav-container-desktop .button-shopping{
+      position: initial;
+      margin: 0 0.5rem;
+  }
+  /* hover*/
+  body header .nav .nav-container-desktop .button-categories:hover{
+      color: var(--hoverNav);
+  }
+  body header .nav .nav-container-desktop .button-Tech:hover{
+      color: var(--hoverNav);
+  }
+  body header .nav .nav-container-desktop .button-shopping:hover{
+      color: var(--hoverNav);
+  }
+
+  /*termina medias nav*/
+  body main .main-search-container{
+      display: grid;
+      position: relative;
+      grid-template-columns: 1fr 1fr;
+  }
+  body main .main-search-container img{
+      width: 100%;
+      height: 400px;
+      object-fit:cover;
+      grid-area: 1/2;
+  }
+  body main .main-search-container div{
+      width: 90%;
+      max-width: 44rem;
+      min-width: 32rem;
+      position: relative;
+      top: 6.4rem;
+      left: 7.2rem;
+      padding: 2rem 2.4rem;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      height: max-content;
+
+  }
+  body main .main-search-container div h2{
+      font-size: 3.2rem;
+  }
+  body main .main-search-container div p{
+      font-size: 1.6rem;
+  }
+  body main .main-search-container div button{
+      display: none;
+  }
+  body main .main-selection-courses .main-selection-courses-courses{
+      flex-direction: row;
+      gap: 2rem;
+
+
+  }
+  body main .main-selection-courses h2{
+      font-size: 3.2rem;
+
+
+  }
+  body main .main-selection-courses .main-selection-courses-courses div{
+      justify-content: start;
+      border: none;
+      width: max-content;
+
+
+  }
+
+  body main .main-selection-courses .main-selection-courses-courses div i{
+      display:  none;
+
+  }
+  body main .main-selection-courses .main-selection-courses-courses .div-course-finish{
+      justify-content: start;
+      width: max-content;
+      border: none;
+
+  }
+  body main .main-selection-courses .main-selection-courses-courses div p:hover{
+      color: var(--textNavColor);
+
+
+  }
+  body main .main-selection-courses .main-selection-courses-courses div p{
+      color: var(--gray);
+      cursor: pointer;
+
+  }
+  body main .main-selection-courses .main-selection-courses-courses{
+      margin-top: 0.1rem;
+
+  }
+  body main .main-selection-courses .info-courses{
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--gray);
+      padding: 3.2rem;
+  }
+  body main .main-selection-courses .info-courses h2{
+      font-size: 2.4rem;
+      font-family: var(--Sans);
+  }
+  body main .main-selection-courses .info-courses p{
+      font-size: 1.6rem;
+      font-family: var(--Sans);
+  }
+  body main .main-selection-courses .info-courses p{
+      font-size: 1.6rem;
+      font-family: var(--Sans);
+      max-width: 800px;
+  }
+  body main .top-categories .top-categories-container div{
+      width: 100%;
+      border: none;
+      max-width: calc(100%/4 - 1.6rem);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+  }
+  body main .top-categories .top-categories-container div a{
+      text-decoration: none;
+      color: var(--textNavColor);
+      font-family: var(--Sans);
+      font-weight: 700;
+      font-size: 1.6rem;
+  }
+  body main .top-categories .top-categories-container div img{
+      width: 100%;
+      min-width: 175px;
+      max-width: 300px;
+      display: block;
+      cursor: pointer;
+
+  }
+  body main .top-categories .top-categories-container div img:hover{
+      transform: scale(1.05);
+      transition: transform 150ms cubic-bezier(0,0,.38,.9)
+
+  }
+  body main .top-categories .top-categories-container{
+
+      justify-content: space-between;
+  }
+
+  body main .become-instructor{
+      flex-direction: row;
+  }
+  body main .become-instructor .img-instructor{
+      width: 100%;
+      display: flex;
+      justify-content: end;
+  }
+  body main .become-instructor .img-instructor img{
+      width: 100%;
+      max-width: 40rem;
+      object-fit: contain;
+  }
+  body main .become-instructor .info-instructor{
+
+      align-items: flex-start;
+      justify-content: center;
+  }
+  body main .become-instructor .info-instructor h2{
+
+      font-size: 3.2rem;
+
+  }
+  body main .become-instructor .info-instructor p{
+
+      text-align: start;
+      max-width: 40rem;
+  }
+  body main .become-instructor .info-instructor button{
+      font-weight: 700;
+      font-size: 1.6rem;
+      background-color: var(--textNavColor);
+      border: none;
+      padding: 1.4rem ;
+      width: max-content;
+      color: var(--White);
+      margin-top: 1rem;
+      margin-bottom: 5rem;
+  }
+  body main .trusted-companies{
+      width: 100%;
+      padding: 0 2.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2.4rem;
+  }
+
+  body main .trusted-companies .companies-img{
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      gap: 0;
+      width: 100%;
+      max-width: 100%;
+      justify-content: center;
+  }
+  body main .trusted-companies .companies-img img{
+      object-fit: contain;
+      width: max-content;
+      max-height: 40px;
+  }
+}

@@ -1,0 +1,124 @@
+.withoutHead {
+  margin: 24px auto;
+  max-width: 100%;
+  color: #1c1d1f;
+  width: 380px;
+}
+
+.head_loginbox {
+  border-bottom: solid 1px #d1d7dc;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 30px;
+  font-family: 'Noto Sans', sans-serif;
+  width: 292px;
+  height: 21.45px;
+  padding: 24px 64px 24px 24px;
+}
+
+.facebook_login, .google_login, .apple_login {
+  margin-bottom: 8px;
+  padding-left: 24px;
+  width: 332px;
+  height: 48px;
+}
+
+
+a.button-ap, a.button-g, a.button-fb {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  color: initial;
+}
+
+.google-letras, .apple-letras, .fb-letras {
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border: solid 1px #d1d7dc;
+  background: white;
+  box-shadow: 0 2px 2px 0 rgba(28,29,31,.24),0 0 2px 0 rgba(28,29,31,.12);
+  cursor: pointer;
+  width: 332px;
+  height: 48px;
+  text-align: left;
+}
+
+.fb-letras:hover, .google-letras:hover, .apple-letras:hover {
+  color: #5624d0;
+  background-color: #d1d7dcec;
+}
+
+#fblogo, #glogo, #aplogo {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.email, .password {
+  margin-bottom: 8px;
+  font-size: 18px;
+  margin-left: 24px;
+  border: solid 1px black;
+  width: 320px;
+  height: 50px;
+  padding-left: 10px;
+}
+
+#mail, #pass {
+  font-size: 18px;
+  border: 0px;
+  padding-left: 10px;
+  height: 48px;
+  outline: none;
+}
+
+.login-button {
+  background-color: #a435f0;
+  cursor: pointer;
+  margin-bottom: 8px;
+  margin-left: 24px;
+  width: 332px;
+  height: 48px;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  border: solid 1px transparent;
+  margin-bottom: 16px;
+}
+
+.login-button:hover {
+  background-color: #7b29b2;
+}
+
+
+.forgot_pass, .no_account, .organization_login {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 15px;
+  text-align: center;
+}
+
+.forgot_pass {
+  margin-bottom: 30px;
+}
+
+.forgot_pass a, .organization_login a {
+  color: #5624d0;
+  text-decoration: none;
+}
+
+.no_account {
+  margin-bottom: 10px;
+}
+
+.no_account a {
+  color: #5624d0;
+}
+
+.forgot_pass a:hover, .organization_login a:hover, .no_account a:hover {
+  color: #331778 ;
+}
