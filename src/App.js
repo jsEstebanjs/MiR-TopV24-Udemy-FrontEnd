@@ -1,8 +1,8 @@
 import {
   React, BrowserRouter, Routes, Route,
 } from 'react-router-dom';
-import Home from './pages'
-import NotFound from './pages/NotFound'
+import NotFound from './pages/NotFound';
+import Home from './pages/Home'
 import './App.css';
 
 function App() {
