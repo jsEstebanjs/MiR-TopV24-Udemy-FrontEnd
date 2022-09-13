@@ -3,6 +3,7 @@ import {
 } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home'
+import SignUp from './pages/SignUp';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="*" element={<NotFound />} />
           <Route path="/" element={<Home />} />
+          <Route path="/join/signup/" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </div>
