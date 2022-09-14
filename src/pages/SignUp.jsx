@@ -17,7 +17,7 @@ function SignUp() {
           <form className="signup__form"/* onSubmit={hangleSignup} */>
             <div className="form__square">
               <div className="form__square--item">
-                <h4>Full Name</h4>
+                <h4 className="formsignup__title">Full Name</h4>
                 <input className="udlite-compact-form-control-container-1" area-invalid="false" name="fullname" required minLength={2} maxLength={64} type="text"></input>
               </div>
             </div>
