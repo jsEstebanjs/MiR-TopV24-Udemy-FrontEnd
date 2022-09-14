@@ -14,10 +14,11 @@ function SignUp() {
       <div className="signup">
         <div className="signup-container">
           <h2 className="signup__title">Sign up and start learning</h2>
-          <form className="marketplace-signup-form"/* onSubmit={hangleSignup} */>
-            <div className="form-group">
-              <div className="udlite-compact-form-control-container">
-              <input className="udlite-compact-form-control-container" area-invalid="false" name="fullname" required minLength={2} maxLength={64} type="text"></input>
+          <form className="signup__form"/* onSubmit={hangleSignup} */>
+            <div className="form__square">
+              <div className="form__square--item">
+                <h4>Full Name</h4>
+                <input className="udlite-compact-form-control-container-1" area-invalid="false" name="fullname" required minLength={2} maxLength={64} type="text"></input>
               </div>
             </div>
           </form>
