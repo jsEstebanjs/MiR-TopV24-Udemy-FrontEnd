@@ -1,6 +1,8 @@
 @import './styles/abstracts/variables.scss';
 @import './styles/base/resets.scss';
 @import './components/Nav/index.scss';
+@import './components/Nav/options.scss';
+@import './components/Nav/Hamburguer.scss';
 
 body {
   margin: 0;

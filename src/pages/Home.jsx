@@ -7,7 +7,7 @@ function Home(){
   return(
     <div className="home-container">
       <Nav 
-      login={true}
+      login={false}
       />
       <Header />
       <p>Home</p>
