@@ -1,0 +1,17 @@
+@import './styles/abstracts/variables.scss';
+@import './styles/base/resets.scss';
+@import './components/Nav/index.scss';
+@import './components/Nav/options.scss';
+@import './components/Nav/Hamburguer.scss';
+
+body {
+  margin: 0;
+  font-family: $Noto-Sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
