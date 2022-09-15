@@ -3,9 +3,11 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import './LogIn.styles.css';
-import '../images/facebook.png';
-import '../images/buscar.png';
-import '../images/logotipo-de-apple.png';
+import image1 from '../images/facebook.png';
+import image2 from '../images/buscar.png';
+import image3 from '../images/logotipo-de-apple.png';
+import { FaEnvelope } from 'react-icons/fa'
+import { HiLockClosed } from 'react-icons/hi'
 
 
 const FormularioLogIn = () => {
@@ -24,21 +26,21 @@ const FormularioLogIn = () => {
         <div className="loginformAndButtons">
             <div className="head_loginbox">Log in to your Udemy account</div>
             <button className="fb-button">
-                <img alt="" id="fblogo" src="../images/facebook.png"></img>
+                <img alt="" id="fblogo" src={image1}></img>
                 <strong>Continue with Facebook</strong>
             </button>
             <button className="google-button">
-                <img alt="" id="glogo" src="../images/buscar.png"></img>
+                <img alt="" id="glogo" src={image2}></img>
                 <strong>Continue with Google</strong>
             </button>
             <button className="apple-button">
-             <img alt="" id="glogo" src="../images/logotipo-de-apple.png"></img>
+             <img alt="" id="glogo" src={image3}></img>
                 <strong>Continue with Apple</strong>
             </button>
 
             <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
             <div className="email">
-            <i className="fa-solid fa-envelope"></i>
+            <FaEnvelope />
             <input id="mail" type="email" placeholder="Email" {...register('email', {
                 required: true,
                 pattern:/[\w]+@{1}[\w]+\.[a-z]{2,3}/,
@@ -46,7 +48,7 @@ const FormularioLogIn = () => {
             {errors.email?.type === 'required' && <p>Rellene este campo</p>}
             </div>
             <div className="password">
-            <i className="fa-solid fa-lock"></i>
+            <HiLockClosed />
             <input id="pass" type="password" placeholder="Password" {...register('password', {
                 required: true,
             })} />
