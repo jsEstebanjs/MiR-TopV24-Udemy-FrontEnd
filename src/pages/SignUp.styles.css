@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.signup{
+  display: block;
+      font-family: udemy sans,sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    font-weight: 400;
+    line-height: 1.4;
+    font-size: 1.6rem;
+    color: #1c1d1f;
+    margin: 0;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.signup-container{
+  display: block;
+  width: 40rem;
+  max-width: 100%;
+  padding-top: 4.8rem;
+  padding-bottom: 4.8rem;
+}
+
+.signup__title {
+  font-family: udemy sans,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.02rem;
+    font-size: 1.6rem;
+}
+
+.signup__form {
+  width: 40rem;
+  max-width: 100%;
+  padding-top: 3.8rem;
+  padding-bottom: 4.8rem;
+}
+
+.form__square{
+  border: 1px solid #1c1d1f;
+  position: relative;
+}
+
+.formsignup__title{
+  font-family: udemy sans,sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+    font-weight: 400;
+    line-height: 1.4;
+    font-size: 1.6rem;
+}
+
