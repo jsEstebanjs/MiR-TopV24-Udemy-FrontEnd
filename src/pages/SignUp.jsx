@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Nav from "../components/Nav/index"
 import Footer from "../components/Footer";
 import './SignUp.styles.css'
 
@@ -10,7 +10,7 @@ function SignUp() {
   } */
   return(
     <>
-    <Header />
+    <Nav />
       <div className="signup">
         <div className="signup-container">
           <h2 className="signup__title">Sign up and start learning</h2>
