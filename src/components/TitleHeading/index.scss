@@ -7,9 +7,9 @@
 
 .heading-container{
     display: flex;
-    position: relative;
     flex-direction: row;
-    align-items: center;
+    position: relative;
+    z-index: -1;
     max-width: 1340px;
     align-items: center;
     .heading-img-phone{
@@ -21,7 +21,6 @@
         left: 6%;
         position: absolute;
         width: 400px;
-        z-index: 0;
         background-color: $white;
         padding: 24px;
         box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
@@ -46,8 +45,6 @@
     
     .heading-img{
         display: block;
-        position: relative;
-        z-index: -1;
         width: 100%;
         img{
             width: 100%;

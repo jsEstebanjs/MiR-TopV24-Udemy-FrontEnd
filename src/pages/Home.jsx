@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer'
 import Nav from '../components/Nav';
+import AlternateHeadline from '../components/AlternateHeadline';
 import TitleHeading from '../components/TitleHeading';
 import headingImg from '../images/Title-heading.png';
 import headingImgPhone from '../images/Title-heading-movil.png';
@@ -17,6 +18,10 @@ function Home(){
         img={headingImg}
         alt='illustration'
         imgPhone={headingImgPhone}
+      />
+      <AlternateHeadline 
+      title='A broad selection of courses'
+      info='Choose from 204,000 online video courses with new additions published every month'
       />
       <Footer />
     </div>

@@ -7,7 +7,6 @@
     }
 }
 .nav-main-options{
-    z-index: 999;
     position: absolute;
     top: 72px;
     left: 120px;
@@ -23,7 +22,6 @@
         background-color: transparent;
     }
     .nav-options-visible{
-        position: absolute;
         background-color: $white;
         min-width: 260px;
         height: 100vh;
@@ -53,6 +51,7 @@
         padding: 8px 0;
         .ul-two{
             display: none;
+            background-color: $white;
             height: 100vh;
             min-width: 260px;
             position: absolute;
