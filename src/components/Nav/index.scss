@@ -5,7 +5,9 @@
     gap:20px;
     height: 72px;
     align-items: center;
+    z-index: 997;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    margin-bottom: 1px;
     .div-search-movil{
         position: absolute;
         width: 100%;
@@ -63,7 +65,7 @@
     .nav-btn-categories{
         font-size: 14px;
         font-weight: 400;
-        opacity: 0.9;
+        // opacity: 0.9;
         height: 100%;
         display: flex;
         justify-content: center;
