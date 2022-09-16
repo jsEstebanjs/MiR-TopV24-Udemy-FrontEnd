@@ -1,5 +1,6 @@
 import React from 'react';
-
+import './footer.css';
+import udemy from '../../images/udemy.png';
 
 function Footer(){
 
@@ -37,7 +38,7 @@ function Footer(){
     </div>
     <div class="f2">
         <div class="box">
-              <img src='./images/udemy.png' alt='imagen udemy'/>
+              <img src={udemy} alt='imagen udemy'/>
         </div>
         <div class="box">
             <p>© 2022 Udemy, Inc.</p>
