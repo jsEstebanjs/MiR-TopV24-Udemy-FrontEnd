@@ -1,4 +1,5 @@
 import React from 'react';
+import './footer.css';
 import udemy from '../../images/udemy.png';
 
 function Footer(){
