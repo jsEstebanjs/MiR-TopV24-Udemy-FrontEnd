@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import React from "react";
 import Nav from "../components/Nav/index"
 import Footer from "../components/Footer";
@@ -19,6 +20,9 @@ const FormularioLogIn = () => {
     const onSubmit = (data) => {
         console.log(data);
     }
+    useEffect(() => {
+        document.title = "Log In | Udemy";  
+      }, []);
 
     return (
         <>
