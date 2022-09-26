@@ -1,0 +1,75 @@
+.main-courses-carrusel{
+    border: 1px solid #d1d7dc;
+    padding: 32px;
+    position: relative;
+    margin-top: 16px;
+    h2{
+        margin-bottom: 10px;
+        font-family: $Noto-Sans;
+    }
+    .courses-info{
+        font-family: $Noto-Sans;
+        max-width: 800px;
+        margin-bottom: 16px;
+    }
+    .btn-courses{
+        display: flex;
+        font-family: $Noto-Sans;
+        border: 1px solid $black;
+        height: 40px;
+        width: max-content;
+        align-items: center;
+        justify-content: center;
+        padding: 0 12px;
+        color: $black;
+        font-size: 14px;
+        font-weight: 700;
+        &:hover{
+            background-color: rgba(0,0,0,.04);
+        }
+    }
+    .courses-carrusel{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        .btn-left-courses{
+            display: flex;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            background-color: $black;
+            font-size: 32px;
+            color: $white;
+            left: 10px;
+            z-index: 1;
+            top: 50%;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+        }
+        .btn-right-courses{
+            display: flex;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            background-color: $black;
+            font-size: 32px;
+            color: $white;
+            right: 10px;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+            top: 50%;
+        }
+    }
+}

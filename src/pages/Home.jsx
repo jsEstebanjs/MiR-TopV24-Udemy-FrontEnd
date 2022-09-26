@@ -5,7 +5,7 @@ import AlternateHeadline from '../components/AlternateHeadline';
 import TitleHeading from '../components/TitleHeading';
 import headingImg from '../images/Title-heading.png';
 import headingImgPhone from '../images/Title-heading-movil.png';
-import fakelanding from '../images/fakelanding.png'
+import SelectionCourses from '../components/SelectionOfCourses';
 
 function Home(){
   return(
@@ -24,8 +24,7 @@ function Home(){
       title='A broad selection of courses'
       info='Choose from 204,000 online video courses with new additions published every month'
       />
-      <Nav login={false}/>
-      <img src={fakelanding} className="home-img" alt="fakelanding" />
+      <SelectionCourses />
       <Footer />
     </div>
   )
