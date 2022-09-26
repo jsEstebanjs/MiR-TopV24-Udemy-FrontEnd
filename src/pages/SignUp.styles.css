@@ -5,22 +5,15 @@
 }
 
 .signup{
-  display: block;
-      font-family: udemy sans,sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
-    font-weight: 400;
-    line-height: 1.4;
-    font-size: 1.6rem;
-    color: #1c1d1f;
-    margin: 0;
-    padding-left: 25%;
-    padding-right: 25%;
+  display: flex;
+  font-family: udemy sans,sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
+  justify-content: center;
 }
 
 .signup-container{
-  display: block;
-  width: 40rem;
+  width: 22rem;
   max-width: 100%;
-  padding-top: 4.8rem;
+  padding-top: 1rem;
   padding-bottom: 4.8rem;
 }
 
@@ -29,25 +22,97 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -.02rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    padding: 24px 64px 24px 24px;
 }
 
 .signup__form {
   width: 40rem;
   max-width: 100%;
-  padding-top: 3.8rem;
+  padding-top: 1rem;
   padding-bottom: 4.8rem;
+  display: block;
+  justify-content: space-around;
 }
 
-.form__square{
+.form__container{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: space-between;
+padding-bottom: 2px;
+}
+
+.form__square--item{
   border: 1px solid #1c1d1f;
-  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  padding-top: 1rem ;
+  padding-bottom:1rem;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  align-content: flex-start;
+  align-items: baseline;
 }
 
 .formsignup__title{
   font-family: udemy sans,sf pro text,-apple-system,BlinkMacSystemFont,Roboto,segoe ui,Helvetica,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol;
-    font-weight: 400;
-    line-height: 1.4;
-    font-size: 1.6rem;
+  font-weight: 350;
+  font-size: 1.6rem;
+  padding-left: 4px ;
 }
 
+.signup-imput{
+  border:none;
+  outline-width: 0;
+}
+
+.signup-aditional-info{
+  display: flex;
+  align-items: flex-start;
+  padding-left: 0.3rem;
+  padding-bottom: 1rem;
+}
+
+.signup-lines {
+  display: flex;
+  align-items: left;
+  gap: 0.2rem;
+  min-height: 1.6rem;
+  padding-left: 0.5rem;
+}
+
+.special-offers-text{
+  font-size: small;
+  padding-left: 1rem;
+}
+
+.singup-button {
+  background-color: #a435f0;
+  cursor: pointer;
+  width: 332px;
+  height: 48px;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  border: solid 1px transparent;
+  margin-bottom: 16px;
+  display: table;
+  margin: 0 auto;
+}
+
+.redirect-login__container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.redirect-login {
+  font-weight: 400;
+  line-height: 1.4;
+  font-size: 1rem;
+  display: table;
+  margin: 0 auto;
+}
