@@ -3,7 +3,7 @@
     padding: 32px;
     position: relative;
     margin-top: 16px;
-    h2{
+    .courses-title{
         margin-bottom: 10px;
         font-family: $Noto-Sans;
     }
@@ -52,6 +52,7 @@
             color: $white;
             left: 10px;
             z-index: 1;
+            border: 1px solid $black;
             top: 50%;
             box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
         }
@@ -70,6 +71,32 @@
             right: 10px;
             box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
             top: 50%;
+            border: 1px solid $black;
         }
     }
+    @media (max-width: 650px) {
+        .courses-title{
+            display: none;
+        }
+        .courses-info{
+            display: none;
+        }
+        .btn-courses{
+            display: none;
+        }
+        .courses-carrusel{
+        .btn-left-courses{
+            width: 40px;
+            height: 40px;
+            left: 5px;
+            top: 28%;
+        }
+        .btn-right-courses{
+            width: 40px;
+            height: 40px;
+            right: 5px;
+            top: 28%;
+        }
+    }
+}
 }

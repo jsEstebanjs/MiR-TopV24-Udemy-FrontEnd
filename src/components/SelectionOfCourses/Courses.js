@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Course from "./Course";
 import { MdKeyboardArrowLeft , MdKeyboardArrowRight } from "react-icons/md";
-import { useState , useRef} from "react";
+import { useRef } from "react";
 function Courses ({title,info,link}){
     const carrusel = useRef(null)
     const courses = [
@@ -206,7 +206,7 @@ function Courses ({title,info,link}){
 return(
         
         <div className="main-courses-carrusel">
-            <h2>{title}</h2>
+            <h2 className="courses-title">{title}</h2>
             <p className="courses-info">{info}</p>
             <Link className="btn-courses">{link} </Link>
             <div className="courses-carrusel" ref={carrusel}>
