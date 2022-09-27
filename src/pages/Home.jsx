@@ -6,6 +6,9 @@ import TitleHeading from '../components/TitleHeading';
 import headingImg from '../images/Title-heading.png';
 import headingImgPhone from '../images/Title-heading-movil.png';
 import TopCategoriesHome from '../components/TopCategoriesHome';
+import BecomeInstructor from '../images/BecomeInstructor.jpg';
+import BecomeInstructorMobile from '../images/BecomeInstructorMobilejpg.jpg'
+import BecomeInstructorHome from '../components/BecomeInstructorHome/index';
 
 function Home(){
   return(
@@ -26,6 +29,13 @@ function Home(){
       />
       <TopCategoriesHome
       title='Top Categories'
+      />
+      <BecomeInstructorHome 
+        img={BecomeInstructor}
+        title='Become an instructor'
+        info='Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.'
+        btn='Start teaching today'
+        imgMobile={BecomeInstructorMobile}
       />
       <Footer />
     </div>
