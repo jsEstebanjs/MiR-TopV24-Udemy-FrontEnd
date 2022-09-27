@@ -41,10 +41,6 @@ function Home(){
         btn='Start teaching today'
         imgMobile={BecomeInstructorMobile}
       />
-
-      <TopCategoriesHome
-      title='Top Categories'
-      />
       <Footer />
     </div>
   )
