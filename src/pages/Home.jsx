@@ -6,6 +6,9 @@ import TitleHeading from '../components/TitleHeading';
 import headingImg from '../images/Title-heading.png';
 import headingImgPhone from '../images/Title-heading-movil.png';
 import TopCategoriesHome from '../components/TopCategoriesHome';
+import SelectionCourses from '../components/SelectionOfCourses';
+
+
 
 function Home(){
   return(
@@ -24,9 +27,11 @@ function Home(){
       title='A broad selection of courses'
       info='Choose from 204,000 online video courses with new additions published every month'
       />
+
       <TopCategoriesHome
       title='Top Categories'
       />
+      <SelectionCourses />
       <Footer />
     </div>
   )
