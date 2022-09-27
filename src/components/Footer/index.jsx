@@ -36,8 +36,8 @@ function Footer(){
             </div>
         </div>
     </div>
-    <div class="f2">
-        <div class="box">
+    <div className="f2">
+        <div className="box">
           <img src={udemy} alt='imagen udemy'/>
         </div>
         <div className="box">
