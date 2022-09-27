@@ -1,9 +1,61 @@
 import { Link } from "react-router-dom"
 import Course from "./Course";
 import { MdKeyboardArrowLeft , MdKeyboardArrowRight } from "react-icons/md";
-import { useRef } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 function Courses ({title,info,link}){
-    const carrusel = useRef(null)
+    const SlickArrowLeft = ({ dirrection, svg ,onClick , currentSlide}) => (
+        <>
+    {currentSlide !== 0 && ( <button className={dirrection === "btn-left-courses" ? "btn-courses-slider btn-left-courses" : "btn-courses-slider btn-right-courses"} onClick={onClick} >{svg}</button>)}
+        </>
+      );
+    
+      const SlickArrowRight = ({ dirrection, svg ,onClick }) => (
+        <button className={dirrection === "btn-left-courses" ? "btn-courses-slider btn-left-courses" : "btn-courses-slider btn-right-courses"} onClick={onClick}>{svg}</button>
+      );
+    
+    const settings = {
+        dots: false,
+        swipeToSlide:false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        initialSlide: 0,
+        prevArrow: <SlickArrowLeft dirrection={"btn-left-courses"} svg={<MdKeyboardArrowLeft/>}/>,
+        nextArrow: <SlickArrowRight dirrection={"btn-right-courses"} svg={<MdKeyboardArrowRight/>}/>,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: false,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 700,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              infinite: false,
+              dots: false
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: false,
+              dots: false
+            }
+          }
+        ]
+      };
     const courses = [
 
             {
@@ -26,7 +78,7 @@ function Courses ({title,info,link}){
                 ]
             },
             {
-                "title": "Learn Python: The Complete Python Programming Course",
+                "title": "Learning Python for Data Analysis and Visualization",
                 "image": "https://img-c.udemycdn.com/course/240x135/394676_ce3d_5.jpg",
                 "instructor": "Avinash Jain, The Codex",
                 "avgRate": 4.4,
@@ -45,7 +97,7 @@ function Courses ({title,info,link}){
                 ]
             },
             {
-                "title": "Learn Python: The Complete Python Programming Course",
+                "title": "Python for Beginners - Learn Programming from scratch",
                 "image": "https://img-c.udemycdn.com/course/240x135/394676_ce3d_5.jpg",
                 "instructor": "Avinash Jain, The Codex",
                 "avgRate": 5,
@@ -64,7 +116,7 @@ function Courses ({title,info,link}){
                 ]
             },
             {
-                "title": "Learn Python: The Complete Python Programming Course",
+                "title": "Python Beyond the Basics - Object-Oriented Programming",
                 "image": "https://img-c.udemycdn.com/course/240x135/394676_ce3d_5.jpg",
                 "instructor": "Avinash Jain, The Codex",
                 "avgRate": 4.4,
@@ -83,7 +135,7 @@ function Courses ({title,info,link}){
                 ]
             },
             {
-                "title": "Learn Python: The Complete Python Programming Course",
+                "title": "Python From Scratch & Selenium WebDriver QA Automation 2022",
                 "image": "https://img-c.udemycdn.com/course/240x135/394676_ce3d_5.jpg",
                 "instructor": "Avinash Jain, The Codex",
                 "avgRate": 2.3,
@@ -197,20 +249,14 @@ function Courses ({title,info,link}){
                 ]
             }
         ];
-    const handleLeftClick=(e)=>{
-            carrusel.current.scrollLeft -= carrusel.current.offsetWidth
-    }
-    const handleRightClick=(e)=>{
-        carrusel.current.scrollLeft += carrusel.current.offsetWidth
-    }
+ 
 return(
         
         <div className="main-courses-carrusel">
             <h2 className="courses-title">{title}</h2>
             <p className="courses-info">{info}</p>
             <Link className="btn-courses">{link} </Link>
-            <div className="courses-carrusel" ref={carrusel}>
-                <button className="btn-left-courses" onClick={()=> handleLeftClick() }><MdKeyboardArrowLeft /></button>
+            <Slider {...settings}>
                 {courses.map((item)=>{
                     return(
                         <Course 
@@ -219,11 +265,16 @@ return(
                             teacher={item.instructor}
                             price={item.price}
                             rating={item.avgRate}
+                            lastUpdate={item.dateUpdated}
+                            totalHours={item.totalHours}
+                            level={item.Level}
+                            subtitles={item.hasSubtitles}
+                            description={item.description}
                         />
                     )
                 })}
-                <button className="btn-right-courses" onClick={()=> handleRightClick() }><MdKeyboardArrowRight /></button>
-            </div>
+               
+                </Slider>
 
         </div>
     )
