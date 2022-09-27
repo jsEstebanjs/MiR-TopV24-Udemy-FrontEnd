@@ -1,0 +1,32 @@
+.main-container-selection-courses{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    .container-selection-courses{
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1340px;
+        margin-bottom: 64px;
+        .ul-selection-courses{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 16px;
+            li{
+                font-weight: 700;
+                cursor: pointer;
+                font-size: 16px;
+                font-family: $Noto-Sans;
+                color: #6a6f73;
+                outline: none;
+                &:focus{
+                    color: $black;
+                }
+            }
+        }
+    }
+}
