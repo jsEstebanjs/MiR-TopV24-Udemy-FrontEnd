@@ -1,17 +1,19 @@
+
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Courses from './Courses';
 function SelectionCourses(){
+
     return(
       <div className="main-container-selection-courses">
       <Tabs className='container-selection-courses'>
       <TabList className='ul-selection-courses'>
-        <Tab>Python</Tab>
-        <Tab>Excel</Tab>
-        <Tab>Web Development</Tab>
-        <Tab>JavaScript</Tab>
-        <Tab>Data Science</Tab>
-        <Tab>AWS Certification</Tab>
-        <Tab>Drawing</Tab>
+        <Tab className='li-course'>Python</Tab>
+        <Tab className='li-course'>Excel</Tab>
+        <Tab className='li-course'>Web Development</Tab>
+        <Tab className='li-course'>JavaScript</Tab>
+        <Tab className='li-course'>Data Science</Tab>
+        <Tab className='li-course'>AWS Certification</Tab>
+        <Tab className='li-course'>Drawing</Tab>
       </TabList>
   
       <TabPanel>

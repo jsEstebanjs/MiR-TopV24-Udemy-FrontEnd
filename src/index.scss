@@ -12,6 +12,10 @@
 @import './components/SelectionOfCourses/Courses.scss';
 @import './components/SelectionOfCourses/Course.scss';
 @import './components/SelectionOfCourses/ButtonArrow.scss';
+@import './components/MyLearningTabs/index.scss';
+@import './components/MyLearningWishListC/index.scss';
+@import './components/MyLearningWishListC/BtnBrowseCourses.scss';
+@import './components/MyLearningTabs/BrowseNow.scss';
 body {
   margin: 0;
   font-family: $Noto-Sans;
