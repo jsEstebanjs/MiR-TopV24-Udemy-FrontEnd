@@ -8,12 +8,14 @@ import { MdOutlineNotificationsNone , MdClose } from "react-icons/md";
 import Options from './options';
 import { useState} from 'react';
 import Hamburguer from './Hamburguer';
+import LanguageModal from '../LanguageModal';
 
 
 function Nav({login}){
     const [isVisible,setIsvisible] = useState(false);
     const [searchMovil,setSearchMovil] = useState(false);
     const [mainHamburguer,setMainHamburguer] = useState(false);
+    const [langModal, setLangModal] = useState(false);
     const navigate = useNavigate();
 
     document.addEventListener('click', function(event) {
@@ -36,8 +38,14 @@ function Nav({login}){
         navigate('/')
       }
 
+      const handleLanguageModal = () => {
+        setLangModal(langModal => !langModal);
+      }
+
     return(
         <div className='main-nav'>
+            {langModal?<LanguageModal handleLanguageModal={handleLanguageModal}/>:null}
+            
             <div className='nav-btn-hamburguer-main' onClick={()=> {
                 setMainHamburguer(true)
                 document.body.style.overflow = "hidden"
@@ -71,7 +79,7 @@ function Nav({login}){
             <div className={login ?'displayNone':'container-btns'}>
                 <button className="nav-login" onClick={navigateToLogin}>Log in</button>
                 <button className="nav-sing-up" onClick={navigateToSingup}>Sign up</button>
-                <button className='nav-btn-languages'><BsGlobe /></button>
+                <button className='nav-btn-languages' onClick={handleLanguageModal} ><BsGlobe /></button>
             </div>
 
             <div className={login ?'nav-user' :'displayNone'}>EC
