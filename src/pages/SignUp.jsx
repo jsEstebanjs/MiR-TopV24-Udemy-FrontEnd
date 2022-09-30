@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../components/Nav/index"
 import Footer from "../components/Footer";
 import './SignUp.styles.css'
@@ -6,60 +6,69 @@ import './SignUp.styles.css'
 function SignUp() {
   const loginLink = <a href={('./login')}>log in</a>
 
-/*   const handleSubmit = (e)=>{
+  const [student, setStudent] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setStudent({ ...student, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const {fullname, email, password } = form;
-    console.log(form)
-  } */
+    console.log(student)
+  };
+
   return(
     <>
     <Nav />
       <div className="signup">
         <div className="signup-container">
           <h2 className="signup__title">Sign up and start learning</h2>
-          <form className="signup__form"/* onSubmit={hangleSignup} */>
+          <form className="signup__form" onSubmit={handleSubmit}>
             <div className="form__container">
               <div className="form__square--item">
-                <h4 className="formsignup__title">Full Name</h4>
+                <label className="formsignup__title">Full Name</label>
                 <input className="signup-imput signmup-imput-name"
-                  area-invalid="false"
-                  name="fullname"
-                  minLength={2}
-                  maxLength={64}
                   type="text"
+                  id="fullname"
+                  name="fullname"
+                  onChange={handleChange}
+                  value={student.fullname}
                   required>
                 </input>
               </div>
               <div className="form__square--item">
-                <h5 className="formsignup__title">Email</h5>
+                <label className="formsignup__title">Email</label>
                 <input className="signup-imput signmup-imput-mail"
-                  aria-invalid="false"
+                  type="text"
+                  id="email"
                   name="email"
-                  minlength="7"
-                  maxlength="64"
-                  type="email"
-                  value=""
+                  onChange={handleChange}
+                  value={student.email}
                   required
                   >
                 </input>
               </div>
               <div className="form__square--item">
-                <h4 className="formsignup__title">Password</h4>
+                <label className="formsignup__title">Password</label>
                 <input className="signup-imput signmup-imput-mail"
-                  aria-invalid="false"
-                  minlength="6"
-                  maxlength="64"
-                  name="password"
-                  required
                   type="password"
-                  value="">
+                  id="password"
+                  name="password"
+                  onChange={handleChange}
+                  value={student.password}
+                  required>
                 </input>
               </div>
               <div className="signup-lines">- - - -</div>
               <div className="signup-aditional-info">
                 <input type="checkbox" className="special-offers-checkbox"/>
-                <p className="special-offers-text">Send me special offers, personalized recomendations,
-                 and learning tips</p>
+                <span className="special-offers-text">Send me special offers, personalized recomendations,
+                 and learning tips</span>
               </div>
             </div>
               <button type="button" className="singup-button">Sign up</button>

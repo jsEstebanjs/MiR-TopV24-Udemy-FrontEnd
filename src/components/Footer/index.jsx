@@ -7,7 +7,7 @@ function Footer(){
   return(
     <footer>
     <div className="f1">
-        <div class="box">
+        <div className="box">
             <p>Udemy Business</p>
             <p>Teach on Udemy</p>
             <p>Get the app</p>
