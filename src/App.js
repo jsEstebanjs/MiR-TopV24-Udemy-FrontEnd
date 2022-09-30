@@ -8,6 +8,7 @@ import LogIn from './pages/LogIn';
 import ForgotPassword from './pages/ForgotPassword';
 import MyLearning from './pages/MyLearning';
 import MyLearningWishList from './pages/MyLearningWishList';
+import InstructorCourses from './pages/InstructorCourses';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/home/my-courses/learning" element={<MyLearning />} />
           <Route path="/home/my-courses/wishlist" element={<MyLearningWishList />} />
           <Route path="/join/forgot-password/" element={<ForgotPassword />} />
+          <Route path="/instructor/courses" element={<InstructorCourses />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

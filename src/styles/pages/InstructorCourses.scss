@@ -1,0 +1,38 @@
+.main-container-instructor-courses-page{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 1552px;
+    padding: 0 56px 0 120px;
+    margin: 0 auto;
+    .title-instructor-courses-page{
+        font-family: $Noto-Serif-Georgian;
+        font-size: 32px;
+        margin: 10px 0 32px 0;
+    }
+    .container-search-new-course{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        gap: 30px;
+        .link-btn-instructor-courses-page{
+            background-color: #a435f0;
+            font-weight: 700;
+            font-family: $Noto-Sans;
+            color: $white;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            min-width:  100px;
+        }
+    }
+}
+@media(max-width:745px){
+    .main-container-instructor-courses-page{
+        padding: 0 6px;
+    }
+}
