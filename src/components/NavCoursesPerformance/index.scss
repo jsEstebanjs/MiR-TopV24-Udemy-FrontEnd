@@ -6,21 +6,27 @@
     width: 56px;
     background-color: #1c1d1f;
     transition: width 400ms linear;
-    box-shadow: 0 4px 8px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 24%);
     &:hover .link-img-nav-courses-performance::after{
         opacity: 0;
+        width: 200px;
+    }
+    &:hover .link-img-nav-courses-performance .img-nav-courses-performance{
+        pointer-events: all;
     }
     &:hover{
         width: 250px;
     }
     &:hover .ul-nav-courses-performance .li-nav-courses-performance .link-nav-courses-performance .item-nav-courses-performance{
         opacity: 1;
+
     }
     .link-img-nav-courses-performance{
+        pointer-events: none;
         .img-nav-courses-performance{
             margin-left: 8px;
             width: 110px;
             object-fit: cover;
+            pointer-events: none;
             padding: 16px;
         }
         &::after{
@@ -30,11 +36,13 @@
             top: 18px;
             left: 36px;
             height: 2rem;
-            width: 80px;
+            width: 20px;
             background-color: #1c1d1f;
             opacity: 1;
             pointer-events: unset;
             transition: opacity 400ms linear;
+            transition: width 400ms linear;
+            pointer-events: none;
         }
     }
     .ul-nav-courses-performance{
