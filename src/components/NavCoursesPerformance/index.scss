@@ -49,6 +49,9 @@
         display: flex;
         flex-direction: column;
         .li-nav-courses-performance{
+            &:hover{
+                background-color: #3e4143;
+            }
             padding: 16px;
             .link-nav-courses-performance{
                 display: flex;
@@ -71,6 +74,9 @@
                     transition: opacity 400ms linear;
                 }
             }
+        }
+        .border-left-courses-performance{
+            box-shadow: 4px 0 #a435f0 inset;
         }
     }
 }
