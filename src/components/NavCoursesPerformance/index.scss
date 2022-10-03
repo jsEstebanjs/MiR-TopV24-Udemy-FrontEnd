@@ -1,5 +1,6 @@
 .main-container-nav-courses-performance{
-    position: absolute;
+    position: fixed;
+    z-index: 998;
     top: 0;
     bottom: 0;
     left: 0;
@@ -78,5 +79,10 @@
         .border-left-courses-performance{
             box-shadow: 4px 0 #a435f0 inset;
         }
+    }
+}
+@media(max-width:750px){
+    .main-container-nav-courses-performance{
+        display: none;
     }
 }

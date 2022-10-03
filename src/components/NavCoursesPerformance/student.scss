@@ -1,0 +1,159 @@
+.main-container-profile-student{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    height: 70px;
+    position: relative;
+    padding: 0 24px;
+    .link-student{
+        color: $black;
+        font-family: $Noto-Sans;
+        font-size: 14px;
+        padding: 0 12px;
+        &:hover{
+            color: #5624d0;
+        }
+    }
+    .icon-notificacion{
+        padding: 0 12px;
+        font-size: 24px;
+        cursor: pointer;
+        &:hover{
+            color: #5624d0;
+        }
+    }
+    .container-profile-student{
+        height: 100%;
+        min-height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 12px;
+        &:hover .main-container-hover-profile-student{
+            opacity: 1;
+            pointer-events: all;
+        }
+        .link-profile-student{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 32px;
+            min-width: 32px;
+            width: 32px;
+            border-radius: 50%;
+            height: 32px;
+            font-family: $Noto-Sans;
+            font-weight: 700;
+            font-size: 14px;
+            background-color: $black;
+            color: $white;
+            position: relative;
+            span{
+                width: 12px;
+                height: 12px;
+                background-color: #a435f0;
+                border-radius: 50%;
+                position: absolute;
+                top: 0;
+                right: 0;
+
+
+            }
+        }
+        .main-container-hover-profile-student{
+            position: absolute;
+            padding: 16px;
+            display: flex;
+            background-color: transparent;
+            width: 270px;
+            height:max-content;
+            top: 60px;
+            right: 0;
+            opacity: 0;
+            z-index: 999;
+            pointer-events: none;
+            transition: opacity .2s ease;
+            .container-hover-profile-student{
+                background-color: $white;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+                .hover-profile-student-info{
+                    display: flex;
+                    flex-direction: row;
+                    padding: 16px;
+                    border-bottom: 1px solid #d1d7dc;
+                    &:hover .hover-profile-name-email .hover-profile-name{
+                        color: #5624d0;
+    
+                    }
+
+
+                    .hover-profile-avatar{
+                        font-family: $Noto-Sans;
+                        font-weight: 700;
+                        font-size: 24px;
+                        width: 64px;
+                        height: 64px;
+                        background-color: $black;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: $white;
+                        border-radius: 50%;
+                    }
+                    .hover-profile-name-email{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-left: 10px;
+                        .hover-profile-name{
+                            font-family: $Noto-Sans;
+                            font-size: 16px;
+                            font-weight: 700;
+                            color: $black;
+                        }
+                        .hover-profile-email{
+                            font-family: $Noto-Sans;
+                            font-size: 12px;
+                            color:gray ;
+                        }
+
+                    }
+                }
+                .links-container-hover{
+                    color: #1c1d1f;
+                    font-family: $Noto-Sans;
+                    font-size: 14px;
+                    padding: 16px;
+                    border-bottom: 1px solid #d1d7dc;
+                    &:hover{
+                        color: #5624d0;
+
+                    }
+                }
+                .container-links-hover{
+                    display: flex;
+                    flex-direction: column;
+                    border-bottom: 1px solid #d1d7dc;
+                    padding: 8px 16px;
+                    .links-container-hover{
+                        margin: 8px 0 8px 0;
+                        padding:0;
+                        border: none;
+                    }
+                }
+
+            }
+        }
+    }
+}
+@media(max-width:750px){
+    .main-container-profile-student{
+        display: none;
+    }
+}
