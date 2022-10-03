@@ -16,6 +16,15 @@
 @import './components/MyLearningWishListC/index.scss';
 @import './components/MyLearningWishListC/BtnBrowseCourses.scss';
 @import './components/MyLearningTabs/BrowseNow.scss';
+@import './styles/pages/InstructorCourses.scss';
+@import './components/SearchInstructorCourses/index.scss';
+@import './components/EditCourseInstructor/index.scss';
+@import './components/NavCoursesPerformance/index.scss';
+@import './components/NavCoursesPerformance/student.scss';
+@import './styles/pages/InstructorPerformance.scss';
+@import './components/InstructorPerformanceOverview/index.scss';
+@import './components/InstructorPerformanceStudents/index.scss';
+@import './components/InstructorPerformanceStudents/NotStudents.scss';
 body {
   margin: 0;
   font-family: $Noto-Sans;
