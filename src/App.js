@@ -4,7 +4,7 @@ import {
 import NotFound from './pages/NotFound';
 import Home from './pages/Home'
 import SignUp from './pages/SignUp';
-import LogIn from './pages/LogIn';
+import LogIn from './pages/LogIn/LogIn';
 import ForgotPassword from './pages/ForgotPassword';
 import MyLearning from './pages/MyLearning';
 import MyLearningWishList from './pages/MyLearningWishList';
@@ -18,6 +18,8 @@ import InstructorPerformanceOverview from './pages/InstructorPerformanceOverview
 
 
 import './App.css';
+import Course from './pages/Course/Course';
+import Cart from './pages/Cart';
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />
+          <Route path="/course/pythonforbeginners" element={<Course />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>

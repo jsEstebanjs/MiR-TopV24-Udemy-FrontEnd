@@ -26,7 +26,7 @@ function Course({img,title,teacher,price,rating,lastUpdate,totalHours,level,subt
             <p className="course-price">${price}</p>
         <div className="main-container-hover-course">
             <div className="container-hover-course">
-                <Link className="title-hover-course"><h2 className="title-hover-course">{title}</h2></Link>
+                <Link to= '/course/pythonforbeginners' className="title-hover-course"><h2 className="title-hover-course">{title}</h2></Link>
                 <p className="date-update-course">Updated <strong>{lastUpdate}</strong></p>
                   <p className="subtitle-course">{totalHours} total hours • {level}{subtitles?" • Subtitles":null}</p>  
                 <p className="description-course">{description}</p>
