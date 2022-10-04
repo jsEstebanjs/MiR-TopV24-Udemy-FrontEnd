@@ -1,6 +1,7 @@
 import udemy from '../../images/udemyCursesInstructor.svg';
 import { MdOndemandVideo,MdBarChart } from "react-icons/md";
 import { Link } from 'react-router-dom';
+
 import { useState } from 'react';
 
 function NavCoursesPerformance(){
@@ -15,7 +16,6 @@ function NavCoursesPerformance(){
             </ul>
         </div>
 
-    // border-left-courses-performance
     )
 }
 
