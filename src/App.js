@@ -40,9 +40,9 @@ function App() {
               <Route path="reviews" element={<InstructorPerformanceReviews />} />
             </Route>
           </Route>
-          <Route path="*" element={<NotFound />} />
           <Route path="/course/pythonforbeginners" element={<Course />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
