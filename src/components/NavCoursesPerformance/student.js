@@ -7,7 +7,7 @@ function Student(){
             <Link to='/'className="link-student">Student</Link>
             <span className="icon-notificacion"><MdOutlineNotificationsNone/></span>
         <div className="container-profile-student">
-            <Link to='' className="link-profile-student">
+            <Link to='/' className="link-profile-student">
                 <span />
                 EC
             </Link>

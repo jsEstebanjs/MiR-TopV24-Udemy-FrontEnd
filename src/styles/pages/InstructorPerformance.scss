@@ -3,12 +3,14 @@
     display: flex;
     flex-direction: column;
     max-width: 1552px;
-    padding: 0 56px 0 320px;
+    padding: 0 56px 0 120px;
     margin: 0 auto;
     .ul-performance-instructor{
         width: max-content;
         position: fixed;
         height: max-content;
+        display: flex;
+        flex-direction: column;
         top: 30px;
         left: 78px;
         @media(max-width:750px){
