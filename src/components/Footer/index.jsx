@@ -1,8 +1,15 @@
 import React from 'react';
 import './footer.css';
 import udemy from '../../images/udemy.png';
+import { useState } from 'react';
+import LanguageModal from '../LanguageModal';
 
 function Footer(){
+    const [langModal, setLangModal] = useState(false);
+    const handleLanguageModal = (e) => {
+        e.preventDefault();
+        setLangModal(langModal => !langModal);
+      }
 
   return(
     <footer>
@@ -29,7 +36,7 @@ function Footer(){
             <p>Accessibility statement</p>
         </div>
         <div className="box lang">
-            <div className="both">
+            <div className="both" onClick={handleLanguageModal}>
                 <span>🌐 </span>
                 {/* <img src="./assets/globe.png" alt="globe">  */}
                 <p>English</p>
@@ -44,6 +51,7 @@ function Footer(){
             <p>© 2022 Udemy, Inc.</p>
         </div>
     </div>
+    {langModal?<LanguageModal handleLanguageModal={handleLanguageModal}/>:null}
 </footer>
   )
 }

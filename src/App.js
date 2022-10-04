@@ -12,8 +12,11 @@ import InstructorCourses from './pages/InstructorCourses';
 import InstructorPerformance from './pages/InstructorPerformance';
 import InstructorPerformanceStudents from './pages/InstructorPerformanceStudents';
 import InstructorPerformanceReviews from './pages/InstructorPerformanceReviews';
+
 import  Instructor from './pages/Instructor';
 import InstructorPerformanceOverview from './pages/InstructorPerformanceOverview';
+
+
 import './App.css';
 
 function App() {
@@ -35,7 +38,6 @@ function App() {
               <Route path="reviews" element={<InstructorPerformanceReviews />} />
             </Route>
           </Route>
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
