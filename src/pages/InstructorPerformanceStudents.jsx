@@ -5,7 +5,6 @@ function InstructorPerformanceStudents(){
         <>
                 <h2 className="title-performance-instructor">Students</h2>
                  <Students />
-        
 
         </>
     )
