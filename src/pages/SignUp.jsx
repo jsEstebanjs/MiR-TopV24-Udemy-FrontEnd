@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Nav from "../components/Nav/index"
 import Footer from "../components/Footer";
+import  axios from 'axios'
 import './SignUp.styles.css'
 
 function SignUp() {
@@ -12,6 +13,8 @@ function SignUp() {
     password: "",
   });
 
+  const [infoStudent, setInfoStudent] = useState(undefined)
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setStudent({ ...student, [name]: value });
@@ -19,7 +22,27 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(student)
+
+    try {
+      const { data } = await axios.post("http://localhost:8081/student", student)
+      localStorage.setItem("token", data.data.token)
+      localStorage.setItem("email", data.data.email)
+
+      const dataStudent = await axios.get("http://localhost:8080/",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        })
+      setInfoStudent({
+        fullname: dataStudent.data.name,
+        email: dataStudent.data.email,
+        password: dataStudent.data.password
+      })
+
+    } catch (err) {
+      alert("error on signup")
+    }
   };
 
   return(
