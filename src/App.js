@@ -34,7 +34,6 @@ function App() {
               <Route path="students" element={<InstructorPerformanceStudents />} />
               <Route path="reviews" element={<InstructorPerformanceReviews />} />
             </Route>
-
           </Route>
 
           <Route path="*" element={<NotFound />} />

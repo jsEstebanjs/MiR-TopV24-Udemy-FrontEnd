@@ -5,8 +5,6 @@ import MovileNavCoursesPerformance from "../components/MovileNavCoursePerformanc
 function InstructorCourses(){
     return(
         <>
-        {/* {
-        <MovileNavCoursesPerformance/> */}
         <div className="main-container-instructor-courses-page">
             <h2 className="title-instructor-courses-page">Courses</h2>
             <div className="container-search-new-course">

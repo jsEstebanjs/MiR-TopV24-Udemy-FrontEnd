@@ -1,4 +1,3 @@
-
 import NavCoursesPerformance from "../components/NavCoursesPerformance";
 import Student from "../components/NavCoursesPerformance/student";
 import Footer from "../components/Footer";
