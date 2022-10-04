@@ -12,6 +12,11 @@ import InstructorCourses from './pages/InstructorCourses';
 import InstructorPerformance from './pages/InstructorPerformance';
 import InstructorPerformanceStudents from './pages/InstructorPerformanceStudents';
 import InstructorPerformanceReviews from './pages/InstructorPerformanceReviews';
+
+import  Instructor from './pages/Instructor';
+import InstructorPerformanceOverview from './pages/InstructorPerformanceOverview';
+
+
 import './App.css';
 
 function App() {
@@ -25,10 +30,14 @@ function App() {
           <Route path="/home/my-courses/learning" element={<MyLearning />} />
           <Route path="/home/my-courses/wishlist" element={<MyLearningWishList />} />
           <Route path="/join/forgot-password/" element={<ForgotPassword />} />
-          <Route path="/instructor/courses" element={<InstructorCourses />} />
-          <Route path="/instructor/performance/overview" element={<InstructorPerformance />} />
-          <Route path="/instructor/performance/students" element={<InstructorPerformanceStudents />} />
-          <Route path="/instructor/performance/reviews" element={<InstructorPerformanceReviews />} />
+          <Route path='instructor' element={<Instructor />}>
+            <Route path="courses" element={<InstructorCourses />} />
+            <Route path='performance' element={<InstructorPerformance />}>
+              <Route path="overview" element={<InstructorPerformanceOverview />} />
+              <Route path="students" element={<InstructorPerformanceStudents />} />
+              <Route path="reviews" element={<InstructorPerformanceReviews />} />
+            </Route>
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

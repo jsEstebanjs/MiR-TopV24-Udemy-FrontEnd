@@ -51,14 +51,15 @@
             justify-content: center;
             align-items: center;
             width: 64px;
-            height: 64px;
+            min-height: 64px;
+            border-radius: 50%;
+            color: $white;
             background-color: $black;
         }
         .info-user-nav{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
             gap: 5px;
             font-size: 16px;
             text-align: justify;

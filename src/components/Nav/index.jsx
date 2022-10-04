@@ -49,7 +49,8 @@ function Nav({login}){
             <div className='nav-btn-hamburguer-main' onClick={()=> {
                 setMainHamburguer(true)
                 document.body.style.overflow = "hidden"
-                }}><FaBars /> {mainHamburguer ? <Hamburguer user={login} /> : null}</div>
+                }}><FaBars /> {mainHamburguer ? <Hamburguer user={login} /> : null}
+            </div>
             <div onClick={navigateToHome}><img src={logo} alt='logo-udemy' className='nav-logo-udemy'/></div>
             <nav className='nav-btn-categories'onMouseOver={()=> setIsvisible(true) } onMouseLeave={()=> setIsvisible(false)}>Categories {isVisible ? <Options/>  : null}</nav>
             <form className='nav-form'>
