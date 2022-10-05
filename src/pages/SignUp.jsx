@@ -13,7 +13,7 @@ function SignUp() {
     password: "",
   });
 
-  const [infoStudent, setInfoStudent] = useState(undefined)
+   const [infoStudent, setInfoStudent] = useState(undefined)
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -24,24 +24,14 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:8081/student", student)
-      localStorage.setItem("token", data.data.token)
-      localStorage.setItem("email", data.data.email)
-
-      const dataStudent = await axios.get("http://localhost:8080/",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-          }
-        })
-      setInfoStudent({
-        fullname: dataStudent.data.name,
-        email: dataStudent.data.email,
-        password: dataStudent.data.password
-      })
-
+      const res = await axios.post("http://localhost:8081/student", student)
+        localStorage.setItem("token", res.data.info.token)
+        localStorage.setItem("email", res.data.info.email)
+        localStorage.setItem("fullname", res.data.info.fullname)
+        console.log(res.data)
     } catch (err) {
-      alert("error on signup")
+      console.log(`error on signup: ${err}`);
+
     }
   };
 
@@ -94,7 +84,7 @@ function SignUp() {
                  and learning tips</span>
               </div>
             </div>
-              <button type="button" className="singup-button">Sign up</button>
+              <button type="submit" className="singup-button" >Sign up</button>
           </form>
           <hr />
           <div className="redirect-login__container">
