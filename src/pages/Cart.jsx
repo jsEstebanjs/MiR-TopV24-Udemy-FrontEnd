@@ -52,16 +52,29 @@ var handler = window.ePayco.checkout.configure({
 
 const Cart = () => {
     return (
-       
-        
-        <div className="App">
-          <h1>Hola desde App</h1>
-          <button onClick={handleClick}>click</button>
+      <>
+        <Nav />
+        <div className="cart-maincontainer">
+          <h1>Shopping Cart</h1>
+          <div className="cart-container">
+            <h2>Courses in Cart</h2>
+            <div className="courses-container">
+
+            </div>
+            <div className="checkout-container">
+              <h3>Total:</h3>
+              <button onClick={handleClick}>Checkout</button>
+            </div>
+          </div>
+          
         </div>
-        
+        <Footer />
+      </>
        
       );
 }
 
 export default Cart;
+
+
 

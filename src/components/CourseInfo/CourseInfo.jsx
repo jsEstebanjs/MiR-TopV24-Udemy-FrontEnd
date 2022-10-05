@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import Ratings from 'react-ratings-declarative';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 function CourseInfo({mainCategory, secondCategory, courseTitle, courseDescription, rating, ratings, totalStudents, courseLink, userLink}) {
