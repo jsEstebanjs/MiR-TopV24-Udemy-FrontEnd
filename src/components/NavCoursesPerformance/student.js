@@ -10,7 +10,6 @@ function Student(){
 
             <Link to='/' className="link-profile-student">
 
-
                 <span />
                 EC
             </Link>

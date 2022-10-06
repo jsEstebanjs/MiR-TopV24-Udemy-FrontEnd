@@ -1,20 +1,18 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import React from "react";
-import Nav from "../components/Nav/index"
-import Footer from "../components/Footer";
-import './LogIn.styles.css';
-import image1 from '../images/facebook.png';
-import image2 from '../images/buscar.png';
-import image3 from '../images/logotipo-de-apple.png';
+import Nav from "../../components/Nav/index"
+import Footer from "../../components/Footer";
+import image1 from '../../images/facebook.png';
+import image2 from '../../images/buscar.png';
+import image3 from '../../images/logotipo-de-apple.png';
 import { FaEnvelope } from 'react-icons/fa'
 import { HiLockClosed } from 'react-icons/hi'
 
 
 const FormularioLogIn = () => {
 
-    //este hook nos devuelve un objeto, dentro del objeto obtenemos la funcion register(nos permite registrar los diferentes campos del formulario), y
-    //con el handleSubmit gestionamos el envío del datos, es la accion de submit propia del funcionario
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
@@ -59,9 +57,11 @@ const FormularioLogIn = () => {
             {errors.password?.type === 'required' && <p>Rellene este campo</p>}
             </div>
             <input className = "login-button" type="submit" value="Log In"></input>
-            <div className="forgot_pass">or <a href="forgot-password">Forgot Password</a></div>
-            <div className="no_account">Don't have an account? <a href="signup"><strong>Sign up</strong></a></div>
-            <div className="organization_login"><a href="*"><strong>Log in with your organization</strong></a></div>
+            <div className="fp_na_ol_container">
+            <div className="forgot_pass">or <Link to= '/join/forgot-password'>Forgot Password</Link></div>
+            <div className="no_account">Don't have an account? <Link to='/join/signup'><strong>Sign up</strong></Link></div>
+            <div className="organization_login"><Link to='/*'><strong>Log in with your organization</strong></Link></div>
+            </div>
         </form>
         </div>
         <Footer />

@@ -9,11 +9,12 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-top: 40px;
 }
 
 .head_loginbox {
     border-bottom: solid 1px #d1d7dc;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 15px;
     font-family: 'Noto Sans', sans-serif;
     text-align: left;
@@ -90,6 +91,13 @@
 .forgot_pass, .no_account, .organization_login {
     font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
+}
+
+.fp_na_ol_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 60px
 }
 
 .forgot_pass {

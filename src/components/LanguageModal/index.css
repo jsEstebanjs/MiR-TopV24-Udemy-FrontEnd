@@ -12,8 +12,10 @@
 .content__container {
     padding: 30px;
     background-color: blanchedalmond;
+    /* modificar: original lo deja fijo.*/
     width: 50%;
-    height: 60%;
+    height: 65%;
+    /************/
     position: relative;
     top: 25%;
     left: 25%;
@@ -33,7 +35,8 @@
 
 }
 div.button {
-    width: 30%;
+    flex-basis: 25%;
+    /* width: 30%; */
     margin: 10px;
     padding: 10px;
     text-align: left;
