@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Nav from "../components/Nav/index"
 import Footer from "../components/Footer";
 import  axios from 'axios'
-import './SignUp.styles.css'
+import { Link } from "react-router-dom";
 
 function SignUp() {
   const loginLink = <a href={('./login')}>log in</a>
@@ -44,7 +44,7 @@ function SignUp() {
           <form className="signup__form" onSubmit={handleSubmit}>
             <div className="form__container">
               <div className="form__square--item">
-                <label className="formsignup__title">Full Name</label>
+                <label className="formsignup__title"><strong>Full Name</strong></label>
                 <input className="signup-imput signmup-imput-name"
                   type="text"
                   id="fullname"
@@ -55,7 +55,7 @@ function SignUp() {
                 </input>
               </div>
               <div className="form__square--item">
-                <label className="formsignup__title">Email</label>
+                <label className="formsignup__title"><strong>Email</strong></label>
                 <input className="signup-imput signmup-imput-mail"
                   type="text"
                   id="email"
@@ -67,7 +67,7 @@ function SignUp() {
                 </input>
               </div>
               <div className="form__square--item">
-                <label className="formsignup__title">Password</label>
+                <label className="formsignup__title"><strong>Password</strong></label>
                 <input className="signup-imput signmup-imput-mail"
                   type="password"
                   id="password"
@@ -77,18 +77,16 @@ function SignUp() {
                   required>
                 </input>
               </div>
-              <div className="signup-lines">- - - -</div>
               <div className="signup-aditional-info">
                 <input type="checkbox" className="special-offers-checkbox"/>
                 <span className="special-offers-text">Send me special offers, personalized recomendations,
-                 and learning tips</span>
+                 and learning tips.</span>
               </div>
             </div>
               <button type="submit" className="singup-button" >Sign up</button>
           </form>
-          <hr />
           <div className="redirect-login__container">
-            <span className="redirect-login">Already have an account?{loginLink}</span>
+            <span className="redirect-login">Already have an account? <Link to='/join/login'><strong>Log in</strong></Link></span>
           </div>
         </div>
       </div>
