@@ -1,6 +1,7 @@
 .main-container-learn-in-your-course{
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
     .title-learn-in-your-course{
         font-family: $Noto-Sans;
         font-weight: 700;
@@ -33,6 +34,17 @@
         svg{
             margin-right: 4px;
             font-size: 24px;
+        }
+    }
+    .container-learn-in-your-course{
+        display: flex;
+        flex-direction: column;
+        .drag-drop-input{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 0 16px 0;
         }
     }
 }
