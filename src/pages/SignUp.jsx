@@ -24,24 +24,25 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:8081/student", student)
-      localStorage.setItem("token", data.data.token)
-      localStorage.setItem("email", data.data.email)
+      const { data } = await axios.post("http://localhost:8081/student", student);
+      console.log(data.token)
+      // localStorage.setItem("token", data.data.token)
+      // localStorage.setItem("email", data.data.email)
 
-      const dataStudent = await axios.get("http://localhost:8080/",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-          }
-        })
-      setInfoStudent({
-        fullname: dataStudent.data.name,
-        email: dataStudent.data.email,
-        password: dataStudent.data.password
-      })
+      // const dataStudent = await axios.get("http://localhost:8080/",
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${localStorage.getItem("token")}`
+      //     }
+      //   })
+      // setInfoStudent({
+      //   fullname: dataStudent.data.name,
+      //   email: dataStudent.data.email,
+      //   password: dataStudent.data.password
+      // })
 
     } catch (err) {
-      alert("error on signup")
+      alert("error on signup" + err)
     }
   };
 
@@ -94,7 +95,7 @@ function SignUp() {
                  and learning tips</span>
               </div>
             </div>
-              <button type="button" className="singup-button">Sign up</button>
+              <button type="button" className="singup-button" onClick={handleSubmit}>Sign up</button>
           </form>
           <hr />
           <div className="redirect-login__container">
