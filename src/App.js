@@ -21,6 +21,7 @@ import PerformanceIndex from './pages/Peformance.index';
 import './App.css';
 import Course from './pages/Course/Course';
 import Cart from './pages/Cart';
+import TestCloudify from './pages/TestCloudify';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           </Route>
           <Route path="/course/pythonforbeginners" element={<Course />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path='/test-cloudify' element={<TestCloudify/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
