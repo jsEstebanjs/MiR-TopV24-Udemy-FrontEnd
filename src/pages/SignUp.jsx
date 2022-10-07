@@ -13,8 +13,6 @@ function SignUp() {
     password: "",
   });
 
-   const [infoStudent, setInfoStudent] = useState(undefined)
-
   const handleChange = (e) => {
     const { value, name } = e.target;
     setStudent({ ...student, [name]: value });
@@ -28,7 +26,6 @@ function SignUp() {
         localStorage.setItem("token", res.data.info.token)
         localStorage.setItem("email", res.data.info.email)
         localStorage.setItem("fullname", res.data.info.fullname)
-        console.log(res.data)
     } catch (err) {
       console.log(`error on signup: ${err}`);
 
