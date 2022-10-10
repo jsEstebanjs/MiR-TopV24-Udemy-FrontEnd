@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function SignUp() {
 
   const [student, setStudent] = useState({
-    fullname: "",
+    fullName: "",
     email: "",
     password: "",
   });
@@ -19,15 +19,14 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log(student)
     try {
-      const res = await axios.post("http://localhost:8081/student", student)
-        localStorage.setItem("token", res.data.info.token)
-        localStorage.setItem("email", res.data.info.email)
-        localStorage.setItem("fullname", res.data.info.fullname)
+      const res = await axios.post("http://localhost:8081/user", student)
+        localStorage.setItem("token", res.data.info.token);
+        localStorage.setItem("email", res.data.info.email);
+        localStorage.setItem("fullName", res.data.info.fullName);
     } catch (err) {
       console.log(`error on signup: ${err}`);
-
     }
   };
 
@@ -43,8 +42,8 @@ function SignUp() {
                 <label className="formsignup__title"><strong>Full Name</strong></label>
                 <input className="signup-imput signmup-imput-name"
                   type="text"
-                  id="fullname"
-                  name="fullname"
+                  id="fullName"
+                  name="fullName"
                   onChange={handleChange}
                   value={student.fullname}
                   required>
