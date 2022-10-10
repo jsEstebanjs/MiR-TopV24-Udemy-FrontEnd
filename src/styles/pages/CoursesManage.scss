@@ -32,3 +32,13 @@
         }
     }
 }
+@media(max-width:920px){
+    .main-container-courses-manage{
+    .container-courses-manage{
+        flex-direction: column;
+        .container-plan-your-course{
+            width: 100%;
+        }
+    }
+}
+}

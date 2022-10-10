@@ -20,6 +20,8 @@ import CoursesManage from './pages/CoursesManage';
 import CoursesManageGoals from './pages/CoursesManageGoals';
 import CoursesManageCurriculum from './pages/CoursesManageCurriculum';
 import ManageIndex from './pages/ManageIndex';
+import CoursesManagePricing from './pages/CoursesManagePricing';
+import CoursesManageCourselLandingPage from './pages/CoursesManageCourselLandingPage';
 
 import './App.css';
 
@@ -48,8 +50,8 @@ function App() {
               <Route index element={<ManageIndex />}/>
               <Route path="goals" element={<CoursesManageGoals/>} />
               <Route path="curriculum" element={<CoursesManageCurriculum />} />
-              <Route path="basics" element={<CoursesManageCurriculum />} />
-              <Route path="pricing" element={<CoursesManageCurriculum />} />
+              <Route path="basics" element={<CoursesManageCourselLandingPage />} />
+              <Route path="pricing" element={<CoursesManagePricing />} />
             </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

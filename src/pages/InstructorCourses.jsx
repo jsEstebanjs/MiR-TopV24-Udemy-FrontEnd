@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Search from "../components/SearchInstructorCourses";
 import EditCourseInstructor from "../components/EditCourseInstructor";
-import MovileNavCoursesPerformance from "../components/MovileNavCoursePerformance";
 function InstructorCourses(){
     return(
         <>

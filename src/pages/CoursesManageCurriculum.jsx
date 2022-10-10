@@ -5,7 +5,6 @@ function CoursesManageCurriculum(){
             <TitleManageCourse
             title='Curriculum' />
             <div className="container-manage-goals">
-
             </div>
         </div>
     )
