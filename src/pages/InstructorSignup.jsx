@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import Nav from "../components/Nav/index"
 import Footer from "../components/Footer";
 import  axios from 'axios'
 import { Link } from "react-router-dom";
 
-function SignUp() {
-
-  const [user, setUser] = useState({
+function InstructorSignup() {
+  const [instructor, setInstructor] = useState({
     fullName: "",
     email: "",
     password: "",
@@ -14,28 +13,26 @@ function SignUp() {
 
   const handleChange = (e) => {
     const { value, name } = e.target;
-    setUser({ ...user, [name]: value });
+    setInstructor({ ...instructor, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user)
     try {
-      const res = await axios.post("http://localhost:8081/user", user)
+      const res = await axios.post("http://localhost:8081/instructor", instructor)
         localStorage.setItem("token", res.data.info.token);
-        localStorage.setItem("email", res.data.info.email);
         localStorage.setItem("fullName", res.data.info.fullName);
+        localStorage.setItem("email", res.data.info.email);
     } catch (err) {
       console.log(`error on signup: ${err}`);
     }
   };
-
-  return(
+  return (
     <>
     <Nav />
       <div className="signup">
         <div className="signup-container">
-          <h2 className="signup__title">Sign up and start learning</h2>
+          <h2 className="signup__title">Sign up and start teaching</h2>
           <form className="signup__form" onSubmit={handleSubmit}>
             <div className="form__container">
               <div className="form__square--item">
@@ -45,7 +42,7 @@ function SignUp() {
                   id="fullName"
                   name="fullName"
                   onChange={handleChange}
-                  value={user.fullName}
+                  value={instructor.fullName}
                   required>
                 </input>
               </div>
@@ -56,7 +53,7 @@ function SignUp() {
                   id="email"
                   name="email"
                   onChange={handleChange}
-                  value={user.email}
+                  value={instructor.email}
                   required
                   >
                 </input>
@@ -68,19 +65,12 @@ function SignUp() {
                   id="password"
                   name="password"
                   onChange={handleChange}
-                  value={user.password}
+                  value={instructor.password}
                   required>
                 </input>
               </div>
-              <div className="signup-aditional-info">
-                <input type="checkbox" className="special-offers-checkbox"/>
-                <span className="special-offers-text">Send me special offers, personalized recomendations,
-                 and learning tips.</span>
-              </div>
             </div>
-
-              <button type="submit" className="singup-button" >Sign up</button>
-
+              <button type="submit" className="singup-button" >Teacher Sign up</button>
           </form>
           <div className="redirect-login__container">
             <span className="redirect-login">Already have an account? <Link to='/join/login'><strong>Log in</strong></Link></span>
@@ -90,6 +80,6 @@ function SignUp() {
     <Footer />
     </>
   )
-};
+}
 
-export default SignUp;
+export default InstructorSignup
