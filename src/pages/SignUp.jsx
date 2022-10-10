@@ -78,7 +78,9 @@ function SignUp() {
                  and learning tips.</span>
               </div>
             </div>
+
               <button type="submit" className="singup-button" >Sign up</button>
+
           </form>
           <div className="redirect-login__container">
             <span className="redirect-login">Already have an account? <Link to='/join/login'><strong>Log in</strong></Link></span>

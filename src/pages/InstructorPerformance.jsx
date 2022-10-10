@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 function InstructorPerformance(){
     const [font,setFont] = useState(1)
+
+    const params = "overviews"
     return(
         <>
         <div className="main-container-instructor-performance-page">

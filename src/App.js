@@ -12,11 +12,16 @@ import InstructorCourses from './pages/InstructorCourses';
 import InstructorPerformance from './pages/InstructorPerformance';
 import InstructorPerformanceStudents from './pages/InstructorPerformanceStudents';
 import InstructorPerformanceReviews from './pages/InstructorPerformanceReviews';
-
 import  Instructor from './pages/Instructor';
 import InstructorPerformanceOverview from './pages/InstructorPerformanceOverview';
 import InstructorIndex from './pages/Instructor.index';
 import PerformanceIndex from './pages/Peformance.index';
+import CoursesManage from './pages/CoursesManage';
+import CoursesManageGoals from './pages/CoursesManageGoals';
+import CoursesManageCurriculum from './pages/CoursesManageCurriculum';
+import ManageIndex from './pages/ManageIndex';
+import CoursesManagePricing from './pages/CoursesManagePricing';
+import CoursesManageCourselLandingPage from './pages/CoursesManageCourselLandingPage';
 
 import './App.css';
 import Course from './pages/Course/Course';
@@ -44,6 +49,14 @@ function App() {
               <Route path="reviews" element={<InstructorPerformanceReviews />} />
             </Route>
           </Route>
+
+          <Route  path="instructor/courses/:course/manage" element={<CoursesManage />}>
+              <Route index element={<ManageIndex />}/>
+              <Route path="goals" element={<CoursesManageGoals/>} />
+              <Route path="curriculum" element={<CoursesManageCurriculum />} />
+              <Route path="basics" element={<CoursesManageCourselLandingPage />} />
+              <Route path="pricing" element={<CoursesManagePricing />} />
+            </Route>
           <Route path="/course/pythonforbeginners" element={<Course />} />
           <Route path="/cart" element={<Cart />} />
           <Route path='/test-cloudify' element={<TestCloudify/>}/>
