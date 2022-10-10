@@ -1,10 +1,10 @@
 import {
-  React, BrowserRouter, Routes, Route, Navigate
+  React, BrowserRouter, Routes, Route,
 } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Home from './pages/Home'
 import SignUp from './pages/SignUp';
-import LogIn from './pages/LogIn';
+import LogIn from './pages/LogIn/LogIn';
 import ForgotPassword from './pages/ForgotPassword';
 import MyLearning from './pages/MyLearning';
 import MyLearningWishList from './pages/MyLearningWishList';
@@ -24,6 +24,9 @@ import CoursesManagePricing from './pages/CoursesManagePricing';
 import CoursesManageCourselLandingPage from './pages/CoursesManageCourselLandingPage';
 
 import './App.css';
+import Course from './pages/Course/Course';
+import Cart from './pages/Cart';
+import TestCloudify from './pages/TestCloudify';
 
 function App() {
   return (
@@ -46,6 +49,7 @@ function App() {
               <Route path="reviews" element={<InstructorPerformanceReviews />} />
             </Route>
           </Route>
+
           <Route  path="instructor/courses/:course/manage" element={<CoursesManage />}>
               <Route index element={<ManageIndex />}/>
               <Route path="goals" element={<CoursesManageGoals/>} />
@@ -53,6 +57,9 @@ function App() {
               <Route path="basics" element={<CoursesManageCourselLandingPage />} />
               <Route path="pricing" element={<CoursesManagePricing />} />
             </Route>
+          <Route path="/course/pythonforbeginners" element={<Course />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path='/test-cloudify' element={<TestCloudify/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

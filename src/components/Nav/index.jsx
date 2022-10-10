@@ -24,7 +24,10 @@ function Nav({login}){
             document.body.style = null;
         }
       });
-
+      
+      const navigateToCart = () => {
+        navigate('/cart');
+      }
 
       const navigateToLogin = () => {
         navigate('/join/login/');
@@ -74,7 +77,7 @@ function Nav({login}){
                 document.body.style.overflow = "hidden";
                 setSearchMovil(true)}}>
             <AiOutlineSearch /></button>
-            <button className="nav-btn-shopping"><AiOutlineShoppingCart /></button>
+            <button className="nav-btn-shopping" onClick={navigateToCart}><AiOutlineShoppingCart /></button>
             <button className={login ?"nav-btn-notification" :'displayNone'}><MdOutlineNotificationsNone /></button>
 
             <div className={login ?'displayNone':'container-btns'}>
