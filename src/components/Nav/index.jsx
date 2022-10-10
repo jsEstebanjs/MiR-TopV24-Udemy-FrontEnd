@@ -24,7 +24,7 @@ function Nav({login}){
             document.body.style = null;
         }
       });
-      
+
       const navigateToCart = () => {
         navigate('/cart');
       }
@@ -45,10 +45,14 @@ function Nav({login}){
         setLangModal(langModal => !langModal);
       }
 
+      const navigateToInstructorSignup = () => {
+        navigate('/instructor/signup')
+      }
+
     return(
         <div className='main-nav'>
             {langModal?<LanguageModal handleLanguageModal={handleLanguageModal}/>:null}
-            
+
             <div className='nav-btn-hamburguer-main' onClick={()=> {
                 setMainHamburguer(true)
                 document.body.style.overflow = "hidden"
@@ -60,7 +64,7 @@ function Nav({login}){
                 <button type='button'><AiOutlineSearch /></button>
                 <input type='search' placeholder='Search for anything'/>
             </form>
-            <button className="nav-btn-tech">Teach on Udemy</button>
+            <button className="nav-btn-tech" onClick={navigateToInstructorSignup}>Teach on Udemy</button>
             <button className={login ?"nav-btn-learning":'displayNone'}>My learning</button>
             <button className={login ?"nav-btn-favorites" :'displayNone'}><AiOutlineHeart /></button>
             {searchMovil ? <div className='div-search-movil'>

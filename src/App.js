@@ -4,7 +4,7 @@ import {
 import NotFound from './pages/NotFound';
 import Home from './pages/Home'
 import SignUp from './pages/SignUp';
-import LogIn from './pages/LogIn/LogIn';
+import LogIn from './pages/LogIn/LogIn.jsx'
 import ForgotPassword from './pages/ForgotPassword';
 import MyLearning from './pages/MyLearning';
 import MyLearningWishList from './pages/MyLearningWishList';
@@ -12,7 +12,7 @@ import InstructorCourses from './pages/InstructorCourses';
 import InstructorPerformance from './pages/InstructorPerformance';
 import InstructorPerformanceStudents from './pages/InstructorPerformanceStudents';
 import InstructorPerformanceReviews from './pages/InstructorPerformanceReviews';
-import  Instructor from './pages/Instructor';
+import Instructor from './pages/Instructor';
 import InstructorPerformanceOverview from './pages/InstructorPerformanceOverview';
 import InstructorIndex from './pages/Instructor.index';
 import PerformanceIndex from './pages/Peformance.index';
@@ -27,6 +27,7 @@ import './App.css';
 import Course from './pages/Course/Course';
 import Cart from './pages/Cart';
 import TestCloudify from './pages/TestCloudify';
+import InstructorSignup from './pages/InstructorSignup';
 
 function App() {
   return (
@@ -35,7 +36,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/join/signup/" element={<SignUp />} />
-          <Route path="/join/login/" element={<LogIn />} />
+          <Route path="/join/login/" element={<LogIn/>} />
+          <Route path="/instructor/signup" element={<InstructorSignup />} />
           <Route path="/home/my-courses/learning" element={<MyLearning />} />
           <Route path="/home/my-courses/wishlist" element={<MyLearningWishList />} />
           <Route path="/join/forgot-password/" element={<ForgotPassword />} />
