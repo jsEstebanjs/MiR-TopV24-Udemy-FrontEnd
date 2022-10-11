@@ -1,9 +1,11 @@
 import TitleManageCourse from "../components/TitleManageCourse";
 import SelectPricing from "../components/ComponentPricing";
 import OptionsPricing from "../components/ComponentPricing/options";
+import CoursesManageNav from '../components/CoursesManageNav';
 function CoursesManagePricing(){
     return(
         <div className="main-container-manage-goals">
+            <CoursesManageNav/>
             <TitleManageCourse
             title='Pricing' />
             <div className="container-manage-goals">

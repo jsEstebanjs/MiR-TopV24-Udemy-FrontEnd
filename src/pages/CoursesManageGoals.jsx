@@ -1,8 +1,10 @@
 import TitleManageCourse from "../components/TitleManageCourse";
 import LearnInYourCourse from "../components/LearnInYourCourse";
+import CoursesManageNav from '../components/CoursesManageNav';
 function CoursesManageGoals(){
     return(
         <div className="main-container-manage-goals">
+            <CoursesManageNav/>
             <TitleManageCourse
             title='Intended learners' />
             <div className="container-manage-goals">
