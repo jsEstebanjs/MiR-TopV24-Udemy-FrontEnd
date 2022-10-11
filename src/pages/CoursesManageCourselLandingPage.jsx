@@ -43,7 +43,7 @@ function CoursesManageCourselLandingPage(){
                 name="level"
                 id="level"
                 >
-               <OptionsPricing value='null'>--Select Level--</OptionsPricing>
+                <OptionsPricing value='null'>--Select Level--</OptionsPricing>
                 <OptionsPricing value='Beginner Level'>Beginner level</OptionsPricing>
                 <OptionsPricing value='Intermediate Level'>Intermediate level</OptionsPricing>
                 <OptionsPricing value='Expert Level'>Expert Level</OptionsPricing>
