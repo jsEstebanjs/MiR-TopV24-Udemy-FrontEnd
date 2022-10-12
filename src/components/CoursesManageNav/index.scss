@@ -9,6 +9,10 @@
     padding: 11px 16px;
     flex-wrap: wrap;
     gap: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
     .container-back-name-course{
         display: flex;
         flex-direction: row;

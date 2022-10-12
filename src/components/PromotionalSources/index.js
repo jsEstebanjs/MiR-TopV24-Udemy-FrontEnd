@@ -3,7 +3,6 @@ import { useState } from 'react'
 function PromotionalSource({accept,id,video}){
     const [image, setImage] = useState(null)
     const [file, setFile] = useState(null)
-    console.dir(file)
 
     // const handleSubmit = async (e) => {
     //     e.preventDefault()

@@ -1,12 +1,10 @@
 import { Outlet, Link, useLocation} from 'react-router-dom';
-import CoursesManageNav from '../components/CoursesManageNav';
 function CoursesManage(){
     let {pathname} = useLocation();
     pathname = pathname.split("/");
 
     return(
         <div className='main-container-courses-manage'>
-            <CoursesManageNav/>
             <div className='container-courses-manage'>
                 <div className='container-plan-your-course'>
                     <h2 className='title-plan-your-course'>Plan your course</h2>
