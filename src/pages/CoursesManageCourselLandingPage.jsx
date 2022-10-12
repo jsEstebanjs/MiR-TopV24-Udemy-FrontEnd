@@ -1,21 +1,23 @@
 import TitleManageCourse from "../components/TitleManageCourse";
 import InputTitleLanding from "../components/InputTItleLanding";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactQuill from 'react-quill';
 import SelectPricing from "../components/ComponentPricing";
 import OptionsPricing from "../components/ComponentPricing/options";
 import PromotionalSource from "../components/PromotionalSources";
-import { useDispatch ,useSelector} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,Send} from '../store/CreateCourse.Slice';
 import LoaderCreateCourse from "../components/LoaderCreateCourse";
 import CoursesManageNav from '../components/CoursesManageNav';
+import axios from 'axios';
 
 function CoursesManageCourselLandingPage(){
     const dispatch = useDispatch()
     const [value, setValue] = useState('');
-    const prueba = (e)=>{
+    const [loading, setLoading] = useState(true)
+    const mediator = (e)=>{
       setValue(e)
-      dispatch(SetDescription(value));
+      dispatch(SetDescription(e))
     }
       const modules = {
         toolbar: [
@@ -32,12 +34,29 @@ function CoursesManageCourselLandingPage(){
         SetTeaching,
         Send
       }
+
+      useEffect(() => {
+        axios.get(`https://dummyjson.com/comments`)
+          .then((res) => {
+            console.log(res.data)
+          }).catch((err) => {
+            alert(`ups hay un error ${err.message}, comuniquese a servicio al cliente 31054897466`)
+          }).finally(() => {
+            setLoading(false)
+          })
+      }, [])
+
     return(
         <div className="main-container-manage-goals">
             <CoursesManageNav action={obj.Send}/>
             <TitleManageCourse
             title='Course landing page' />
             <div className="container-manage-goals">
+              {loading
+              ?
+              <LoaderCreateCourse/>
+              :
+              <>
                 <InputTitleLanding action={obj.SetTitle} id='title' limitNum={60} place='Insert your course title.'>Course title</InputTitleLanding>
                 <InputTitleLanding action={obj.SetSubTitle} id='subtitle' limitNum={120} place='Insert your course subtitle.'>Course subtitle</InputTitleLanding>
                 <p className="label-input-landing">Course description</p>
@@ -46,7 +65,7 @@ function CoursesManageCourselLandingPage(){
                 value={value}
                 placeholder="Insert your course description."
                 onChange={(e)=>{
-                  prueba(e)
+                  mediator(e)
                 }}
                 modules={modules}
                 />
@@ -93,6 +112,9 @@ function CoursesManageCourselLandingPage(){
                 <PromotionalSource accept=".png, .jpg, .jpeg" id='source-image' video={false}/>
                 <p className="label-input-landing">Promotional video</p>
                 <PromotionalSource accept="video/mp4,video/x-m4v,video/*" id='source-video' video={true}/>
+                </>
+                }
+                
             </div>
 
         </div>

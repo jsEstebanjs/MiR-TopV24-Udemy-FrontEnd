@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowLeft ,MdSettings} from "react-icons/md";
 import { useDispatch } from 'react-redux';
-import { Send } from '../../store/CreateCourse.Slice';
 
 function CoursesManageNav({nameCourse,action}){
     const dispatch = useDispatch();
