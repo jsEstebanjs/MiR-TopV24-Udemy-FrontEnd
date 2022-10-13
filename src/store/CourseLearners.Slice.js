@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { act } from 'react-dom/test-utils';
 import {v4 as uuidv4} from 'uuid';
 
 const initialState = {
