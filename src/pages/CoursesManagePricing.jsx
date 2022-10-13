@@ -2,10 +2,21 @@ import TitleManageCourse from "../components/TitleManageCourse";
 import SelectPricing from "../components/ComponentPricing";
 import OptionsPricing from "../components/ComponentPricing/options";
 import CoursesManageNav from '../components/CoursesManageNav';
+import { SetPrice , SendPrice} from '../store/CreateCoursePrice.Slice';
+import { useDispatch } from 'react-redux';
+
 function CoursesManagePricing(){
+
+    // const dispatch = useDispatch();
+
+    const obj = {
+        SetPrice,
+        SendPrice
+    }
+
     return(
         <div className="main-container-manage-goals">
-            <CoursesManageNav/>
+            <CoursesManageNav action={obj.SendPrice}/>
             <TitleManageCourse
             title='Pricing' />
             <div className="container-manage-goals">
@@ -24,6 +35,7 @@ function CoursesManagePricing(){
                 <SelectPricing 
                 name="price"
                 id="price"
+                action={obj.SetPrice}
                 >
                 <OptionsPricing value='Free'>Free</OptionsPricing>
                 <OptionsPricing value='19.99'>$19.99</OptionsPricing>
