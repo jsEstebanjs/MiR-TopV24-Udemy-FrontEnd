@@ -28,6 +28,7 @@ import Course from './pages/Course/Course';
 import Cart from './pages/Cart';
 import TestCloudify from './pages/TestCloudify';
 import InstructorSignup from './pages/InstructorSignup';
+import CourseView from './pages/CourseView';
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
           <Route path="/course/pythonforbeginners" element={<Course />} />
           <Route path="/cart" element={<Cart />} />
           <Route path='/test-cloudify' element={<TestCloudify/>}/>
+          <Route path='/test-courseView' element={<CourseView/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
