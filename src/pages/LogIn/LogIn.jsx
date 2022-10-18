@@ -12,23 +12,19 @@ import { HiLockClosed } from "react-icons/hi";
 import axios from "axios";
 
 const FormularioLogIn = () => {
-  /* const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   useEffect(() => {
     document.title = "Log In | Udemy";
-  }, []); */
+  }, []);
+  // const {
+  //   register,
+  //   formState: { errors },
+  //   handleSubmit,
+  // } = useForm();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-
   const [infoUser, setInfoUser] = useState(undefined)
 
   const handleChange = (e) => {
@@ -39,20 +35,23 @@ const FormularioLogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const dataUser = await axios.get("http://localhost:8081/user/login",
+      const { data } = await axios.post("http://localhost:8081/user/login", user); console.log(data.data)
+      localStorage.setItem("token", data.data.token)
+      localStorage.setItem("email", data.data.email)
+      const dataUser = await axios.get("http://localhost:8081/user",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         })
       setInfoUser({
-        isInstructor: dataUser.data.isInstructor,
-        fullName: dataUser.data.fullName,
-        email: dataUser.data.email
+        email: dataUser.data.email,
+        password: dataUser.data.password,
+        isInstructor: dataUser.data.isInstructor
       })
 
     } catch (error) {
-      alert(`Login failed :${error}`)
+      alert(`catch error: ${error}`)
     }
   };
 
