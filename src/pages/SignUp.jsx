@@ -19,7 +19,6 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user)
     try {
       const res = await axios.post("http://localhost:8081/user", user)
         localStorage.setItem("token", res.data.info.token);
