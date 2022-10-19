@@ -1,9 +1,8 @@
-import { useState } from "react"
 import InputLearn from "./InputLearn";
 import { MdAdd } from "react-icons/md";
 import { DragDropContext ,Droppable , Draggable} from '@hello-pangea/dnd';
 import {  useDispatch } from 'react-redux';
-import { Add,Reorder } from '../../store/CourseLearners.Slice';
+import { Add,Reorder } from '../../store/CreateCourse.Slice';
 
 
 

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { BiTrashAlt } from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
-import { Delete } from '../../store/CourseLearners.Slice';
+import { Delete } from '../../store/CreateCourse.Slice';
 import { useDispatch } from 'react-redux'
 
 
