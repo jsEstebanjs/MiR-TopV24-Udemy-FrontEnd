@@ -31,9 +31,10 @@ function CoursesManageGoals(){
         SendLearners
 
     }
-    localStorage.setItem("newCourse",JSON.stringify({prueba:true,prueba2:false}))
     
-    console.log(localStorage.getItem("newCourse"))
+    localStorage.setItem("newCourse",JSON.stringify({prueba:true,prueba2:false}))
+    console.log(localStorage.newCourse)
+
     return(
         <div className="main-container-manage-goals">
             <CoursesManageNav action={obj.SendLearners}/>
