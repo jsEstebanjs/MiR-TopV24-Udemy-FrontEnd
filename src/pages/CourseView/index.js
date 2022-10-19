@@ -1,6 +1,6 @@
 import Accordion from 'react-bootstrap/Accordion';
 import udemy from '../../images/udemy.png';
-import './index.css'
+import './index.css';
 
 function navCourse() {
   return <>

@@ -11,7 +11,10 @@ export const intructorCourses = createSlice({
   initialState,
   reducers: {
     CreateCourse:(state,action)=>{
-      console.log(action.payload)
+      state.courses.push(action.payload)
+    },
+    LoadingCourses:(state,action)=>{
+      state.courses = action.payload
     },
     SetPetition:(state,action)=>{
       state.petition = action.payload
@@ -21,6 +24,6 @@ export const intructorCourses = createSlice({
 })
 
 
-export const { CreateCourse , SetPetition } = intructorCourses.actions
+export const { CreateCourse , SetPetition , LoadingCourses } = intructorCourses.actions
 
 export default intructorCourses.reducer

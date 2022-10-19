@@ -5,7 +5,7 @@ function SelectPricing({name,id,children,action}){
 
 
     return(
-            <select name={name} id={id} className='select-pricing' onChange={(e)=> dispatch(action(e.target.value ))}>
+            <select  name={name} id={id} className='select-pricing' onChange={(e)=> dispatch(action(e.target.value ))}>
                 {children}
             </select>
     )

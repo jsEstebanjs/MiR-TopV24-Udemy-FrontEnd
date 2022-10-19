@@ -1,6 +1,8 @@
 import { createSlice,current } from '@reduxjs/toolkit';
 import {v4 as uuidv4} from 'uuid';
 
+
+
 const initialState = {
   title:"",
   subTitle:"",
@@ -36,6 +38,8 @@ const initialState = {
   ],
   price:""
 }
+
+
 
 export const counterSlice = createSlice({
   name: 'CreateCourse',
@@ -148,11 +152,20 @@ export const counterSlice = createSlice({
         state.thisCourse = action.payload.items
       }
     },
-
-
     SetPrice: (state,action) => {
       state.price = action.payload;
     },
+    SetInitialState:(state,action)=>{
+      const { title , subtitle , description , level , category , price } = action.payload;
+      state.title = title
+      state.subTitle = subtitle
+      state.description = description
+      state.level = level
+      state.category = category
+      // state.teaching = description
+      state.price = price
+
+    }
 
   },
 })
@@ -160,6 +173,6 @@ export const counterSlice = createSlice({
 
 export const { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,Send,  
   SetLearn,SetRequirements,SetThisCourse,Add,Delete,Reorder,SendLearners,
-  SetPrice} = counterSlice.actions
+  SetPrice , SetInitialState} = counterSlice.actions
 
 export default counterSlice.reducer

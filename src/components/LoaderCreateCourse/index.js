@@ -1,6 +1,6 @@
 function LoaderCreateCourse(){
     return(
-        <div class="loader"></div>
+        <div className="loader"></div>
     )
 }
 export default LoaderCreateCourse;
