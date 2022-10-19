@@ -1,6 +1,15 @@
-function OptionsPricing({value,children}){
+function OptionsPricing({value,children,state}){
+    
     return(
-        <option value={value}>{children}</option>
+        <>
+        {
+            state === value 
+            ?
+            <option value={value} selected>{children}</option>
+            :
+            <option value={value} >{children}</option>
+        }
+        </>
     )
 }
 export default OptionsPricing;

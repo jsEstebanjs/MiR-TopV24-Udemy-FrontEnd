@@ -1,3 +1,4 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
 @import './styles/abstracts/variables.scss';
 @import './styles/base/resets.scss';
 @import './components/Nav/index.scss';
@@ -44,7 +45,6 @@
 @import './pages/Cart.scss';
 @import './pages/SignUp.styles.scss';
 @import './components/LoaderCreateCourse/index.scss';
-@import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 body {

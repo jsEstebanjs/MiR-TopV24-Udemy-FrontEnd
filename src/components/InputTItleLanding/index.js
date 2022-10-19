@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { SetTitle } from '../../store/CreateCourse.Slice';
 
 
-function InputTitleLanding({place,id,limitNum,children,action}){
+function InputTitleLanding({place,id,limitNum,children,action,value}){
     const dispatch = useDispatch();
 
     const [length,setLegth] = useState(limitNum);
@@ -11,7 +11,7 @@ function InputTitleLanding({place,id,limitNum,children,action}){
         <>
         <label htmlFor={id} className='label-input-landing'>{children}</label>
         <div className="main-container-input-learn container-input-landing">
-        <input  id={id} className="input-input-learn" maxLength={limitNum} type='text' placeholder={place} onChange={(e)=> {
+        <input  value={value} id={id} className="input-input-learn" maxLength={limitNum} type='text' placeholder={place} onChange={(e)=> {
             setLegth(limitNum - e.target.value.length)
             dispatch(action(e.target.value ))
             }}/>
