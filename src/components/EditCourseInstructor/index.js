@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import EditCourseInstructorimg from '../../images/EditCourseInstructor.jpg';
 
-function EditCourseInstructor({title}){
+function EditCourseInstructor({title,id}){
     return(
         <div className='main-container-edit-course-instructor'>
           <div className='container-img-edit-course-instructor'>
@@ -10,7 +10,7 @@ function EditCourseInstructor({title}){
           <div className='container-info-edit-course-instructor'>
             <p className='title-info-edit-course-instructor'>{title}</p>
                 <div className='container-hover-edit-course-instructor'>
-                    <Link to='' className='link-edit-course-instructor'>Edit / manage course</Link>
+                    <Link to={`/instructor/courses/${id}/manage/goals`} className='link-edit-course-instructor'>Edit / manage course</Link>
                 </div>
           </div>
         </div>
