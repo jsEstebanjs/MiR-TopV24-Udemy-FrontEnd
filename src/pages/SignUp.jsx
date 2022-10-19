@@ -3,6 +3,7 @@ import Nav from "../components/Nav/index"
 import Footer from "../components/Footer";
 import  axios from 'axios'
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
 
@@ -17,13 +18,18 @@ function SignUp() {
     setUser({ ...user, [name]: value });
   };
 
+  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8081/user", user)
+      const res = await axios.post("http://localhost:8081/users", user)
         localStorage.setItem("token", res.data.info.token);
         localStorage.setItem("email", res.data.info.email);
         localStorage.setItem("fullName", res.data.info.fullName);
+        if (res.data.info.token) {
+          navigate('/join/login')
+        }
     } catch (err) {
       console.log(`error on signup: ${err}`);
     }
