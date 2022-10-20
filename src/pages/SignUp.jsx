@@ -23,7 +23,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://udemy-api-mir-top24.herokuapp.com/users", user)
+      const res = await axios.post('https://udemy-api-mir-top24.herokuapp.com/users', user)
         localStorage.setItem("token", res.data.info.token);
         localStorage.setItem("email", res.data.info.email);
         localStorage.setItem("fullName", res.data.info.fullName);
