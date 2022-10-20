@@ -23,7 +23,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://udemy-api-mir-top24.herokuapp.com/users', user, {
+      const res = await axios.post('https://api-mir-top24-udemy.herokuapp.com/users', user, {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json; charset=utf-8" 
