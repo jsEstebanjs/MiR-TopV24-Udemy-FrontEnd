@@ -24,7 +24,10 @@ function SignUp() {
     e.preventDefault();
     try {
       const res = await axios.post('https://udemy-api-mir-top24.herokuapp.com/users', user, {
-        headers: {"Access-Control-Allow-Origin": "*"}
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json; charset=utf-8" 
+        }
       })
         localStorage.setItem("token", res.data.info.token);
         localStorage.setItem("email", res.data.info.email);
