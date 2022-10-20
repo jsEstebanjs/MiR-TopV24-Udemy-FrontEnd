@@ -41,7 +41,7 @@ const FormularioLogIn = () => {
       localStorage.setItem("token", data.data.token)
       localStorage.setItem("email", data.data.email)
       if (data.data.token) {
-        navigate('/')
+        navigate('/home')
       }
       /*const dataUser = await axios.get("http://localhost:8081/users",
         {
