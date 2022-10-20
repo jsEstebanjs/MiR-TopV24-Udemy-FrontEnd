@@ -25,7 +25,7 @@ function SignUp() {
     try {
       const res = await axios.post('https://api-mir-top24-udemy.herokuapp.com/users', user, {
         headers: {
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": "https://mir-top-v24-udemy-front-end.vercel.app/",
           "Content-Type": "application/json; charset=utf-8" 
         }
       })
