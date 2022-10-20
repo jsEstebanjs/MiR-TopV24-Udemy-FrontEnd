@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useState, useEffect  } from "react";
 import React from "react";
 import Nav from "../../components/Nav/index";
@@ -10,6 +10,7 @@ import image3 from "../../images/logotipo-de-apple.png";
 import { FaEnvelope } from "react-icons/fa";
 import { HiLockClosed } from "react-icons/hi";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FormularioLogIn = () => {
   useEffect(() => {
@@ -26,6 +27,7 @@ const FormularioLogIn = () => {
     password: "",
   });
   const [infoUser, setInfoUser] = useState(undefined)
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -35,10 +37,13 @@ const FormularioLogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:8081/user/login", user); console.log(data.data)
+      const { data } = await axios.post("http://localhost:8081/users/login", user); console.log(data.data)
       localStorage.setItem("token", data.data.token)
       localStorage.setItem("email", data.data.email)
-      const dataUser = await axios.get("http://localhost:8081/user",
+      if (data.data.token) {
+        navigate('/')
+      }
+      /*const dataUser = await axios.get("http://localhost:8081/users",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -48,7 +53,7 @@ const FormularioLogIn = () => {
         email: dataUser.data.email,
         password: dataUser.data.password,
         isInstructor: dataUser.data.isInstructor
-      })
+      })*/
 
     } catch (error) {
       alert(`catch error: ${error}`)
@@ -77,7 +82,7 @@ const FormularioLogIn = () => {
           <div className="email">
             <FaEnvelope />
             <input
-              id="email"
+              id="mail"
               type="text"
               placeholder="Email"
               name="email"
@@ -93,7 +98,7 @@ const FormularioLogIn = () => {
           <div className="password">
             <HiLockClosed />
             <input
-              id="password"
+              id="pass"
               type="password"
               placeholder="Password"
               name='password'
