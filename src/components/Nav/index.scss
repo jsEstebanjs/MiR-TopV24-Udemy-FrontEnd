@@ -61,12 +61,15 @@
     }
     .nav-logo-udemy{
         height: 34px;
+        cursor: pointer;
     }
     .nav-btn-categories{
         font-size: 14px;
         font-weight: 400;
         // opacity: 0.9;
         height: 100%;
+        background-color: $white;
+        color: $black;
         display: flex;
         justify-content: center;
         align-items: center;

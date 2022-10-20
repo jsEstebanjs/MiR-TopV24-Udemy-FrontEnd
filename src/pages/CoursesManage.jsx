@@ -12,10 +12,13 @@ import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,
 import LoaderCreateCourse from "../components/LoaderCreateCourse";
 import CoursesManageNav from '../components/CoursesManageNav';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import LearnInYourCourse from "../components/LearnInYourCourse";
+import CreateClass from "../components/CreateClass";
 
 function CoursesManage(){
 
+    let urlCursoId = useParams();
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
 
@@ -49,7 +52,7 @@ function CoursesManage(){
       }
 
     useEffect(() => {
-        axios.get(`https://udemy-mir-backend.herokuapp.com/course/634986d305a575164e563448`)
+        axios.get(`https://udemy-mir-backend.herokuapp.com/course/${urlCursoId.course}`)
           .then((res) => {
             dispatch(SetInitialState(res.data.data))
           }).catch((err) => {
@@ -171,7 +174,8 @@ function CoursesManage(){
                 />
 
 
-
+                
+                <CreateClass />
 
                 <h3 className="subtitle-manage-pricing">Course Price Tier</h3>
                 <p className="p-manage-pricing">Please select the price tier for your course below and click 'Save'. The list price that students will see in other currencies is determined using the price tier matrix.</p>
