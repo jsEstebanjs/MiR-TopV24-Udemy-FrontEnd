@@ -89,7 +89,7 @@ function SignUp() {
               </div>
             </div>
 
-              <button type="submit" className="singup-button" >Sign up</button>
+              <button className="singup-button" >Sign up</button>
 
           </form>
           <div className="redirect-login__container">
