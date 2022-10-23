@@ -23,7 +23,7 @@ function SignUp() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        process.env.REACT_APP_HEROKU_URL || "http://localhost:8081/users",
+        `${process.env.REACT_APP_HEROKU_URL}/users` ,
         user,
       );
       localStorage.setItem("token", res.data.info.token);
