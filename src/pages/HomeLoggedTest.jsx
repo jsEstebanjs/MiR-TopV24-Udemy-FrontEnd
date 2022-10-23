@@ -11,9 +11,8 @@ import BecomeInstructorMobile from '../images/BecomeInstructorMobilejpg.jpg'
 import BecomeInstructorHome from '../components/BecomeInstructorHome/index';
 import SelectionCourses from '../components/SelectionOfCourses';
 
-
-
 function HomeLoggedTest(){
+
   return(
     <div className="home-container">
       <Nav

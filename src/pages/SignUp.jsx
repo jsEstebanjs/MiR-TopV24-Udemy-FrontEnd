@@ -33,7 +33,8 @@ function SignUp() {
         navigate("/join/login");
       }
     } catch (err) {
-      alert(`error on signup: ${err.message}`);
+      console.log(err)
+      alert(`error on signup: ${err.response.data.message}`);
     }
   };
 

@@ -52,7 +52,7 @@ function CoursesManage(){
       }
 
     useEffect(() => {
-        axios.get(`https://udemy-mir-backend.herokuapp.com/course/${urlCursoId.course}`)
+        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses/${urlCursoId.course}`)
           .then((res) => {
             dispatch(SetInitialState(res.data.data))
           }).catch((err) => {

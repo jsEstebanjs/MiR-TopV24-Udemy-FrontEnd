@@ -17,7 +17,7 @@ function InstructorCourses(){
 
     //peticion donde me traera todos los cursos del profesor
     useEffect(() => {
-        axios.get(`https://udemy-mir-backend.herokuapp.com/course`)
+        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses`)
           .then((res) => {
             dispatch(LoadingCourses(res.data.data))
           }).catch((err) => {
