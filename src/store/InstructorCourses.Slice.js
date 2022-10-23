@@ -11,7 +11,7 @@ export const intructorCourses = createSlice({
   initialState,
   reducers: {
     CreateCourse:(state,action)=>{
-      state.courses.push(action.payload)
+      state.courses.unshift(action.payload)
     },
     LoadingCourses:(state,action)=>{
       state.courses = action.payload

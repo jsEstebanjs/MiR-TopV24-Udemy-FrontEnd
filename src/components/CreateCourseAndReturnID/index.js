@@ -5,9 +5,9 @@ const CreateCourseAndReturnId = ()=>{
     return (dispatch) => {
         dispatch(SetPetition(true))
 
-        axios.post(`https://udemy-mir-backend.herokuapp.com/course`,{
+        axios.post(`${process.env.REACT_APP_HEROKU_URL}/courses`,{
             "active": true,
-            "title": "Curso de prueba N°4",
+            "title": "New Course",
             "subtitle": "prueba front-end",
             "description": "testiong conection",
             "language": "Español",

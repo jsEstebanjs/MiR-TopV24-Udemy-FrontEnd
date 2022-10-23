@@ -37,26 +37,17 @@ const FormularioLogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("https://api-mir-top24-udemy.herokuapp.com/users/login", user); console.log(data.data)
+      const { data } = await axios.post(`${process.env.REACT_APP_HEROKU_URL}/users/login`, user); console.log(data.data)
       localStorage.setItem("token", data.data.token)
       localStorage.setItem("email", data.data.email)
       if (data.data.token) {
-        navigate('/home')
+        navigate('/')
       }
-      /*const dataUser = await axios.get("http://localhost:8081/users",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-          }
-        })
-      setInfoUser({
-        email: dataUser.data.email,
-        password: dataUser.data.password,
-        isInstructor: dataUser.data.isInstructor
-      })*/
+
 
     } catch (error) {
-      alert(`catch error: ${error}`)
+      console.log(error)
+      alert(`catch error: ${error.response.data}`)
     }
   };
 
