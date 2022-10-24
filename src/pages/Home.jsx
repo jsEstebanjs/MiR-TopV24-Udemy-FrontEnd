@@ -48,6 +48,7 @@ function Home(){
   
   return(
     <div className="home-container">
+      
       <Nav
         login={false}
       />

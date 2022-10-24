@@ -100,7 +100,7 @@ function Nav({login}){
                 <Link to="./"><p>Messages</p></Link>
                 <Link to="./"><p>Account Settings</p></Link>
                 <Link to="./"><p>Payment Methods</p></Link>
-                <Link to="./"><p>Purchas History</p></Link>
+                <Link to="./"><p>Purchase History</p></Link>
                 <div className='nav-user-languages'>
                     <p>Language</p>
                 </div>

@@ -37,7 +37,7 @@ const FormularioLogIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${process.env.REACT_APP_HEROKU_URL}/users/login`, user); console.log(data.data)
+      const { data } = await axios.post(`${process.env.REACT_APP_HEROKU_URL}/users/login`, user);
       localStorage.setItem("token", data.data.token)
       localStorage.setItem("email", data.data.email)
       if (data.data.token) {
