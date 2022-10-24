@@ -1,0 +1,72 @@
+.main-container-courses-manage-nav{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 24%);
+    background: #1c1d1f;
+    padding: 11px 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    .container-back-name-course{
+        display: flex;
+        flex-direction: row;
+        width: max-content;
+        height: 100%;
+        @media(max-width:340px){
+            flex-direction: column;
+        }
+        .link-back-to-courses{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-family: $Noto-Sans;
+            color: $white;
+            svg{
+                font-size: 24px;
+            }
+        }
+        .courses-manage-name-course{
+            font-size: 19px;
+            color: $white;
+            margin-left: 16px;
+            font-weight: 700;
+            font-family: $Noto-Sans;
+        }
+    }
+    .container-save-settings{
+        display: flex;
+        height: 100%;
+        width: max-content;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        .btn-save-settings{
+            height: 36px;
+            width: 80px;
+            font-size: 14px;
+            font-family: $Noto-Sans;
+            font-weight: 700;
+            margin-right: 16px;
+            background-color:$white;
+            cursor: pointer;
+
+        }
+        .link-btn-settings{
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            &:hover{
+                color:#e0e0e0;
+            }
+        }
+    }
+}

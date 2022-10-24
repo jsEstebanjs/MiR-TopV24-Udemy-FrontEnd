@@ -1,0 +1,46 @@
+.main-container-form-create-course{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    width: max-content;
+    height: max-content;
+    background-color: $white;
+    padding: 20px;
+    top: calc(50% - 280px);
+    left: calc(50% - 310px);
+
+    .btn-save-edit-class{
+    background-color: #A435F0;
+    color: $white;
+    font-family: $Noto-Sans;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    }
+    .btn-edit-class-close{
+        cursor: pointer;
+        background-color: $white;
+        border-radius: 50%;
+        width: 30px;
+        top: 5px;
+        right: 10px;
+        border: none;
+        font-size: 24px;
+        height: 30px;
+        position: absolute;
+        svg{
+            pointer-events: none;
+        }
+    }
+}
+@media(max-width:692px){
+    .main-container-form-create-course{
+        max-width: 300px;
+        top: calc(50% - 280px);
+        left: calc(50% - 150px);
+    }
+
+}
