@@ -3,6 +3,7 @@ import Nav from "../components/Nav/index"
 import Footer from "../components/Footer";
 import  axios from 'axios'
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function InstructorSignup() {
   const [instructor, setInstructor] = useState({
@@ -16,13 +17,18 @@ function InstructorSignup() {
     setInstructor({ ...instructor, [name]: value });
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:8081/instructor", instructor)
+      const res = await axios.post(`${process.env.REACT_APP_HEROKU_URL}/instructors`, instructor)
         localStorage.setItem("token", res.data.info.token);
         localStorage.setItem("fullName", res.data.info.fullName);
         localStorage.setItem("email", res.data.info.email);
+        if (res.data.info.token) {
+          navigate("/join/login");
+        }
     } catch (err) {
       console.log(`error on signup: ${err}`);
     }
