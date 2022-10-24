@@ -6,17 +6,19 @@ const CreateCourseAndReturnId = ()=>{
         dispatch(SetPetition(true))
 
         axios.post(`${process.env.REACT_APP_HEROKU_URL}/courses`,{
-            "active": true,
-            "title": "New Course",
-            "subtitle": "prueba front-end",
-            "description": "testiong conection",
-            "language": "Español",
-            "level": "Expert Level",
-            "category": "Development",
-            "price": 20,
-            "rating": 5
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            },
+            body:{
+                "title": "test",
+                "subtitle": "",
+                "description": "",
+                "primaryTaught": "",
+                "learningObjectives": [],
+                "requirements": [],
+                "intendedLearners": []
+            }
         })
-
             .then((res) => {
                 console.log(res)
                 dispatch(CreateCourse(res.data.data))
