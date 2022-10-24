@@ -40,7 +40,7 @@ function Home(){
       }).catch((err) => {
         localStorage.clear()
         console.log(err)
-        //navigate("/join/login");
+        navigate("/join/login");
       }).finally(() => {
         
       })
