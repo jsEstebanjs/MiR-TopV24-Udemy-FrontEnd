@@ -41,6 +41,7 @@ const FormularioLogIn = () => {
       localStorage.setItem("token", data.data.token)
       localStorage.setItem("email", data.data.email)
       if (data.data.token) {
+        setTimeout(()=>{}, 700)
         navigate('/')
       }
 
@@ -119,6 +120,7 @@ const FormularioLogIn = () => {
             </div>
           </div>
         </form>
+        {localStorage.getItem('token')? <p>Logeado</p> :null }
       </div>
       <Footer />
     </>
