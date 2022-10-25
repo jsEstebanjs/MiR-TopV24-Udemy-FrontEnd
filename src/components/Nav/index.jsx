@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link , useNavigate} from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import logo from './../../images/logoNav.svg'
-import {AiOutlineSearch , AiOutlineShoppingCart ,AiOutlineHeart} from "react-icons/ai";
+import {AiOutlineSearch , AiOutlineShoppingCart ,AiOutlineHeart } from "react-icons/ai";
 import { BsGlobe } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { MdOutlineNotificationsNone , MdClose } from "react-icons/md";
 import Options from './options';
-import { useState} from 'react';
+import { useState } from 'react';
 import Hamburguer from './Hamburguer';
 import LanguageModal from '../LanguageModal';
 import IsTeacherModal from './IsTeacheModel';
+
 
 
 
@@ -48,10 +49,13 @@ function Nav({login}){
         setLangModal(langModal => !langModal);
       }
       const handleIsTeacherModal = () => {
-        setLangModal(langModal => !langModal);
+        setIsTeacherModal(isTeacherModal => !isTeacherModal);
       }
 
-
+      const handleLogOut = () => {
+        localStorage.clear()
+        navigate('/')
+      }
       
     return(
         <div className='main-nav'>
@@ -109,7 +113,8 @@ function Nav({login}){
                 <div className='nav-user-languages'>
                     <p>Language</p>
                 </div>
-                <Link to="./"><p>Log Out</p></Link>
+                <button className='log-out' onClick={handleLogOut} >Log Out</button>
+                {/*<Link to="./"><p>Log Out</p></Link>*/}
             </div>
             </div>
             </div>
