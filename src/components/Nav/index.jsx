@@ -6,10 +6,10 @@ import { BsGlobe } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { MdOutlineNotificationsNone , MdClose } from "react-icons/md";
 import Options from './options';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import Hamburguer from './Hamburguer';
 import LanguageModal from '../LanguageModal';
-import axios from 'axios';
+
 
 
 function Nav({login}){
@@ -19,8 +19,6 @@ function Nav({login}){
     const [langModal, setLangModal] = useState(false);
     const navigate = useNavigate();
 
-    
-    
     document.addEventListener('click', function(event) {
         if(event.target.className === 'nav-close' || event.target.className === 'nav-opacity' ){
             setMainHamburguer(false);
@@ -49,23 +47,8 @@ function Nav({login}){
       }
 
       const navigateToInstructorSignup = () => {
-        console.log('test')
-        return () => {
-          console.log('entró')
-          axios.put(`${process.env.REACT_APP_HEROKU_URL}/users`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`
-            }
-          })
-          .then((res) => {
-            console.log(res)
-          }).catch((err) => {
-            console.log(err)
-          }).finally(() => {
-            
-          })
-        }}
+        navigate('/instructor/signup')
+      }
       
     return(
         <div className='main-nav'>

@@ -7,6 +7,7 @@ import LoaderCreateCourse from "../components/LoaderCreateCourse";
 import axios from 'axios';
 import CreateCourseAndReturnId from "../components/CreateCourseAndReturnID";
 import { LoadingCourses } from "../store/InstructorCourses.Slice";
+import { useNavigate } from 'react-router-dom';
 
 function InstructorCourses(){
     const { courses,petition } = useSelector((state)=> state.InstructorCourses);
@@ -15,17 +16,27 @@ function InstructorCourses(){
 
     const [loading, setLoading] = useState(true)
 
+
+    const navigate = useNavigate()
+
     //peticion donde me traera todos los cursos del profesor
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses`)
-          .then((res) => {
-            dispatch(LoadingCourses(res.data.data))
-          }).catch((err) => {
-            alert(`ups hay un error ${err.message}, error al traer los cursos`)
-          }).finally(() => {
-            setLoading(false)
-          })
-      }, [])
+        axios.get(`${process.env.REACT_APP_HEROKU_URL}/users`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }).then((res) => {
+          console.log(res)
+          dispatch(LoadingCourses(res.data.data.teacherCourses))
+        }).catch((err) => {
+          localStorage.clear()
+          console.log(err)
+          navigate("/join/login");
+        }).finally(() => {
+          setLoading(false)
+        })
+    }, [])
 
     return(
         <>
