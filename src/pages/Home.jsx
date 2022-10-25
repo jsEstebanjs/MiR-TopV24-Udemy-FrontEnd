@@ -28,7 +28,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Home(){
   const navigate = useNavigate()
-  useEffect(() => {
+/*   useEffect(() => {
     axios.get(`${process.env.REACT_APP_HEROKU_URL}/users`,
     {
       headers: {
@@ -44,14 +44,14 @@ function Home(){
       }).finally(() => {
         
       })
-  }, [])
+  }, []) */
   
   return(
     <div className="home-container">
-      
       <Nav
-        login={false}
+        login={localStorage.getItem("token") ? true : false}
       />
+      
       <TitleHeading
         title='Last day for these savings!'
         text='Courses that meet today’s challenges (and tomorrow’s). They start at just COL$39,900. Sale ends today.'
