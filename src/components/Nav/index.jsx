@@ -41,6 +41,10 @@ function Nav({login}){
         navigate('/join/signup')
       }
 
+      const navigateToInstructorSignup = () => {
+        navigate('/instructor/signup')
+      }
+
       const navigateToHome = () => {
         navigate('/')
       }
@@ -73,7 +77,8 @@ function Nav({login}){
                 <button type='button'><AiOutlineSearch /></button>
                 <input type='search' placeholder='Search for anything'/>
             </form>
-            <button className="nav-btn-tech" onClick={()=> setIsTeacherModal(true)}>Teach on Udemy</button>
+            {}
+            <button className="nav-btn-tech" onClick={login ? (()=> setIsTeacherModal(true)) : navigateToInstructorSignup}>Teach on Udemy</button>
             <button className={login ?"nav-btn-learning":'displayNone'}>My learning</button>
             <button className={login ?"nav-btn-favorites" :'displayNone'}><AiOutlineHeart /></button>
             {searchMovil ? <div className='div-search-movil'>
