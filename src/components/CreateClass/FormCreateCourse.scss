@@ -10,16 +10,40 @@
     top: calc(50% - 280px);
     left: calc(50% - 310px);
 
-    .btn-save-edit-class{
-    background-color: #A435F0;
-    color: $white;
-    font-family: $Noto-Sans;
-    font-size: 16px;
-    font-weight: 700;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+    .container-form-create-course-btns{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+
+        .btn-save-edit-class{
+            background-color: #A435F0;
+            color: $white;
+            font-family: $Noto-Sans;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            width: 120px;
+            padding: 10px;
+            cursor: pointer;
+            }
+        .btn-save-edit-class-delete{
+            background-color: #F34234;
+            color: $white;
+            font-family: $Noto-Sans;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            padding: 10px;
+            width: 80px;
+            cursor: pointer;
+            }
+
     }
+
     .btn-edit-class-close{
         cursor: pointer;
         background-color: $white;

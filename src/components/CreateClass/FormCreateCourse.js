@@ -34,7 +34,11 @@ function FormCreateCourse(){
           />
           <p className="label-input-landing">Video Class</p>  
           <PromotionalSource accept="video/mp4,video/x-m4v,video/*" id='class-video' video={true}/>
-          <button type="button" className="btn-save-edit-class">Save</button>
+          <div className="container-form-create-course-btns">
+            <button type="button" className="btn-save-edit-class">Save</button>
+            <button type="button" className="btn-save-edit-class-delete">Delete</button>
+          </div>
+
           <button className="btn-edit-class-close"><MdClose/></button>
         </div>
           
