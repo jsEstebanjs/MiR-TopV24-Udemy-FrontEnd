@@ -15,17 +15,19 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import LearnInYourCourse from "../components/LearnInYourCourse";
 import CreateClass from "../components/CreateClass";
+import CreateCourseAndReturnId from "../components/CreateCourseAndReturnID";
 
 function CoursesManage(){
 
-    let urlCursoId = useParams();
-    const [loading, setLoading] = useState(true)
+    let urlCourseId = useParams();
+    const [loading, setLoading] = useState(false)
     const dispatch = useDispatch()
 
     const state = useSelector((state) => state.CreateCourse)
 
     //para descripcion
     const [value, setValue] = useState('');
+    
     const mediator = (e)=>{
       setValue(e)
       dispatch(SetDescription(e))
@@ -51,8 +53,12 @@ function CoursesManage(){
         SetPrice
       }
 
+      
+
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses/${urlCursoId.course}`)
+      if(urlCourseId.course !== "newCourse"){
+      
+        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses/${urlCourseId.course}`)
           .then((res) => {
             dispatch(SetInitialState(res.data.data))
           }).catch((err) => {
@@ -60,13 +66,20 @@ function CoursesManage(){
           }).finally(() => {
             setLoading(false)
           })
+        }
       }, [])
+
 
     return(
         <div className='main-container-courses-manage'>
             <div className='container-courses-manage'>
             <div className="main-container-manage-goals">
-            <CoursesManageNav action={obj.Send} nameCourse={state.title}/>
+              {urlCourseId.course === "newCourse" 
+              ?
+              <CoursesManageNav action={CreateCourseAndReturnId()} nameCourse={state.title}/>
+              :
+              <CoursesManageNav action={obj.Send} nameCourse={state.title}/>              
+            }
             <TitleManageCourse
             title='Manage your course' />
         <div className="container-manage-goals">
@@ -76,7 +89,7 @@ function CoursesManage(){
               :
               <>
                 <InputTitleLanding value={state.title} action={obj.SetTitle} id='title' limitNum={60} place='Insert your course title.'>Course title</InputTitleLanding>
-                <InputTitleLanding value={state.subTitle}  action={obj.SetSubTitle} id='subtitle' limitNum={120} place='Insert your course subtitle.'>Course subtitle</InputTitleLanding>
+                <InputTitleLanding value={state.subtitle}  action={obj.SetSubTitle} id='subtitle' limitNum={120} place='Insert your course subtitle.'>Course subtitle</InputTitleLanding>
                 <p className="label-input-landing">Course description</p>
                 <ReactQuill 
                 // theme="snow"
@@ -104,10 +117,11 @@ function CoursesManage(){
                 >
 
                 <OptionsPricing value='null'>--Select Level--</OptionsPricing>
-                <OptionsPricing state={state.level} value='Beginner Level'>Beginner level</OptionsPricing>
-                <OptionsPricing state={state.level} value='Intermediate Level'>Intermediate level</OptionsPricing>
-                <OptionsPricing state={state.level} value='Expert Level'>Expert Level</OptionsPricing>
-                <OptionsPricing state={state.level} value='All Levels'>All Levels</OptionsPricing>
+                
+                <OptionsPricing state={state.level} value='Beginner level'>Beginner level</OptionsPricing>
+                <OptionsPricing state={state.level} value='Intermediate level'>Intermediate level</OptionsPricing>
+                <OptionsPricing state={state.level} value='Expert level'>Expert level</OptionsPricing>
+                <OptionsPricing state={state.level} value='All levels'>All levels</OptionsPricing>
 
                 </SelectPricing>
 
@@ -140,7 +154,7 @@ function CoursesManage(){
                 <LearnInYourCourse
                 title='What will students learn in your course?'
                 info='You must enter at least 4 learning objectives or outcomes that learners can expect to achieve after completing your course.'
-                minInputs={state.learn}
+                minInputs={state.learnObjectives}
                 minInputsNum={4}
                 limit={true}
                 place='Example: Define the roles and responsibilities of a project manager'
@@ -164,7 +178,7 @@ function CoursesManage(){
                 title='Who is this course for?'
                 info='Write a clear description of the intended learners for your course who will find your course content valuable.
                 This will help you attract the right learners to your course.'
-                minInputs={state.thisCourse}
+                minInputs={state.intendedLearners}
                 minInputsNum={1}
                 limit={false}
                 place='Example: No programming experience needed. You will learn everything you need to know"'
@@ -176,6 +190,7 @@ function CoursesManage(){
 
                 
                 <CreateClass />
+                
 
                 <h3 className="subtitle-manage-pricing">Course Price Tier</h3>
                 <p className="p-manage-pricing">Please select the price tier for your course below and click 'Save'. The list price that students will see in other currencies is determined using the price tier matrix.</p>

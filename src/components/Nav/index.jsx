@@ -9,6 +9,7 @@ import Options from './options';
 import { useState} from 'react';
 import Hamburguer from './Hamburguer';
 import LanguageModal from '../LanguageModal';
+import IsTeacherModal from './IsTeacheModel';
 
 
 
@@ -17,6 +18,7 @@ function Nav({login}){
     const [searchMovil,setSearchMovil] = useState(false);
     const [mainHamburguer,setMainHamburguer] = useState(false);
     const [langModal, setLangModal] = useState(false);
+    const [isTeacherModal, setIsTeacherModal] = useState(false);
     const navigate = useNavigate();
 
     document.addEventListener('click', function(event) {
@@ -45,14 +47,16 @@ function Nav({login}){
       const handleLanguageModal = () => {
         setLangModal(langModal => !langModal);
       }
-
-      const navigateToInstructorSignup = () => {
-        navigate('/instructor/signup')
+      const handleIsTeacherModal = () => {
+        setLangModal(langModal => !langModal);
       }
+
+
       
     return(
         <div className='main-nav'>
             {langModal?<LanguageModal handleLanguageModal={handleLanguageModal}/>:null}
+            {isTeacherModal ? <IsTeacherModal handleIsTeacherModal={handleIsTeacherModal}/> : null }
 
             <div className='nav-btn-hamburguer-main' onClick={()=> {
                 setMainHamburguer(true)
@@ -65,7 +69,7 @@ function Nav({login}){
                 <button type='button'><AiOutlineSearch /></button>
                 <input type='search' placeholder='Search for anything'/>
             </form>
-            <button className="nav-btn-tech" onClick={navigateToInstructorSignup}>Teach on Udemy</button>
+            <button className="nav-btn-tech" onClick={()=> setIsTeacherModal(true)}>Teach on Udemy</button>
             <button className={login ?"nav-btn-learning":'displayNone'}>My learning</button>
             <button className={login ?"nav-btn-favorites" :'displayNone'}><AiOutlineHeart /></button>
             {searchMovil ? <div className='div-search-movil'>

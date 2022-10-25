@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState,useEffect } from "react";
 import LoaderCreateCourse from "../components/LoaderCreateCourse";
 import axios from 'axios';
-import CreateCourseAndReturnId from "../components/CreateCourseAndReturnID";
 import { LoadingCourses } from "../store/InstructorCourses.Slice";
 import { useNavigate } from 'react-router-dom';
 
@@ -44,7 +43,7 @@ function InstructorCourses(){
             <h2 className="title-instructor-courses-page">Courses</h2>
             <div className="container-search-new-course">
                 <Search />
-                <Link className="link-btn-instructor-courses-page" onClick={()=> dispatch(CreateCourseAndReturnId())} >New course</Link>
+                <Link className="link-btn-instructor-courses-page" to="/instructor/courses/newCourse/manage" >New course</Link>
             </div>
             <div className="container-edit-course-instructor">
             { 
