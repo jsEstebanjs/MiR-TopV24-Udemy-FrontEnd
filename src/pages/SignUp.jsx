@@ -26,10 +26,10 @@ function SignUp() {
         `${process.env.REACT_APP_HEROKU_URL}/users` ,
         user,
       );
-      localStorage.setItem("token", res.data.info.token);
-      localStorage.setItem("email", res.data.info.email);
-      localStorage.setItem("fullName", res.data.info.fullName);
-      if (res.data.info.token) {
+      localStorage.setItem("token", res.data.data.token);
+      localStorage.setItem("email", res.data.data.email);
+      localStorage.setItem("fullName", res.data.data.fullName);
+      if (res.data.data.token) {
         navigate("/join/login");
       }
     } catch (err) {
