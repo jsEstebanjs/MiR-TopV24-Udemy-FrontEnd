@@ -6,10 +6,13 @@ import { BsGlobe } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { MdOutlineNotificationsNone , MdClose } from "react-icons/md";
 import Options from './options';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Hamburguer from './Hamburguer';
 import LanguageModal from '../LanguageModal';
 import IsTeacherModal from './IsTeacheModel';
+import { useSelector, useDispatch } from 'react-redux';
+import { SetUserInfo, ResetUserInfo } from '../../store/UserInfo.Slice';
 
 
 
@@ -21,6 +24,9 @@ function Nav({login}){
     const [langModal, setLangModal] = useState(false);
     const [isTeacherModal, setIsTeacherModal] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.UserInfo)
+    console.log('user:', user)
 
     document.addEventListener('click', function(event) {
         if(event.target.className === 'nav-close' || event.target.className === 'nav-opacity' ){
@@ -28,6 +34,26 @@ function Nav({login}){
             document.body.style = null;
         }
       });
+
+      useEffect(() => {
+        (localStorage.getItem("token") ? 
+          axios.get(`${process.env.REACT_APP_HEROKU_URL}/users`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+          })
+            .then((res) => {
+              console.log('res:', res)
+              dispatch(SetUserInfo(res.data.data))
+              
+            }).catch((err) => {
+              console.log(err)
+            }).finally(() => {
+              
+            })
+        : console.log('no hay token'))
+      }, [])
 
       const navigateToCart = () => {
         navigate('/cart');
@@ -58,6 +84,7 @@ function Nav({login}){
 
       const handleLogOut = () => {
         localStorage.clear()
+        dispatch(ResetUserInfo())
         navigate('/')
       }
       
@@ -77,8 +104,8 @@ function Nav({login}){
                 <button type='button'><AiOutlineSearch /></button>
                 <input type='search' placeholder='Search for anything'/>
             </form>
-            {}
-            <button className="nav-btn-tech" onClick={login ? (()=> setIsTeacherModal(true)) : navigateToInstructorSignup}>Teach on Udemy</button>
+            {user.isInstructor ? <button className="nav-btn-instructor">Instructor</button> : <button className="nav-btn-tech" onClick={login ? (()=> setIsTeacherModal(true)) : navigateToInstructorSignup}>Teach on Udemy</button> }
+            
             <button className={login ?"nav-btn-learning":'displayNone'}>My learning</button>
             <button className={login ?"nav-btn-favorites" :'displayNone'}><AiOutlineHeart /></button>
             {searchMovil ? <div className='div-search-movil'>

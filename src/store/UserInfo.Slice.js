@@ -15,13 +15,20 @@ export const userInfo = createSlice({
   initialState,
   reducers: {
     SetUserInfo:(state,action)=>{
-      state.courses.unshift(action.payload)
+      return {
+        ...state,
+        ...action.payload
+      }
     },
-
+    ResetUserInfo:(state,action)=>{
+      return {
+        ...state,
+        ...initialState
+      }
+    }
   }
 })
 
-
-export const { SetUserInfo } = userInfo.actions
+export const { SetUserInfo, ResetUserInfo } = userInfo.actions
 
 export default userInfo.reducer
