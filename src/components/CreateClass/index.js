@@ -1,5 +1,7 @@
 import ModalClass from "./ModalClass";
 import { DragDropContext ,Droppable , Draggable} from '@hello-pangea/dnd';
+import { useDispatch } from "react-redux";
+import { FaBars } from "react-icons/fa";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = [...list];
@@ -11,6 +13,7 @@ const reorder = (list, startIndex, endIndex) => {
 function CreateClass(){
 
     const prueba = ["1","2","3"]
+    const dispatch = useDispatch()
 
     return(
 
@@ -44,11 +47,20 @@ function CreateClass(){
                     {prueba.map((item,index)=>(
                       <Draggable key={item} draggableId={item} index={index}>
                         {(draggableProvided)=>(
+                          <div
+                          className="main-container-class-edit-modal"
+                          {...draggableProvided.draggableProps}
+                          ref={draggableProvided.innerRef}
+                        
+                          >
+                        
                          <ModalClass 
-                         {...draggableProvided.draggableProps}
-                         ref={draggableProvided.innerRef}
-                         {...draggableProvided.dragHandleProps}
                          />
+                         <span
+                         className="btn-class-edit-modal"
+                         {...draggableProvided.dragHandleProps}
+                         ><FaBars /></span>
+                         </div>
                     )}
                       </Draggable>
                     ))}

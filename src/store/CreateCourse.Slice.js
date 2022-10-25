@@ -79,7 +79,7 @@ export const counterSlice = createSlice({
     },
     Add: (state, action) => {
       if (action.payload === "learn") {
-        state.learn.push({
+        state.learnObjectives.push({
           id: uuidv4(),
           val: "",
         });
@@ -91,7 +91,7 @@ export const counterSlice = createSlice({
         });
       }
       if (action.payload === "thisCourse") {
-        state.thisCourse.push({
+        state.intendedLearners.push({
           id: uuidv4(),
           val: "",
         });
@@ -100,10 +100,10 @@ export const counterSlice = createSlice({
     Delete: (state, action) => {
       if (action.payload.seccion === "learn") {
         if (action.payload.minInputsNum !== state.learn.length) {
-          const input = state.learn.filter(
+          const input = state.learnObjectives.filter(
             (item) => item.id !== action.payload.id
           );
-          state.learn = input;
+          state.learnObjectives = input;
         }
       }
       if (action.payload.seccion === "requirements") {
@@ -116,22 +116,22 @@ export const counterSlice = createSlice({
       }
       if (action.payload.seccion === "thisCourse") {
         if (action.payload.minInputsNum !== state.thisCourse.length) {
-          const input = state.thisCourse.filter(
+          const input = state.intendedLearners.filter(
             (item) => item.id !== action.payload.id
           );
-          state.thisCourse = input;
+          state.intendedLearners = input;
         }
       }
     },
     Reorder: (state, action) => {
       if (action.payload.seccion === "learn") {
-        state.learn = action.payload.items;
+        state.learnObjectives = action.payload.items;
       }
       if (action.payload.seccion === "requirements") {
         state.requirements = action.payload.items;
       }
       if (action.payload.seccion === "thisCourse") {
-        state.thisCourse = action.payload.items;
+        state.intendedLearners = action.payload.items;
       }
     },
     SetPrice: (state, action) => {
