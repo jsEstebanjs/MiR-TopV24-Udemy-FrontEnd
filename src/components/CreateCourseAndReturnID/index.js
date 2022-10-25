@@ -19,6 +19,7 @@ const CreateCourseAndReturnId = ()=>{
                 "intendedLearners": []
             }
         })
+
             .then((res) => {
                 console.log(res)
                 dispatch(CreateCourse(res.data.data))

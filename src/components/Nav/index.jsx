@@ -11,6 +11,7 @@ import Hamburguer from './Hamburguer';
 import LanguageModal from '../LanguageModal';
 
 
+
 function Nav({login}){
     const [isVisible,setIsvisible] = useState(false);
     const [searchMovil,setSearchMovil] = useState(false);
@@ -48,7 +49,7 @@ function Nav({login}){
       const navigateToInstructorSignup = () => {
         navigate('/instructor/signup')
       }
-
+      
     return(
         <div className='main-nav'>
             {langModal?<LanguageModal handleLanguageModal={handleLanguageModal}/>:null}

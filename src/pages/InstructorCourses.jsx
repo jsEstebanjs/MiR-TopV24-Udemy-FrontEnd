@@ -16,6 +16,7 @@ function InstructorCourses(){
 
     const [loading, setLoading] = useState(true)
 
+
     const navigate = useNavigate()
 
     //peticion donde me traera todos los cursos del profesor
