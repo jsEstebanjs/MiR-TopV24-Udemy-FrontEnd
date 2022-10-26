@@ -7,11 +7,12 @@ import { SetClassTitle , SetClassDescription } from '../../store/CreateCourse.Sl
 import { useState } from "react";
 
 
-function FormCreateCourse({titleClass,id,description,urlVideo,isActive}){
+function FormCreateCourse({titleClass,id,description,urlVideo,isActive, isDelete, action }){
     const dispatch = useDispatch()
     const [value,setValue] = useState("");
     const [length,setLegth] = useState(80);
     
+
 
     const modules = {
         toolbar: [
@@ -27,7 +28,7 @@ function FormCreateCourse({titleClass,id,description,urlVideo,isActive}){
 
 
     return(
-        
+
       <div className="main-container-form-create-course">
         <label htmlFor="titleClass" className='label-input-landing'>Title Class</label>
         <div className="main-container-input-learn container-input-landing">
@@ -49,17 +50,20 @@ function FormCreateCourse({titleClass,id,description,urlVideo,isActive}){
            }}
            modules={modules}
           />
-          <p className="label-input-landing">Video Class</p>  
+          <p className="label-input-landing">Video Class</p>
           <PromotionalSource accept="video/mp4,video/x-m4v,video/*" id='class-video' video={true}/>
           <div className="container-form-create-course-btns">
             <button type="button" className="btn-save-edit-class">Save</button>
-            <button type="button" className="btn-save-edit-class-delete">Delete</button>
+            {isDelete
+            ? <button type="button" className="btn-save-edit-class-delete">Delete</button>
+            : null
+            }
           </div>
 
           <button className="btn-edit-class-close"><MdClose/></button>
         </div>
-          
-       
+
+
     )
 }
 
