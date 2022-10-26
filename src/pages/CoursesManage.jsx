@@ -6,7 +6,7 @@ import SelectPricing from "../components/ComponentPricing";
 import OptionsPricing from "../components/ComponentPricing/options";
 import PromotionalSource from "../components/PromotionalSources";
 import { useDispatch , useSelector} from 'react-redux';
-import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,Send,  
+import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,Send,
     SetLearn,SetRequirements,SetThisCourse,Add,Delete,Reorder,SendLearners,
     SetPrice , SetInitialState} from '../store/CreateCourse.Slice';
 import LoaderCreateCourse from "../components/LoaderCreateCourse";
@@ -17,7 +17,7 @@ import LearnInYourCourse from "../components/LearnInYourCourse";
 import CreateClass from "../components/CreateClass";
 import CreateCourseAndReturnId from "../components/CreateCourseAndReturnID";
 
-function CoursesManage(){
+function CoursesManage(){/////// change for delete
 
     let urlCourseId = useParams();
     const [loading, setLoading] = useState(false)
@@ -27,7 +27,7 @@ function CoursesManage(){
 
     //para descripcion
     const [value, setValue] = useState('');
-    
+
     const mediator = (e)=>{
       setValue(e)
       dispatch(SetDescription(e))
@@ -53,11 +53,11 @@ function CoursesManage(){
         SetPrice
       }
 
-      
+
 
     useEffect(() => {
       if(urlCourseId.course !== "newCourse"){
-      
+
         axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses/${urlCourseId.course}`)
           .then((res) => {
             dispatch(SetInitialState(res.data.data))
@@ -74,11 +74,11 @@ function CoursesManage(){
         <div className='main-container-courses-manage'>
             <div className='container-courses-manage'>
             <div className="main-container-manage-goals">
-              {urlCourseId.course === "newCourse" 
+              {urlCourseId.course === "newCourse"
               ?
               <CoursesManageNav action={CreateCourseAndReturnId()} nameCourse={state.title}/>
               :
-              <CoursesManageNav action={obj.Send} nameCourse={state.title}/>              
+              <CoursesManageNav action={obj.Send} nameCourse={state.title}/>
             }
             <TitleManageCourse
             title='Manage your course' />
@@ -91,7 +91,7 @@ function CoursesManage(){
                 <InputTitleLanding value={state.title} action={obj.SetTitle} id='title' limitNum={60} place='Insert your course title.'>Course title</InputTitleLanding>
                 <InputTitleLanding value={state.subtitle}  action={obj.SetSubTitle} id='subtitle' limitNum={120} place='Insert your course subtitle.'>Course subtitle</InputTitleLanding>
                 <p className="label-input-landing">Course description</p>
-                <ReactQuill 
+                <ReactQuill
                 // theme="snow"
                 value={state.description}
                 placeholder="Insert your course description."
@@ -102,7 +102,7 @@ function CoursesManage(){
                 />
                 <p className="label-input-landing">Basic info</p>
                 <div className="container-pricing-select">
-                <SelectPricing 
+                <SelectPricing
                 name="languaje"
                 id="languaje"
                 >
@@ -110,14 +110,14 @@ function CoursesManage(){
 
                 </SelectPricing>
 
-                <SelectPricing 
+                <SelectPricing
                 name="level"
                 id="level"
                 action={obj.SetLevel}
                 >
 
                 <OptionsPricing value='null'>--Select Level--</OptionsPricing>
-                
+
                 <OptionsPricing state={state.level} value='Beginner level'>Beginner level</OptionsPricing>
                 <OptionsPricing state={state.level} value='Intermediate level'>Intermediate level</OptionsPricing>
                 <OptionsPricing state={state.level} value='Expert level'>Expert level</OptionsPricing>
@@ -125,7 +125,7 @@ function CoursesManage(){
 
                 </SelectPricing>
 
-                <SelectPricing 
+                <SelectPricing
                 name="Category"
                 id="Category"
                 action={obj.SetCategory}
@@ -188,15 +188,15 @@ function CoursesManage(){
                 />
 
 
-                
+
                 <CreateClass />
-                
+
 
                 <h3 className="subtitle-manage-pricing">Course Price Tier</h3>
                 <p className="p-manage-pricing">Please select the price tier for your course below and click 'Save'. The list price that students will see in other currencies is determined using the price tier matrix.</p>
                 <p className="p-manage-pricing">If you intend to offer your course for free, the total length of video content must be less than 2 hours.</p>
                 <div className="container-pricing-select">
-                <SelectPricing 
+                <SelectPricing
                 name="currency"
                 id="currency"
                 >
@@ -204,7 +204,7 @@ function CoursesManage(){
 
                 </SelectPricing>
 
-                <SelectPricing 
+                <SelectPricing
                 name="price"
                 id="price"
                 action={obj.SetPrice}
@@ -244,7 +244,7 @@ function CoursesManage(){
                 </div>
                 </>
                 }
-                
+
             </div>
 
         </div>
