@@ -17,10 +17,10 @@ const ChangeIsInstructor = ()=>{
         })
         .catch((error) => {
                 console.log(error)
-                alert(`error al crear el curso , error ${error}`)
+                alert(`Error at changing instructor (changeInstructor)  , error ${error}`)
         })
         .finally(() => {
-                
+
         })
      }
 }

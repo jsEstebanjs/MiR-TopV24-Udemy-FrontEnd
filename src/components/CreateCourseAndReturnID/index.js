@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; /* create course and return id  */
 import { useSelector } from "react-redux";
 import { ResetState } from "../../store/CreateCourse.Slice";
 
@@ -20,10 +20,10 @@ const CreateCourseAndReturnId = ()=>{
                 dispatch(ResetState())
             })
             .catch((error) => {
-                alert(`error al crear el curso , error ${error}`)
+                alert(`error al crear el curso create course, error ${error}`)
             })
             .finally(() => {
-               
+
             })
      }
 }

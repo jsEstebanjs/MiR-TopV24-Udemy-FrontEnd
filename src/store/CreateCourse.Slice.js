@@ -28,6 +28,9 @@ const initialState = {
     },
   ],
   price: "",
+  classes: [
+
+  ]
 };
 
 export const counterSlice = createSlice({
