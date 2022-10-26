@@ -72,6 +72,7 @@ export const counterSlice = createSlice({
       state.requirements.map((item) => {
         if (item.id === action.payload.id) {
           item.val = action.payload.value;
+          
         }
       });
     },
@@ -151,19 +152,21 @@ export const counterSlice = createSlice({
         ...action.payload,
       };
     },
-    SetClassTitle:(state,action)=>{
-      state.classes.forEach((item)=>{
-        if(item._id === action.payload._id){
-          item.classTitle = action.payload.classTitle
-        }
-      })
-    },
-    SetClassDescription:(state,action)=>{
-      state.classes.forEach((item)=>{
-        if(item._id === action.payload._id){
-          item.classDescription = action.payload.classDescription
-        }
-      })
+    SetClass:(state,action)=>{
+      if(action.payload.isNew){
+        //ejecutamos una funcion con verbo post
+        
+      }else{
+        state.classes.forEach((item)=>{
+          if(item._id === action.payload._id){
+            return{
+              ...state,
+              ...action.payload.newClass
+            }
+          }
+        })
+      }
+
     },
   },
 });
@@ -185,8 +188,7 @@ export const {
   SendLearners,
   SetPrice,
   SetInitialState,
-  SetClassTitle,
-  SetClassDescription
+  SetClass,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
