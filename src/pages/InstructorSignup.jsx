@@ -23,14 +23,15 @@ function InstructorSignup() {
     e.preventDefault();
     try {
       const res = await axios.post(`${process.env.REACT_APP_HEROKU_URL}/instructors`, instructor)
-        localStorage.setItem("token", res.data.info.token);
-        localStorage.setItem("fullName", res.data.info.fullName);
-        localStorage.setItem("email", res.data.info.email);
-        if (res.data.info.token) {
+        localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("fullName", res.data.data.fullName);
+        localStorage.setItem("email", res.data.data.email);
+        if (res.data.data.token) {
           navigate("/join/login");
         }
     } catch (err) {
       console.log(`error on signup: ${err}`);
+      alert(`error on signup: ${err.response.data.message}`)
     }
   };
   return (
