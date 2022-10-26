@@ -3,8 +3,8 @@ import ReactQuill from 'react-quill';
 import PromotionalSource from "../PromotionalSources/index";
 import { MdClose } from "react-icons/md";
 
-function FormCreateCourse(){
-    
+function FormCreateCourse({ isDelete, action }){
+
     const modules = {
         toolbar: [
           ['bold', 'italic'],
@@ -19,11 +19,11 @@ function FormCreateCourse(){
 
 
     return(
-        
+
       <div className="main-container-form-create-course">
-        <InputTitleLanding   id='titleClass' limitNum={80} place='Enter a Title.'>Title Class</InputTitleLanding>    
-        <p className="label-input-landing">Class description</p>   
-        <ReactQuill 
+        <InputTitleLanding   id='titleClass' limitNum={80} place='Enter a Title.'>Title Class</InputTitleLanding>
+        <p className="label-input-landing">Class description</p>
+        <ReactQuill
            // theme="snow"
            // value={state.description}
            placeholder="Add a description of your class."
@@ -32,17 +32,20 @@ function FormCreateCourse(){
            }}
            modules={modules}
           />
-          <p className="label-input-landing">Video Class</p>  
+          <p className="label-input-landing">Video Class</p>
           <PromotionalSource accept="video/mp4,video/x-m4v,video/*" id='class-video' video={true}/>
           <div className="container-form-create-course-btns">
             <button type="button" className="btn-save-edit-class">Save</button>
-            <button type="button" className="btn-save-edit-class-delete">Delete</button>
+            {isDelete
+            ? <button type="button" className="btn-save-edit-class-delete">Delete</button>
+            : null
+            }
           </div>
 
           <button className="btn-edit-class-close"><MdClose/></button>
         </div>
-          
-       
+
+
     )
 }
 
