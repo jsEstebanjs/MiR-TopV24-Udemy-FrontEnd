@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 function InstructorCourses(){
     const { courses,petition } = useSelector((state)=> state.InstructorCourses);
-    
+
     const dispatch = useDispatch()
 
     const [loading, setLoading] = useState(true)
@@ -37,6 +37,8 @@ function InstructorCourses(){
         })
     }, [])
 
+    console.log('courses ', courses[0])
+
     return(
         <>
         <div className="main-container-instructor-courses-page">
@@ -46,7 +48,7 @@ function InstructorCourses(){
                 <Link className="link-btn-instructor-courses-page" to="/instructor/courses/newCourse/manage" >New course</Link>
             </div>
             <div className="container-edit-course-instructor">
-            { 
+            {
             loading || petition
             ?
             < LoaderCreateCourse />

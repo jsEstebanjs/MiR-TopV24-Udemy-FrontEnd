@@ -17,7 +17,7 @@ import LearnInYourCourse from "../components/LearnInYourCourse";
 import CreateClass from "../components/CreateClass";
 import CreateCourseAndReturnId from "../components/CreateCourseAndReturnID";
 
-function CoursesManage(){/////// change for delete
+function CoursesManage(){
 
     let urlCourseId = useParams();
     const [loading, setLoading] = useState(false)
