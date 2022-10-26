@@ -14,37 +14,10 @@ import { useEffect } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
-      /*const dataUser = await axios.get("http://localhost:8081/users",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-          }
-        })
-      setInfoUser({
-        email: dataUser.data.email,
-        password: dataUser.data.password,
-        isInstructor: dataUser.data.isInstructor
-      })*/
 
 function Home(){
   const navigate = useNavigate()
-/*   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_HEROKU_URL}/users`,
-    {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    })
-      .then((res) => {
-        console.log(res)
-      }).catch((err) => {
-        localStorage.clear()
-        console.log(err)
-        navigate("/join/login");
-      }).finally(() => {
-        
-      })
-  }, []) */
+
   
   return(
     <div className="home-container">
