@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FormCreateCourse from "./FormCreateCourse";
 
-function ModalClass({titleClass}){
+function ModalClass({titleClass,id,description,urlVideo,isActive}){
 
     const [form,setForm] = useState(false)
 
@@ -15,10 +15,19 @@ function ModalClass({titleClass}){
         <>
         {form ? <div className="opacity-manage"></div> : null}
         <div className="main-container-class-edit">
-            <p className="title-class-edit">{titleClass}Titulo clase</p>
+            <p className="title-class-edit">{titleClass}</p>
             <button onClick={()=>setForm(true)} className="btn-class-edit" type="button">Edit Class</button>
         </div>
-        {form ? <FormCreateCourse /> : null}
+        {form 
+        ? 
+        <FormCreateCourse 
+        id={id}
+        titleClass={titleClass}
+        description={description} 
+        urlVideo={urlVideo}
+        isActive={isActive}
+        
+        /> : null}
 
         </>
     )

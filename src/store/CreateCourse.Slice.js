@@ -104,7 +104,7 @@ export const counterSlice = createSlice({
     },
     Delete: (state, action) => {
       if (action.payload.seccion === "learn") {
-        if (action.payload.minInputsNum !== state.learn.length) {
+        if (action.payload.minInputsNum !== state.learningObjectives.length) {
           const input = state.learningObjectives.filter(
             (item) => item.id !== action.payload.id
           );
@@ -120,7 +120,7 @@ export const counterSlice = createSlice({
         }
       }
       if (action.payload.seccion === "thisCourse") {
-        if (action.payload.minInputsNum !== state.thisCourse.length) {
+        if (action.payload.minInputsNum !== state.intendedLearners.length) {
           const input = state.intendedLearners.filter(
             (item) => item.id !== action.payload.id
           );
@@ -138,6 +138,9 @@ export const counterSlice = createSlice({
       if (action.payload.seccion === "thisCourse") {
         state.intendedLearners = action.payload.items;
       }
+      if (action.payload.seccion === "class") {
+        state.classes = action.payload.items;
+      }
     },
     SetPrice: (state, action) => {
       state.price = action.payload;
@@ -147,15 +150,20 @@ export const counterSlice = createSlice({
         ...state,
         ...action.payload,
       };
-      // const { title, subtitle, description, level, category, price } =
-      //   action.payload;
-      // state.title = title;
-      // state.subTitle = subtitle;
-      // state.description = description;
-      // state.level = level;
-      // state.category = category;
-      // // state.teaching = description
-      // state.price = price;
+    },
+    SetClassTitle:(state,action)=>{
+      state.classes.forEach((item)=>{
+        if(item._id === action.payload._id){
+          item.classTitle = action.payload.classTitle
+        }
+      })
+    },
+    SetClassDescription:(state,action)=>{
+      state.classes.forEach((item)=>{
+        if(item._id === action.payload._id){
+          item.classDescription = action.payload.classDescription
+        }
+      })
     },
   },
 });
@@ -177,6 +185,8 @@ export const {
   SendLearners,
   SetPrice,
   SetInitialState,
+  SetClassTitle,
+  SetClassDescription
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
