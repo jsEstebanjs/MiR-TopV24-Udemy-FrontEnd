@@ -1,6 +1,6 @@
-import ModalClass from "./ModalClass";
+import ModalClass from "./ModalClass"; /* create class */
 import { DragDropContext ,Droppable , Draggable} from '@hello-pangea/dnd';
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 import { FaBars } from "react-icons/fa";
 
 const reorder = (list, startIndex, endIndex) => {
@@ -12,8 +12,8 @@ const reorder = (list, startIndex, endIndex) => {
 
 function CreateClass(){
 
-    const prueba = ["1","2","3"]
     const dispatch = useDispatch()
+    const classesFromCourse = useSelector((state) => state.CreateCourse.classes)
 
     return(
 
@@ -32,7 +32,7 @@ function CreateClass(){
             return;
           }
           // const items = reorder(clasess , source.index , destination.index)
-                
+
           // dispatch(Reorder({items}))
         }
 
@@ -44,17 +44,17 @@ function CreateClass(){
                    className="container-class-edit"
                    ref={droppableProvided.innerRef}
                    >
-                    {prueba.map((item,index)=>(
+                    {classesFromCourse.map((item,index)=>(
                       <Draggable key={item} draggableId={item} index={index}>
                         {(draggableProvided)=>(
                           <div
                           className="main-container-class-edit-modal"
                           {...draggableProvided.draggableProps}
                           ref={draggableProvided.innerRef}
-                        
+
                           >
-                        
-                         <ModalClass 
+
+                         <ModalClass
                          />
                          <span
                          className="btn-class-edit-modal"
@@ -72,7 +72,7 @@ function CreateClass(){
               </Droppable>
         </DragDropContext>
 
-      
+
 
 
       </div>
