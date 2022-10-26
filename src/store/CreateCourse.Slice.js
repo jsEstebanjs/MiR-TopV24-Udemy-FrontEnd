@@ -52,9 +52,11 @@ export const counterSlice = createSlice({
     SetTeaching: (state, action) => {
       state.primaryTaught = action.payload;
     },
-    Send: (state) => {
-      console.log("enviado creacion del curso");
-      console.log(current(state));
+    ResetState: (state,action) => {
+      return {
+        ...state,
+        ...initialState,
+      };
     },
     SetLearn: (state, action) => {
       state.learningObjectives.map((item) => {
@@ -162,7 +164,7 @@ export const {
   SetLevel,
   SetCategory,
   SetTeaching,
-  Send,
+  ResetState,
   SetLearn,
   SetRequirements,
   SetThisCourse,

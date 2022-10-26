@@ -17,7 +17,6 @@ const reorder = (list, startIndex, endIndex) => {
 function LearnInYourCourse({title,info,minInputs,limit,place,limitNum,obj,seccion,minInputsNum}){
 
     const dispatch = useDispatch()
-    console.log('minInputs:', minInputs)
     return(
         <div className="main-container-learn-in-your-course">
             <h3 className="title-learn-in-your-course">{title}</h3>
@@ -50,7 +49,7 @@ function LearnInYourCourse({title,info,minInputs,limit,place,limitNum,obj,seccio
                 {(draggableProvided)=>(
                   <div  className="drag-drop-input" {...draggableProvided.draggableProps} {...draggableProvided.dragHandleProps} ref={draggableProvided.innerRef}>
                     <InputLearn
-                    value={minInputs.val}
+                    value={item.val}
                     limit={limit}
                     place={place}
                     id={item.id}
