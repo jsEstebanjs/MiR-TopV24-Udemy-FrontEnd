@@ -6,7 +6,7 @@ import SelectPricing from "../components/ComponentPricing";
 import OptionsPricing from "../components/ComponentPricing/options";
 import PromotionalSource from "../components/PromotionalSources";
 import { useDispatch , useSelector} from 'react-redux';
-import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,Send,  
+import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,ResetState,
     SetLearn,SetRequirements,SetThisCourse,Add,Delete,Reorder,SendLearners,
     SetPrice , SetInitialState} from '../store/CreateCourse.Slice';
 import LoaderCreateCourse from "../components/LoaderCreateCourse";
@@ -16,6 +16,7 @@ import { useParams } from 'react-router-dom';
 import LearnInYourCourse from "../components/LearnInYourCourse";
 import CreateClass from "../components/CreateClass";
 import CreateCourseAndReturnId from "../components/CreateCourseAndReturnID";
+import UpdateCourse from "../components/UpdateCourse";
 
 function CoursesManage(){
 
@@ -24,10 +25,10 @@ function CoursesManage(){
     const dispatch = useDispatch()
 
     const state = useSelector((state) => state.CreateCourse)
-
+    console.log('state:', state)
     //para descripcion
     const [value, setValue] = useState('');
-    
+
     const mediator = (e)=>{
       setValue(e)
       dispatch(SetDescription(e))
@@ -45,7 +46,7 @@ function CoursesManage(){
         SetLevel,
         SetCategory,
         SetTeaching,
-        Send,
+        ResetState,
         SetLearn,
         SetRequirements,
         SetThisCourse,
@@ -53,12 +54,16 @@ function CoursesManage(){
         SetPrice
       }
 
-      
+
 
     useEffect(() => {
       if(urlCourseId.course !== "newCourse"){
-      
-        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses/${urlCourseId.course}`)
+
+        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses/${urlCourseId.course}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        })
           .then((res) => {
             dispatch(SetInitialState(res.data.data))
           }).catch((err) => {
@@ -74,11 +79,11 @@ function CoursesManage(){
         <div className='main-container-courses-manage'>
             <div className='container-courses-manage'>
             <div className="main-container-manage-goals">
-              {urlCourseId.course === "newCourse" 
+              {urlCourseId.course === "newCourse"
               ?
-              <CoursesManageNav action={CreateCourseAndReturnId()} nameCourse={state.title}/>
+              <CoursesManageNav reset={obj.ResetState} action={CreateCourseAndReturnId()} nameCourse={state.title}/>
               :
-              <CoursesManageNav action={obj.Send} nameCourse={state.title}/>              
+              <CoursesManageNav reset={obj.ResetState} action={UpdateCourse()} nameCourse={state.title}/>
             }
             <TitleManageCourse
             title='Manage your course' />
@@ -91,7 +96,7 @@ function CoursesManage(){
                 <InputTitleLanding value={state.title} action={obj.SetTitle} id='title' limitNum={60} place='Insert your course title.'>Course title</InputTitleLanding>
                 <InputTitleLanding value={state.subtitle}  action={obj.SetSubTitle} id='subtitle' limitNum={120} place='Insert your course subtitle.'>Course subtitle</InputTitleLanding>
                 <p className="label-input-landing">Course description</p>
-                <ReactQuill 
+                <ReactQuill
                 // theme="snow"
                 value={state.description}
                 placeholder="Insert your course description."
@@ -102,7 +107,7 @@ function CoursesManage(){
                 />
                 <p className="label-input-landing">Basic info</p>
                 <div className="container-pricing-select">
-                <SelectPricing 
+                <SelectPricing
                 name="languaje"
                 id="languaje"
                 >
@@ -110,14 +115,14 @@ function CoursesManage(){
 
                 </SelectPricing>
 
-                <SelectPricing 
+                <SelectPricing
                 name="level"
                 id="level"
                 action={obj.SetLevel}
                 >
 
                 <OptionsPricing value='null'>--Select Level--</OptionsPricing>
-                
+
                 <OptionsPricing state={state.level} value='Beginner level'>Beginner level</OptionsPricing>
                 <OptionsPricing state={state.level} value='Intermediate level'>Intermediate level</OptionsPricing>
                 <OptionsPricing state={state.level} value='Expert level'>Expert level</OptionsPricing>
@@ -125,7 +130,7 @@ function CoursesManage(){
 
                 </SelectPricing>
 
-                <SelectPricing 
+                <SelectPricing
                 name="Category"
                 id="Category"
                 action={obj.SetCategory}
@@ -141,7 +146,7 @@ function CoursesManage(){
 
 
                 </div>
-                <InputTitleLanding  action={obj.SetTeaching} limitNum={-1} place='e.g Landscape Photography.'>What is primarily taught in your course?</InputTitleLanding>
+                <InputTitleLanding  value={state.primaryTaught} action={obj.SetTeaching} limitNum={-1} place='e.g Landscape Photography.'>What is primarily taught in your course?</InputTitleLanding>
                 <p className="label-input-landing">Course image</p>
                 <PromotionalSource accept=".png, .jpg, .jpeg" id='source-image' video={false}/>
                 <p className="label-input-landing">Promotional video</p>
@@ -154,7 +159,7 @@ function CoursesManage(){
                 <LearnInYourCourse
                 title='What will students learn in your course?'
                 info='You must enter at least 4 learning objectives or outcomes that learners can expect to achieve after completing your course.'
-                minInputs={state.learnObjectives}
+                minInputs={state.learningObjectives}
                 minInputsNum={4}
                 limit={true}
                 place='Example: Define the roles and responsibilities of a project manager'
@@ -188,15 +193,15 @@ function CoursesManage(){
                 />
 
 
-                
+
                 <CreateClass />
-                
+
 
                 <h3 className="subtitle-manage-pricing">Course Price Tier</h3>
                 <p className="p-manage-pricing">Please select the price tier for your course below and click 'Save'. The list price that students will see in other currencies is determined using the price tier matrix.</p>
                 <p className="p-manage-pricing">If you intend to offer your course for free, the total length of video content must be less than 2 hours.</p>
                 <div className="container-pricing-select">
-                <SelectPricing 
+                <SelectPricing
                 name="currency"
                 id="currency"
                 >
@@ -204,47 +209,47 @@ function CoursesManage(){
 
                 </SelectPricing>
 
-                <SelectPricing 
+                <SelectPricing
                 name="price"
                 id="price"
                 action={obj.SetPrice}
                 >
                 <OptionsPricing state={state.price} value='Free'>Free</OptionsPricing>
-                <OptionsPricing state={state.price} value='19.99'>$19.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='24.99'>$24.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='29.99'>$29.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='34.99'>$34.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='39.99'>$39.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='44.99'>$44.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='49.99'>$49.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='54.99'>$54.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='59.99'>$59.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='64.99'>$64.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='69.99'>$69.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='74.99'>$74.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='79.99'>$79.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='84.99'>$84.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='89.99'>$89.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='94.99'>$94.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='99.99'>$99.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='109.99'>$109.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='119.99'>$119.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='124.99'>$124.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='129.99'>$129.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='139.99'>$139.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='149.99'>$149.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='159.99'>$159.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='169.99'>$169.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='174.99'>$174.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='179.99'>$179.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='189.99'>$189.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='199.99'>$199.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={19.99}>$19.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={24.99}>$24.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={29.99}>$29.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={34.99}>$34.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={39.99}>$39.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={44.99}>$44.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={49.99}>$49.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={54.99}>$54.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={59.99}>$59.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={64.99}>$64.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={69.99}>$69.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={74.99}>$74.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={79.99}>$79.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={84.99}>$84.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={89.99}>$89.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={94.99}>$94.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={99.99}>$99.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={109.99}>$109.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={119.99}>$119.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={124.99}>$124.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={129.99}>$129.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={139.99}>$139.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={149.99}>$149.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={159.99}>$159.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={169.99}>$169.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={174.99}>$174.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={179.99}>$179.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={189.99}>$189.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={199.99}>$199.99</OptionsPricing>
 
                 </SelectPricing>
                 </div>
                 </>
                 }
-                
+
             </div>
 
         </div>

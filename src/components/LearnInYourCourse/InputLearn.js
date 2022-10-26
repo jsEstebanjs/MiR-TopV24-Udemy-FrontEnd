@@ -7,24 +7,23 @@ import { useDispatch } from 'react-redux'
 
 
 
-function InputLearn({limit,place,id,limitNum,obj,seccion,minInputsNum}){
+function InputLearn({limit,place,id,limitNum,obj,seccion,minInputsNum,value}){
     const [length,setLegth] = useState(limitNum);
     const dispatch = useDispatch()
-
 
     return(
         <div className="main-container-input-learn">
         { limit 
         ?
         <>
-        <input className="input-input-learn" maxLength={limitNum} type='text' placeholder={place} onChange={(e)=> {
+        <input value={value} className="input-input-learn" maxLength={limitNum} type='text' placeholder={place} onChange={(e)=> {
             setLegth(limitNum - e.target.value.length)
             dispatch(obj({id:id,value:e.target.value}))
             }}/>
         <span className="num-length-input-learn">{length}</span>
         </> 
         :
-        <input  maxLength={limitNum} className="input-input-learn" type='text' placeholder={place} onChange={(e)=> {
+        <input value={value} maxLength={limitNum} className="input-input-learn" type='text' placeholder={place} onChange={(e)=> {
             setLegth(limitNum - e.target.value.length)
             dispatch(obj({id:id,value:e.target.value}))
             }}/> }

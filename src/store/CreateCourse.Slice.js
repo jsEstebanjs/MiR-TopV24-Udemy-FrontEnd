@@ -9,7 +9,7 @@ const initialState = {
   level: "",
   category: "",
   primaryTaught: "",
-  learnObjectives: [
+  learningObjectives: [
     { id: uuidv4(), val: "" },
     { id: uuidv4(), val: "" },
     { id: uuidv4(), val: "" },
@@ -52,12 +52,14 @@ export const counterSlice = createSlice({
     SetTeaching: (state, action) => {
       state.primaryTaught = action.payload;
     },
-    Send: (state) => {
-      console.log("enviado creacion del curso");
-      console.log(current(state));
+    ResetState: (state,action) => {
+      return {
+        ...state,
+        ...initialState,
+      };
     },
     SetLearn: (state, action) => {
-      state.learnObjectives.map((item) => {
+      state.learningObjectives.map((item) => {
         if (item.id === action.payload.id) {
           item.val = action.payload.value;
         }
@@ -79,7 +81,7 @@ export const counterSlice = createSlice({
     },
     Add: (state, action) => {
       if (action.payload === "learn") {
-        state.learn.push({
+        state.learningObjectives.push({
           id: uuidv4(),
           val: "",
         });
@@ -91,7 +93,7 @@ export const counterSlice = createSlice({
         });
       }
       if (action.payload === "thisCourse") {
-        state.thisCourse.push({
+        state.intendedLearners.push({
           id: uuidv4(),
           val: "",
         });
@@ -100,10 +102,10 @@ export const counterSlice = createSlice({
     Delete: (state, action) => {
       if (action.payload.seccion === "learn") {
         if (action.payload.minInputsNum !== state.learn.length) {
-          const input = state.learn.filter(
+          const input = state.learningObjectives.filter(
             (item) => item.id !== action.payload.id
           );
-          state.learn = input;
+          state.learningObjectives = input;
         }
       }
       if (action.payload.seccion === "requirements") {
@@ -116,22 +118,22 @@ export const counterSlice = createSlice({
       }
       if (action.payload.seccion === "thisCourse") {
         if (action.payload.minInputsNum !== state.thisCourse.length) {
-          const input = state.thisCourse.filter(
+          const input = state.intendedLearners.filter(
             (item) => item.id !== action.payload.id
           );
-          state.thisCourse = input;
+          state.intendedLearners = input;
         }
       }
     },
     Reorder: (state, action) => {
       if (action.payload.seccion === "learn") {
-        state.learn = action.payload.items;
+        state.learningObjectives = action.payload.items;
       }
       if (action.payload.seccion === "requirements") {
         state.requirements = action.payload.items;
       }
       if (action.payload.seccion === "thisCourse") {
-        state.thisCourse = action.payload.items;
+        state.intendedLearners = action.payload.items;
       }
     },
     SetPrice: (state, action) => {
@@ -162,7 +164,7 @@ export const {
   SetLevel,
   SetCategory,
   SetTeaching,
-  Send,
+  ResetState,
   SetLearn,
   SetRequirements,
   SetThisCourse,

@@ -27,6 +27,7 @@ const FormularioLogIn = () => {
     password: "",
   });
   const [infoUser, setInfoUser] = useState(undefined)
+  const [logged, setLogged] = useState(false)
   const navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -41,7 +42,7 @@ const FormularioLogIn = () => {
       localStorage.setItem("token", data.data.token)
       localStorage.setItem("email", data.data.email)
       if (data.data.token) {
-        setTimeout(()=>{}, 700)
+        setTimeout(()=>setLogged(true), 700)
         navigate('/')
       }
 
@@ -120,7 +121,7 @@ const FormularioLogIn = () => {
             </div>
           </div>
         </form>
-        {localStorage.getItem('token')? <p>Logeado</p> :null }
+        {logged? <p>Logeado</p> :null }
       </div>
       <Footer />
     </>

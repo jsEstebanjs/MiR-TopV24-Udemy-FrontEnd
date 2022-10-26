@@ -2,6 +2,7 @@ import axios from "axios";
 // import { CreateCourse , SetPetition } from '../../store/InstructorCourses.Slice';
 import { useSelector } from "react-redux";
 
+
 const ChangeIsInstructor = ()=>{
 
     return (dispatch) => {
@@ -12,8 +13,7 @@ const ChangeIsInstructor = ()=>{
         }
         })
         .then((res) => {
-                console.log(res)
-               
+            console.log(res)
         })
         .catch((error) => {
                 console.log(error)
