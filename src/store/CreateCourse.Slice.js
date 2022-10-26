@@ -138,6 +138,9 @@ export const counterSlice = createSlice({
       if (action.payload.seccion === "thisCourse") {
         state.intendedLearners = action.payload.items;
       }
+      if (action.payload.seccion === "class") {
+        state.classes = action.payload.items;
+      }
     },
     SetPrice: (state, action) => {
       state.price = action.payload;
@@ -147,15 +150,20 @@ export const counterSlice = createSlice({
         ...state,
         ...action.payload,
       };
-      // const { title, subtitle, description, level, category, price } =
-      //   action.payload;
-      // state.title = title;
-      // state.subTitle = subtitle;
-      // state.description = description;
-      // state.level = level;
-      // state.category = category;
-      // // state.teaching = description
-      // state.price = price;
+    },
+    SetClassTitle:(state,action)=>{
+      state.classes.forEach((item)=>{
+        if(item._id === action.payload._id){
+          item.classTitle = action.payload.classTitle
+        }
+      })
+    },
+    SetClassDescription:(state,action)=>{
+      state.classes.forEach((item)=>{
+        if(item._id === action.payload._id){
+          item.classDescription = action.payload.classDescription
+        }
+      })
     },
   },
 });
@@ -177,6 +185,8 @@ export const {
   SendLearners,
   SetPrice,
   SetInitialState,
+  SetClassTitle,
+  SetClassDescription
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

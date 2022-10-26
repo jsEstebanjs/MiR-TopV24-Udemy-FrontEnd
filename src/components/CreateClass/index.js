@@ -2,6 +2,8 @@ import ModalClass from "./ModalClass"; /* create class */
 import { DragDropContext ,Droppable , Draggable} from '@hello-pangea/dnd';
 import { useDispatch , useSelector} from "react-redux";
 import { FaBars } from "react-icons/fa";
+import { Reorder } from "../../store/CreateCourse.Slice";
+
 
 const reorder = (list, startIndex, endIndex) => {
   const result = [...list];
@@ -14,6 +16,7 @@ function CreateClass(){
 
     const dispatch = useDispatch()
     const classesFromCourse = useSelector((state) => state.CreateCourse.classes)
+    console.log("clases",classesFromCourse)
 
     return(
 
@@ -31,9 +34,9 @@ function CreateClass(){
           if(source.index === destination.index && source.droppableId === destination.droppableId){
             return;
           }
-          // const items = reorder(clasess , source.index , destination.index)
+          const items = reorder(classesFromCourse, source.index , destination.index)
 
-          // dispatch(Reorder({items}))
+          dispatch(Reorder({items,seccion:"class"}))
         }
 
         } >
@@ -45,7 +48,7 @@ function CreateClass(){
                    ref={droppableProvided.innerRef}
                    >
                     {classesFromCourse.map((item,index)=>(
-                      <Draggable key={item} draggableId={item} index={index}>
+                      <Draggable key={item._id} draggableId={item._id} index={index}>
                         {(draggableProvided)=>(
                           <div
                           className="main-container-class-edit-modal"
@@ -55,6 +58,11 @@ function CreateClass(){
                           >
 
                          <ModalClass
+                         titleClass={item.classTitle}
+                         id={item._id}
+                         description={item.classDescription}
+                         urlVideo={item.classVideo}
+                         isActive={item.classIsActive}
                          />
                          <span
                          className="btn-class-edit-modal"
