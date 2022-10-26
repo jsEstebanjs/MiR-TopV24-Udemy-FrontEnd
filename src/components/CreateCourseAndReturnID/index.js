@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import { ResetState } from "../../store/CreateCourse.Slice";
 
 const CreateCourseAndReturnId = ()=>{
-
+    const dispatch = useDispatch()
     const state = useSelector((state) => state.CreateCourse)
 
-    return (dispatch) => {
+    return () => {
 
         axios.post(`${process.env.REACT_APP_HEROKU_URL}/courses`,
         state,
@@ -20,10 +20,10 @@ const CreateCourseAndReturnId = ()=>{
                 dispatch(ResetState())
             })
             .catch((error) => {
-                alert(`error al crear el curso , error ${error}`)
+                alert(`error al crear el curso create course, error ${error}`)
             })
             .finally(() => {
-               
+
             })
      }
 }
