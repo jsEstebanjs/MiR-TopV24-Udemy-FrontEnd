@@ -104,7 +104,7 @@ export const counterSlice = createSlice({
     },
     Delete: (state, action) => {
       if (action.payload.seccion === "learn") {
-        if (action.payload.minInputsNum !== state.learn.length) {
+        if (action.payload.minInputsNum !== state.learningObjectives.length) {
           const input = state.learningObjectives.filter(
             (item) => item.id !== action.payload.id
           );
@@ -120,7 +120,7 @@ export const counterSlice = createSlice({
         }
       }
       if (action.payload.seccion === "thisCourse") {
-        if (action.payload.minInputsNum !== state.thisCourse.length) {
+        if (action.payload.minInputsNum !== state.intendedLearners.length) {
           const input = state.intendedLearners.filter(
             (item) => item.id !== action.payload.id
           );
