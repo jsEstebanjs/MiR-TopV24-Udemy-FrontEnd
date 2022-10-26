@@ -11,7 +11,6 @@ function InputLearn({limit,place,id,limitNum,obj,seccion,minInputsNum,value}){
     const [length,setLegth] = useState(limitNum);
     const dispatch = useDispatch()
 
-
     return(
         <div className="main-container-input-learn">
         { limit 

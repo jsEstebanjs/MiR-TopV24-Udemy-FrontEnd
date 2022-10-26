@@ -1,16 +1,16 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { ResetState } from "../../store/CreateCourse.Slice";
 
 const UpdateCourse = ()=>{
-
+    const dispatch = useDispatch();
     const state = useSelector((state) => state.CreateCourse)
     const courseId = useParams()
-    console.log('courseId:', courseId)
     const navigate = useNavigate()
 
-    return (dispatch) => {
+    return () => {
         // dispatch(SetPetition(true))
         axios.put(`${process.env.REACT_APP_HEROKU_URL}/courses/${courseId.course}`,
         state,
@@ -21,7 +21,7 @@ const UpdateCourse = ()=>{
         })
 
             .then((res) => {
-                
+                dispatch(ResetState())
                 navigate("/instructor/courses")
                 // dispatch(CreateCourse(res.data.data))
             })

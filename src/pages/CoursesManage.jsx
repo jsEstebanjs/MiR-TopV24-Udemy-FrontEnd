@@ -6,7 +6,7 @@ import SelectPricing from "../components/ComponentPricing";
 import OptionsPricing from "../components/ComponentPricing/options";
 import PromotionalSource from "../components/PromotionalSources";
 import { useDispatch , useSelector} from 'react-redux';
-import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,Send,
+import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,ResetState,
     SetLearn,SetRequirements,SetThisCourse,Add,Delete,Reorder,SendLearners,
     SetPrice , SetInitialState} from '../store/CreateCourse.Slice';
 import LoaderCreateCourse from "../components/LoaderCreateCourse";
@@ -46,7 +46,7 @@ function CoursesManage(){
         SetLevel,
         SetCategory,
         SetTeaching,
-        Send,
+        ResetState,
         SetLearn,
         SetRequirements,
         SetThisCourse,
@@ -81,9 +81,9 @@ function CoursesManage(){
             <div className="main-container-manage-goals">
               {urlCourseId.course === "newCourse"
               ?
-              <CoursesManageNav action={CreateCourseAndReturnId()} nameCourse={state.title}/>
+              <CoursesManageNav reset={obj.ResetState} action={CreateCourseAndReturnId()} nameCourse={state.title}/>
               :
-              <CoursesManageNav action={UpdateCourse()} nameCourse={state.title}/>
+              <CoursesManageNav reset={obj.ResetState} action={UpdateCourse()} nameCourse={state.title}/>
             }
             <TitleManageCourse
             title='Manage your course' />
@@ -215,35 +215,35 @@ function CoursesManage(){
                 action={obj.SetPrice}
                 >
                 <OptionsPricing state={state.price} value='Free'>Free</OptionsPricing>
-                <OptionsPricing state={state.price} value='19.99'>$19.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='24.99'>$24.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='29.99'>$29.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='34.99'>$34.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='39.99'>$39.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='44.99'>$44.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='49.99'>$49.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='54.99'>$54.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='59.99'>$59.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='64.99'>$64.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='69.99'>$69.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='74.99'>$74.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='79.99'>$79.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='84.99'>$84.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='89.99'>$89.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='94.99'>$94.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='99.99'>$99.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='109.99'>$109.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='119.99'>$119.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='124.99'>$124.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='129.99'>$129.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='139.99'>$139.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='149.99'>$149.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='159.99'>$159.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='169.99'>$169.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='174.99'>$174.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='179.99'>$179.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='189.99'>$189.99</OptionsPricing>
-                <OptionsPricing state={state.price} value='199.99'>$199.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={19.99}>$19.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={24.99}>$24.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={29.99}>$29.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={34.99}>$34.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={39.99}>$39.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={44.99}>$44.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={49.99}>$49.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={54.99}>$54.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={59.99}>$59.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={64.99}>$64.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={69.99}>$69.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={74.99}>$74.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={79.99}>$79.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={84.99}>$84.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={89.99}>$89.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={94.99}>$94.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={99.99}>$99.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={109.99}>$109.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={119.99}>$119.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={124.99}>$124.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={129.99}>$129.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={139.99}>$139.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={149.99}>$149.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={159.99}>$159.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={169.99}>$169.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={174.99}>$174.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={179.99}>$179.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={189.99}>$189.99</OptionsPricing>
+                <OptionsPricing state={state.price} value={199.99}>$199.99</OptionsPricing>
 
                 </SelectPricing>
                 </div>
