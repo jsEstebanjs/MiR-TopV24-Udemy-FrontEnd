@@ -22,7 +22,7 @@ function TestCloudify() {
       data.append(`file_${i}`, file[i], file[i].name);
     }
 
-    const res = await axios.post('http://localhost:8080', data, {
+    const res = await axios.post(process.env.REACT_APP_HEROKU_URL, data, {
       headers: {'Content-Type': 'multipart/form-data'}
     })
     console.log('res post data', res);
@@ -44,7 +44,7 @@ function TestCloudify() {
         <label htmlFor='file'>file</label>
         <input 
           type='file'
-          accept='image/*' 
+          accept='image/*, video/*' 
           multiple
           name='file' 
           id='file' 
