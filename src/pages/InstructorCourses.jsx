@@ -7,6 +7,7 @@ import LoaderCreateCourse from "../components/LoaderCreateCourse";
 import axios from 'axios';
 import { LoadingCourses } from "../store/InstructorCourses.Slice";
 import { useNavigate } from 'react-router-dom';
+import { ResetState } from '../store/CreateCourse.Slice'
 
 function InstructorCourses(){
     const { courses,petition } = useSelector((state)=> state.InstructorCourses);
@@ -45,7 +46,7 @@ function InstructorCourses(){
             <h2 className="title-instructor-courses-page">Courses</h2>
             <div className="container-search-new-course">
                 <Search />
-                <Link className="link-btn-instructor-courses-page" to="/instructor/courses/newCourse/manage" >New course</Link>
+                <Link onClick={()=> dispatch(ResetState())} className="link-btn-instructor-courses-page" to="/instructor/courses/newCourse/manage" >New course</Link>
             </div>
             <div className="container-edit-course-instructor">
             {
