@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import { ResetState } from "../../store/CreateCourse.Slice";
 
 const CreateCourseAndReturnId = ()=>{
-
+    const dispatch = useDispatch()
     const state = useSelector((state) => state.CreateCourse)
 
-    return (dispatch) => {
+    return () => {
 
         axios.post(`${process.env.REACT_APP_HEROKU_URL}/courses`,
         state,
