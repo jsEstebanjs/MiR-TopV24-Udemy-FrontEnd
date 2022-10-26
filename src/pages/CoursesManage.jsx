@@ -16,6 +16,7 @@ import { useParams } from 'react-router-dom';
 import LearnInYourCourse from "../components/LearnInYourCourse";
 import CreateClass from "../components/CreateClass";
 import CreateCourseAndReturnId from "../components/CreateCourseAndReturnID";
+import UpdateCourse from "../components/UpdateCourse";
 
 function CoursesManage(){
 
@@ -24,7 +25,7 @@ function CoursesManage(){
     const dispatch = useDispatch()
 
     const state = useSelector((state) => state.CreateCourse)
-
+    console.log('state:', state)
     //para descripcion
     const [value, setValue] = useState('');
 
@@ -58,7 +59,11 @@ function CoursesManage(){
     useEffect(() => {
       if(urlCourseId.course !== "newCourse"){
 
-        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses/${urlCourseId.course}`)
+        axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses/${urlCourseId.course}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        })
           .then((res) => {
             dispatch(SetInitialState(res.data.data))
           }).catch((err) => {
@@ -78,7 +83,7 @@ function CoursesManage(){
               ?
               <CoursesManageNav action={CreateCourseAndReturnId()} nameCourse={state.title}/>
               :
-              <CoursesManageNav action={obj.Send} nameCourse={state.title}/>
+              <CoursesManageNav action={UpdateCourse()} nameCourse={state.title}/>
             }
             <TitleManageCourse
             title='Manage your course' />
@@ -141,7 +146,7 @@ function CoursesManage(){
 
 
                 </div>
-                <InputTitleLanding  action={obj.SetTeaching} limitNum={-1} place='e.g Landscape Photography.'>What is primarily taught in your course?</InputTitleLanding>
+                <InputTitleLanding  value={state.primaryTaught} action={obj.SetTeaching} limitNum={-1} place='e.g Landscape Photography.'>What is primarily taught in your course?</InputTitleLanding>
                 <p className="label-input-landing">Course image</p>
                 <PromotionalSource accept=".png, .jpg, .jpeg" id='source-image' video={false}/>
                 <p className="label-input-landing">Promotional video</p>
@@ -154,7 +159,7 @@ function CoursesManage(){
                 <LearnInYourCourse
                 title='What will students learn in your course?'
                 info='You must enter at least 4 learning objectives or outcomes that learners can expect to achieve after completing your course.'
-                minInputs={state.learnObjectives}
+                minInputs={state.learningObjectives}
                 minInputsNum={4}
                 limit={true}
                 place='Example: Define the roles and responsibilities of a project manager'

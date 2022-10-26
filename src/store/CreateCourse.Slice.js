@@ -9,7 +9,7 @@ const initialState = {
   level: "",
   category: "",
   primaryTaught: "",
-  learnObjectives: [
+  learningObjectives: [
     { id: uuidv4(), val: "" },
     { id: uuidv4(), val: "" },
     { id: uuidv4(), val: "" },
@@ -57,7 +57,7 @@ export const counterSlice = createSlice({
       console.log(current(state));
     },
     SetLearn: (state, action) => {
-      state.learnObjectives.map((item) => {
+      state.learningObjectives.map((item) => {
         if (item.id === action.payload.id) {
           item.val = action.payload.value;
         }
@@ -79,7 +79,7 @@ export const counterSlice = createSlice({
     },
     Add: (state, action) => {
       if (action.payload === "learn") {
-        state.learnObjectives.push({
+        state.learningObjectives.push({
           id: uuidv4(),
           val: "",
         });
@@ -100,10 +100,10 @@ export const counterSlice = createSlice({
     Delete: (state, action) => {
       if (action.payload.seccion === "learn") {
         if (action.payload.minInputsNum !== state.learn.length) {
-          const input = state.learnObjectives.filter(
+          const input = state.learningObjectives.filter(
             (item) => item.id !== action.payload.id
           );
-          state.learnObjectives = input;
+          state.learningObjectives = input;
         }
       }
       if (action.payload.seccion === "requirements") {
@@ -125,7 +125,7 @@ export const counterSlice = createSlice({
     },
     Reorder: (state, action) => {
       if (action.payload.seccion === "learn") {
-        state.learnObjectives = action.payload.items;
+        state.learningObjectives = action.payload.items;
       }
       if (action.payload.seccion === "requirements") {
         state.requirements = action.payload.items;
