@@ -25,7 +25,7 @@ function CoursesManage(){
     const dispatch = useDispatch()
 
     const state = useSelector((state) => state.CreateCourse)
-    console.log('state:', state)
+
     //para descripcion
     const [value, setValue] = useState('');
 
