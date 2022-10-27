@@ -1,5 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import axios from 'axios'
 
 const initialState = {
   title: "",
@@ -72,7 +73,7 @@ export const counterSlice = createSlice({
       state.requirements.map((item) => {
         if (item.id === action.payload.id) {
           item.val = action.payload.value;
-          
+
         }
       });
     },
@@ -152,24 +153,32 @@ export const counterSlice = createSlice({
         ...action.payload,
       };
     },
-    SetClass:(state,action)=>{
-      if(action.payload.isNew){
-        //ejecutamos una funcion con verbo post
-        
-      }else{
-        state.classes.forEach((item)=>{
-          if(item._id === action.payload._id){
-            return{
-              ...state,
-              ...action.payload.newClass
-            }
-          }
-        })
-      }
+    // SetClass:(state,action)=>{
+    //   if(action.payload.isNew){
+    //     //ejecutamos una funcion con verbo post
+    //   }else{
+    //     state.classes.forEach((item)=>{
+    //       if(item._id === action.payload._id){
+    //         return{
+    //           ...state,
+    //           ...action.payload.newClass
+    //         }
+    //       }
+    //     })
+    //   }
 
-    },
+    // },
   },
 });
+
+export const postNewClassAxios = (classState, course) => (dispatch) => {
+  axios
+  .post(`${process.env.REACT_APP_HEROKU_URL}/classes/${course}`, classState)
+  .then((response) => { console.log('response in postnewclasaxios create ..',response)
+   //dispatch((response.data.data));
+  })
+  .catch((error) => console.log(`error in createcourse slice setclass ${error}`));
+}
 
 export const {
   SetTitle,

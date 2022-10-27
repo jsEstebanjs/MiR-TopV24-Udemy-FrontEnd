@@ -7,6 +7,8 @@ import {
   SetClass
 } from "../../store/CreateCourse.Slice";
 import { useState } from "react";
+import {postNewClassAxios} from '../../store/CreateCourse.Slice'
+import { useParams } from "react-router-dom";
 
 function FormCreateCourse({
   titleClass,
@@ -20,6 +22,7 @@ function FormCreateCourse({
 }) {
   const dispatch = useDispatch();
   const [length, setLength] = useState(80);
+  const courseId = useParams();
 
   const [newClass, setNewClass] = useState({
     classTitle: titleClass || "",
@@ -27,7 +30,6 @@ function FormCreateCourse({
     classIsActive: isActive || true,
     classVideo: urlVideo || "",
   });
-console.log(titleClass,description)
   const modules = {
     toolbar: [
       ["bold", "italic"],
@@ -35,9 +37,10 @@ console.log(titleClass,description)
     ],
   };
 
-  const handleClick = (id) => {
-      dispatch(SetClass({_id:id,newClass,isNew}));
+  const handleClick = (newClass, course) => {
+      dispatch(postNewClassAxios(newClass, course));
   };
+
   const handleEdit = (e, key) => {
     setNewClass((prev) => ({ ...prev, [key]: e }));
     if(key === "classTitle"){
@@ -82,7 +85,7 @@ console.log(titleClass,description)
       />
       <div className="container-form-create-course-btns">
         <button
-          onClick={()=> handleClick(id)}
+          onClick={() => handleClick(newClass, courseId.course)}
           type="button"
           className="btn-save-edit-class"
         >
