@@ -31,7 +31,9 @@ const initialState = {
   price: "",
   classes: [
 
-  ]
+  ],
+  image: "",
+  video: "",
 };
 
 export const counterSlice = createSlice({
@@ -165,6 +167,14 @@ export const counterSlice = createSlice({
     },
     deleteClass:(state,action)=>{
       state.classes = state.classes.filter((item)=> item._id !== action.payload._id)
+    },
+    addResourcesToCourse:(state,action)=>{
+      
+      if(action.payload.type === "mp4" || action.payload.type === "video" || action.payload.type === "x-m4v" ){
+        state.video = action.payload.source
+      }else{
+        state.image = action.payload.source
+      }
     }
 
       
@@ -223,7 +233,8 @@ export const {
   SetInitialState,
   SetClass,
   addNewClass,
-  deleteClass
+  deleteClass,
+  addResourcesToCourse
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
