@@ -33,6 +33,7 @@ function FormCreateCourse({
     ],
   };
 
+  
   const handleClick = (newClass, course) => {
     if(isNew){
       dispatch(postNewClassAxios(newClass, course));
@@ -47,6 +48,9 @@ function FormCreateCourse({
 
 
   };
+  const handleLocalStateVideo = (url)=>{
+    setNewClass((prev)=>({...prev,classVideo:url}))
+  }
 
   const handleEdit = (e, key) => {
     setNewClass((prev) => ({ ...prev, [key]: e }));
@@ -86,6 +90,8 @@ function FormCreateCourse({
 
       <p className="label-input-landing">Video Class</p>
       <PromotionalSource
+        handleLocalStateVideo={handleLocalStateVideo}
+        isCourse={false}
         accept="video/mp4,video/x-m4v,video/*"
         id="class-video"
         video={true}
