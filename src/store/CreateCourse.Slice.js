@@ -153,32 +153,56 @@ export const counterSlice = createSlice({
         ...action.payload,
       };
     },
-    // SetClass:(state,action)=>{
-    //   if(action.payload.isNew){
-    //     //ejecutamos una funcion con verbo post
-    //   }else{
-    //     state.classes.forEach((item)=>{
-    //       if(item._id === action.payload._id){
-    //         return{
-    //           ...state,
-    //           ...action.payload.newClass
-    //         }
-    //       }
-    //     })
-    //   }
+    SetClass:(state,action)=>{
+        state.classes.forEach((item,index)=>{
+          if(item._id === action.payload._id){
+            state.classes[index] = { ...state , ...action.payload }
+          }
+        })
+      },
+    addNewClass:(state,action)=>{
+        state.classes.unshift(action.payload)
+    },
+    deleteClass:(state,action)=>{
+      state.classes = state.classes.filter((item)=> item._id !== action.payload._id)
+    }
 
-    // },
+      
+    
+    },
   },
-});
+);
 
 export const postNewClassAxios = (classState, course) => (dispatch) => {
   axios
   .post(`${process.env.REACT_APP_HEROKU_URL}/classes/${course}`, classState)
-  .then((response) => { console.log('response in postnewclasaxios create ..',response)
-   //dispatch((response.data.data));
+  .then((response) => { 
+   dispatch(addNewClass(response.data.data));
   })
   .catch((error) => console.log(`error in createcourse slice setclass ${error}`));
 }
+export const updateClassAxios = (classState, idClass) => (dispatch) => {
+  axios
+  .put(`${process.env.REACT_APP_HEROKU_URL}/classes/${idClass}`, classState)
+  .then((response) => { 
+   const { classDescription , classIsActive , classOfCourse , classTitle , classVideo , _id } = response.data.data
+   dispatch(SetClass({ classDescription,classIsActive,classOfCourse,classTitle,classVideo,_id }))
+
+  })
+  .catch((error) => console.log(`error in createcourse slice setclass ${error}`));
+}
+export const deleteClassAxios = (idClass) => (dispatch) => {
+  axios
+  .delete(`${process.env.REACT_APP_HEROKU_URL}/classes/${idClass}`)
+  .then((response) => { 
+    console.log(response.data)
+   const { _id } = response.data.data
+   dispatch(deleteClass({ _id }))
+
+  })
+  .catch((error) => console.log(`error in createcourse slice setclass ${error}`));
+}
+
 
 export const {
   SetTitle,
@@ -198,6 +222,8 @@ export const {
   SetPrice,
   SetInitialState,
   SetClass,
+  addNewClass,
+  deleteClass
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

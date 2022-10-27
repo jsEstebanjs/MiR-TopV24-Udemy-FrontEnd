@@ -1,13 +1,9 @@
-import InputTitleLanding from "../InputTItleLanding/index";
 import ReactQuill from "react-quill";
 import PromotionalSource from "../PromotionalSources/index";
 import { MdClose } from "react-icons/md";
 import { useDispatch } from "react-redux";
-import {
-  SetClass
-} from "../../store/CreateCourse.Slice";
 import { useState } from "react";
-import {postNewClassAxios} from '../../store/CreateCourse.Slice'
+import {postNewClassAxios , updateClassAxios , deleteClassAxios } from '../../store/CreateCourse.Slice'
 import { useParams } from "react-router-dom";
 
 function FormCreateCourse({
@@ -38,7 +34,18 @@ function FormCreateCourse({
   };
 
   const handleClick = (newClass, course) => {
+    if(isNew){
       dispatch(postNewClassAxios(newClass, course));
+    }else{
+      dispatch(updateClassAxios(newClass,id))
+    }
+
+  };
+  
+  const handleDeleteClass = (id) => {
+      dispatch(deleteClassAxios(id))
+
+
   };
 
   const handleEdit = (e, key) => {
@@ -92,7 +99,7 @@ function FormCreateCourse({
           Save
         </button>
         {isDelete ? (
-          <button type="button" className="btn-save-edit-class-delete">
+          <button onClick={()=> handleDeleteClass(id)} type="button" className="btn-save-edit-class-delete">
             Delete
           </button>
         ) : null}
