@@ -2,6 +2,8 @@ import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import CartShopItem from "../components/CartShopItem";
 import { useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+
 
 var handler = window.ePayco.checkout.configure({
     key: 'ba2787cf058fe4931c78108fb6f8e551',
@@ -14,7 +16,7 @@ var handler = window.ePayco.checkout.configure({
       //Parametros compra (obligatorio)
       name: "Compra de Cursos",
       description: "Cursos Udemy",
-      invoice: "12344", //como número de factura, no repetirlo.  
+      invoice: uuidv4(), //como número de factura, no repetirlo.  
       currency: "usd", // ó usd
       amount: `${amount}`, // development: max 200.000
       tax_base: "0",
