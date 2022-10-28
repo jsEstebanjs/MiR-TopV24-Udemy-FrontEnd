@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import Ratings from 'react-ratings-declarative';
 import { MdFavoriteBorder } from "react-icons/md";
-function Course({img,title,teacher,price,rating,lastUpdate,totalHours,level,subtitles,description}){
+function Course({id,img,title,teacher,price,rating,lastUpdate,totalHours,level,subtitles,description}){
+
+    // localStorage.setItem("CoursesShop",JSON.stringify([]));
+    //toca colocar el id por el mometo es undefined
+    const addCourseLocal = ()=>{
+        let courses = [localStorage.getItem("CoursesShop")]
+        courses = JSON.parse(courses)
+        const objCourse = {id,img,price,title}
+        courses.push(objCourse)
+        localStorage.setItem("CoursesShop",JSON.stringify(courses));
+    }
 
     return(
         <div className="main-container-course">
@@ -31,7 +41,7 @@ function Course({img,title,teacher,price,rating,lastUpdate,totalHours,level,subt
                   <p className="subtitle-course">{totalHours} total hours • {level}{subtitles?" • Subtitles":null}</p>  
                 <p className="description-course">{description}</p>
                 <div className="container-add-favorite-course">
-                    <button type="button" className="btn-add-cart-course">Add to cart</button>
+                    <button onClick={addCourseLocal} type="button" className="btn-add-cart-course">Add to cart</button>
                     <button type="button" className="btn-favorite-course"><MdFavoriteBorder/></button>
                 </div>
             </div>
