@@ -17,7 +17,7 @@ function Home(){
   return(
     <div className="home-container">
       <Nav
-        login={localStorage.getItem("token") ? true : false}
+        // login={localStorage.getItem("token") ? true : false}
       />
       
       <TitleHeading
