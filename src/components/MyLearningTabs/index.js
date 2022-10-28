@@ -1,7 +1,13 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Link } from 'react-router-dom';
 import BroseNow from './BrowseNow';
+import UserCoursesList from "../UserCoursesList/UserCoursesList";
+
 function MyLearningTabs(){
+//if loged in  allow else redirect to login
+// fetch axios payd courses
+//if  loading show loading  else show cardlist
+//if cardlist is empty show container-brose-now
     return(
         <div className="main-container-learning-tabs">
             <div className='main-container-title-learning-tabs'>
@@ -18,6 +24,7 @@ function MyLearningTabs(){
                 </div>
                 <div className='main-container-tab-panel'>
                 <TabPanel className='container-tab-panel'>
+                    <UserCoursesList />
                     <BroseNow />
                 </TabPanel>
                 </div>

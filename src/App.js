@@ -47,6 +47,8 @@ function App() {
               <Route path="overview" element={<InstructorPerformanceOverview />} />
               <Route path="students" element={<InstructorPerformanceStudents />} />
               <Route path="reviews" element={<InstructorPerformanceReviews />} />
+              <Route path="/response?ref_payco=" element={<InstructorPerformanceReviews />} />
+
             </Route>
           </Route>
 
