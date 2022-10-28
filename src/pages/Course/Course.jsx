@@ -2,26 +2,47 @@
 import CourseInfo from "../../components/CourseInfo/CourseInfo"
 import Footer from "../../components/Footer";
 import Nav from "../../components/Nav/index"
+import { useEffect, useState } from "react"
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Course = () => {
+    const [course, setCourse] = useState({})
+    let courseTitle = useParams();
+    console.log('courseTitle de params:', courseTitle.courseTitle)
+
+    useEffect(() => {
+      axios.get('http://localhost:8081/courses'
+      ).then((res) => {
+        const allCourses = res.data.data
+        console.log('allcourses:', allCourses)  
+        const coursesByTitle = allCourses.filter(function (item) {
+        return item.title.toLowerCase() === courseTitle.courseTitle.toLowerCase()
+        })
+        console.log('coursesByTitle', coursesByTitle)
+        setCourse(coursesByTitle[0])
+        console.log('course:', course)
+        console.log('objectives array', course.learningObjectives)
+      }).catch((err) => {
+        console.log(err)
+      }).finally(() => {
+      })
+    }, [])
+
     return (
         <>
         <Nav />
-        <CourseInfo 
-            mainCategory= "Development"
-            secondCategory= "Programming Languajes"
-            courseTitle="Learn Python: The Complete Python Programming Course"
-            courseSubtitle="Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!"
-            rating={4.4}
-            ratings="3,462"
-            totalStudents={20480}
-            courseLink="pythonforbeginners"
-            userLink="Avinash Jain"
-            languageCourse="English"
-            languagesubsCourse="English"
-            objectivesList={['Create their own Python Programs', 'Become an experienced Python Programmer', 'Parse the Web and Create their own Games']}
-            courseDescription='Do you want to become a programmer? Do you want to learn how to create games, automate your browser, visualize data, and much more? If you’re looking to learn Python for the very first time or need a quick brush-up, this is the course for you! Python has rapidly become one of the most popular programming languages around the world. Compared to other languages such as Java or C++, Python consistently outranks and outperforms these languages in demand from businesses and job availability. The average Python developer makes over $100,000 - this number is only going to grow in the coming years. The best part? Python is one of the easiest coding languages to learn right now. It doesn’t matter if you have no programming experience or are unfamiliar with the syntax of Python. By the time you finish this course, you’ll be an absolute pro at programming.'
-        />
+            <CourseInfo 
+                mainCategory= {course.category}
+                courseTitle={course.title}
+                courseSubtitle={course.subtitle}
+                rating={4.4}
+                courseOwner={course.courseOwner}
+                languageCourse={course.language}
+                objectivesList={course.learningObjectives}
+                courseDescription={course.description}
+                primaryTaught={course.primaryTaught}
+            />
         <Footer />
         </>
     )
