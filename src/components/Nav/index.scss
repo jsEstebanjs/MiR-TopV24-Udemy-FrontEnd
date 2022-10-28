@@ -151,9 +151,26 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
         height: 100%;
         &:hover{
             color: $main-purple;
+        }
+        .nav-btn-shopping-num{
+            position: absolute;
+            font-family: $Noto-Sans;
+            font-size: 14px;
+            color: $white;
+            border-radius: 50%;
+            background-color: $main-purple;
+            padding: 4px;
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            right: -8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
     .nav-search-movil{

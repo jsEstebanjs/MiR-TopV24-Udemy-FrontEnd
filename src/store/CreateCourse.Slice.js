@@ -1,5 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import axios from 'axios'
 
 const initialState = {
   title: "",
@@ -30,7 +31,9 @@ const initialState = {
   price: "",
   classes: [
 
-  ]
+  ],
+  image: "",
+  video: "",
 };
 
 export const counterSlice = createSlice({
@@ -72,6 +75,7 @@ export const counterSlice = createSlice({
       state.requirements.map((item) => {
         if (item.id === action.payload.id) {
           item.val = action.payload.value;
+
         }
       });
     },
@@ -151,22 +155,64 @@ export const counterSlice = createSlice({
         ...action.payload,
       };
     },
-    SetClassTitle:(state,action)=>{
-      state.classes.forEach((item)=>{
-        if(item._id === action.payload._id){
-          item.classTitle = action.payload.classTitle
-        }
-      })
+    SetClass:(state,action)=>{
+        state.classes.forEach((item,index)=>{
+          if(item._id === action.payload._id){
+            state.classes[index] = { ...state , ...action.payload }
+          }
+        })
+      },
+    addNewClass:(state,action)=>{
+        state.classes.unshift(action.payload)
     },
-    SetClassDescription:(state,action)=>{
-      state.classes.forEach((item)=>{
-        if(item._id === action.payload._id){
-          item.classDescription = action.payload.classDescription
-        }
-      })
+    deleteClass:(state,action)=>{
+      state.classes = state.classes.filter((item)=> item._id !== action.payload._id)
+    },
+    addResourcesToCourse:(state,action)=>{
+      
+      if(action.payload.type === "mp4" || action.payload.type === "video" || action.payload.type === "x-m4v" ){
+        state.video = action.payload.source
+      }else{
+        state.image = action.payload.source
+      }
+    }
+
+      
+    
     },
   },
-});
+);
+
+export const postNewClassAxios = (classState, course) => (dispatch) => {
+  axios
+  .post(`${process.env.REACT_APP_HEROKU_URL}/classes/${course}`, classState)
+  .then((response) => { 
+   dispatch(addNewClass(response.data.data));
+  })
+  .catch((error) => console.log(`error in createcourse slice setclass ${error}`));
+}
+export const updateClassAxios = (classState, idClass) => (dispatch) => {
+  axios
+  .put(`${process.env.REACT_APP_HEROKU_URL}/classes/${idClass}`, classState)
+  .then((response) => { 
+   const { classDescription , classIsActive , classOfCourse , classTitle , classVideo , _id } = response.data.data
+   dispatch(SetClass({ classDescription,classIsActive,classOfCourse,classTitle,classVideo,_id }))
+
+  })
+  .catch((error) => console.log(`error in createcourse slice setclass ${error}`));
+}
+export const deleteClassAxios = (idClass) => (dispatch) => {
+  axios
+  .delete(`${process.env.REACT_APP_HEROKU_URL}/classes/${idClass}`)
+  .then((response) => { 
+    console.log(response.data)
+   const { _id } = response.data.data
+   dispatch(deleteClass({ _id }))
+
+  })
+  .catch((error) => console.log(`error in createcourse slice setclass ${error}`));
+}
+
 
 export const {
   SetTitle,
@@ -185,8 +231,10 @@ export const {
   SendLearners,
   SetPrice,
   SetInitialState,
-  SetClassTitle,
-  SetClassDescription
+  SetClass,
+  addNewClass,
+  deleteClass,
+  addResourcesToCourse
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

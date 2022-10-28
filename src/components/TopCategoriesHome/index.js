@@ -16,7 +16,7 @@ function TopCategoriesHome({title}){
             <div className="container-top-categories-home-wrap">
                 <ImageTitle 
                 img={desing}
-                title='Desing'
+                title='Design'
                 />
                 <ImageTitle 
                 img={development}
@@ -28,7 +28,7 @@ function TopCategoriesHome({title}){
                 />
                 <ImageTitle 
                 img={itSoftware}
-                title='It And Software'
+                title='IT & Software'
                 />
                 <ImageTitle 
                 img={personalDevelopment}

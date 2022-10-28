@@ -17,8 +17,10 @@ import LanguageModal from "../LanguageModal";
 import IsTeacherModal from "./IsTeacheModel";
 import { useSelector, useDispatch } from "react-redux";
 import { SetUserInfo, ResetUserInfo } from "../../store/UserInfo.Slice";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function Nav({ login }) {
+function Nav({ login, userAuth0 }) {
+  const { isAuthenticated, logout } = useAuth0();
   const [isVisible, setIsvisible] = useState(false);
   const [searchMovil, setSearchMovil] = useState(false);
   const [mainHamburguer, setMainHamburguer] = useState(false);
@@ -27,6 +29,8 @@ function Nav({ login }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.UserInfo);
+  const itemShopCourses = useSelector((state)=> state.ShopCourses.itemShop)
+
 
   document.addEventListener("click", function (event) {
     if (
@@ -85,6 +89,7 @@ function Nav({ login }) {
 
   const handleLogOut = () => {
     localStorage.clear();
+    if(isAuthenticated) logout();
     dispatch(ResetUserInfo());
     navigate("/");
   };
@@ -109,7 +114,7 @@ function Nav({ login }) {
           document.body.style.overflow = "hidden";
         }}
       >
-        <FaBars /> {mainHamburguer ? <Hamburguer user={login} /> : null}
+        <FaBars /> {mainHamburguer ? <Hamburguer user={user.email} /> : null}
       </div>
       <div onClick={navigateToHome}>
         <img src={logo} alt="logo-udemy" className="nav-logo-udemy" />
@@ -133,17 +138,17 @@ function Nav({ login }) {
         <button
           className="nav-btn-tech"
           onClick={
-            login ? () => setIsTeacherModal(true) : navigateToInstructorSignup
+            user.email ? () => setIsTeacherModal(true) : navigateToInstructorSignup
           }
         >
           Teach on Udemy
         </button>
       )}
 
-      <button className={login ? "nav-btn-learning" : "displayNone"}>
+      <button className={user.email ? "nav-btn-learning" : "displayNone"}>
         My learning
       </button>
-      <button className={login ? "nav-btn-favorites" : "displayNone"}>
+      <button className={user.email? "nav-btn-favorites" : "displayNone"}>
         <AiOutlineHeart />
       </button>
       {searchMovil ? (
@@ -175,13 +180,14 @@ function Nav({ login }) {
         <AiOutlineSearch />
       </button>
       <button className="nav-btn-shopping" onClick={navigateToCart}>
+        <span className="nav-btn-shopping-num">{itemShopCourses.length}</span>
         <AiOutlineShoppingCart />
       </button>
-      <button className={login ? "nav-btn-notification" : "displayNone"}>
+      <button className={user.email? "nav-btn-notification" : "displayNone"}>
         <MdOutlineNotificationsNone />
       </button>
 
-      <div className={login ? "displayNone" : "container-btns"}>
+      <div className={user.email ? "displayNone" : "container-btns"}>
         <button className="nav-login" onClick={navigateToLogin}>
           Log in
         </button>
@@ -194,7 +200,7 @@ function Nav({ login }) {
       </div>
 
       <div className={login ? "nav-user" : "displayNone"}>
-        EC
+        {!isAuthenticated?'EC':<img src={user.picture} alt='user' loading="lazy"/>}
         <div className="nav-options-user">
           <span></span>
           <div className="nav-options">
