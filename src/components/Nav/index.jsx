@@ -17,9 +17,10 @@ import LanguageModal from "../LanguageModal";
 import IsTeacherModal from "./IsTeacheModel";
 import { useSelector, useDispatch } from "react-redux";
 import { SetUserInfo, ResetUserInfo } from "../../store/UserInfo.Slice";
+import { useAuth0 } from "@auth0/auth0-react";
 
-
-function Nav() {
+function Nav({ login, userAuth0 }) {
+  const { isAuthenticated, logout } = useAuth0();
   const [isVisible, setIsvisible] = useState(false);
   const [searchMovil, setSearchMovil] = useState(false);
   const [mainHamburguer, setMainHamburguer] = useState(false);
@@ -88,6 +89,7 @@ function Nav() {
 
   const handleLogOut = () => {
     localStorage.clear();
+    if(isAuthenticated) logout();
     dispatch(ResetUserInfo());
     navigate("/");
   };
@@ -197,8 +199,8 @@ function Nav() {
         </button>
       </div>
 
-      <div className={user.email ? "nav-user" : "displayNone"}>
-        EC
+      <div className={login ? "nav-user" : "displayNone"}>
+        {!isAuthenticated?'EC':<img src={user.picture} alt='user' loading="lazy"/>}
         <div className="nav-options-user">
           <span></span>
           <div className="nav-options">
