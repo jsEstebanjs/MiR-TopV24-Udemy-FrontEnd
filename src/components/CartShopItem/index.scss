@@ -9,6 +9,7 @@
     margin: 20px 0;
     max-width: 760px;
     max-height: 166px;
+    cursor: pointer;
     .container-img-title-shop-item{
         gap: 10px;
         width: 100%;
@@ -25,10 +26,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            .p-title-price-shop-item{
+            .p-title-price-shop-item-link{
                 font-weight: 700;
                 font-family: $Noto-Sans;
                 font-size: 18px;
+                color: $main-purple;
             }
         }
     }
