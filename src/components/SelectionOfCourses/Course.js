@@ -1,17 +1,25 @@
 import { Link } from "react-router-dom";
 import Ratings from 'react-ratings-declarative';
 import { MdFavoriteBorder } from "react-icons/md";
-function Course({id,img,title,teacher,price,rating,lastUpdate,totalHours,level,subtitles,description}){
+import { useDispatch } from 'react-redux';
+import { addItemShop } from '../../store/ShopCourses.Slice'
 
-    // localStorage.setItem("CoursesShop",JSON.stringify([]));
+function Course({id,img,title,teacher,price,rating,lastUpdate,totalHours,level,subtitles,description}){
     //toca colocar el id por el mometo es undefined
+    const dispatch = useDispatch()
+
     const addCourseLocal = ()=>{
+        if(localStorage.getItem("CoursesShop") === null){
+            localStorage.setItem("CoursesShop",JSON.stringify([]));
+        }
         let courses = [localStorage.getItem("CoursesShop")]
         courses = JSON.parse(courses)
         const objCourse = {id,img,price,title}
         courses.push(objCourse)
+        dispatch(addItemShop(objCourse))
         localStorage.setItem("CoursesShop",JSON.stringify(courses));
     }
+
 
     return(
         <div className="main-container-course">
@@ -42,6 +50,7 @@ function Course({id,img,title,teacher,price,rating,lastUpdate,totalHours,level,s
                 <p className="description-course">{description}</p>
                 <div className="container-add-favorite-course">
                     <button onClick={addCourseLocal} type="button" className="btn-add-cart-course">Add to cart</button>
+                    {/* { ? <button onClick={addCourseLocal} type="button" className="btn-add-cart-course btn-course-in-your-shop ">in the cart</button> : null} */}
                     <button type="button" className="btn-favorite-course"><MdFavoriteBorder/></button>
                 </div>
             </div>
