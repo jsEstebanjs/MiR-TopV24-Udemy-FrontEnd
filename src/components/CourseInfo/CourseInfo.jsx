@@ -50,7 +50,7 @@ function CourseInfo({mainCategory, courseTitle, courseSubtitle, rating, principa
                     <div className='objectives and primaryTaught-container'>
                         <h3>{principalObjective}</h3>
                         <ul>
-                            {objectivesList.map((item) => <li><BiCheck />{item.val}</li>)}
+                            {objectivesList?.map((item) => <li><BiCheck />{item.val}</li>)}
                         </ul>
                     </div>
                 </div>
