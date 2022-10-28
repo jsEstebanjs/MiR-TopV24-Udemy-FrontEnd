@@ -11,8 +11,10 @@ import { FaEnvelope } from "react-icons/fa";
 import { HiLockClosed } from "react-icons/hi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const FormularioLogIn = () => {
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
   useEffect(() => {
     document.title = "Log In | Udemy";
   }, []);
@@ -58,15 +60,15 @@ const FormularioLogIn = () => {
       <Nav />
       <div className="loginformAndButtons">
         <div className="head_loginbox">Log in to your Udemy account</div>
-        <button className="fb-button">
+        <button onClick={()=>loginWithRedirect({connection: 'facebook'})} className="fb-button">
           <img alt="" id="fblogo" src={image1}></img>
           <strong>Continue with Facebook</strong>
         </button>
-        <button className="google-button">
+        <button onClick={()=>loginWithRedirect({connection: 'google-oauth2'})} className="google-button">
           <img alt="" id="glogo" src={image2}></img>
           <strong>Continue with Google</strong>
         </button>
-        <button className="apple-button">
+        <button onClick={()=>loginWithRedirect({connection: 'apple'})} className="apple-button">
           <img alt="" id="glogo" src={image3}></img>
           <strong>Continue with Apple</strong>
         </button>

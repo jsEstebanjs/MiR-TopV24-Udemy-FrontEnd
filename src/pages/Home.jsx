@@ -13,16 +13,19 @@ import SelectionCourses from '../components/SelectionOfCourses';
 import { useEffect } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 function Home(){
+  const { user, isAuthenticated } = useAuth0();
   const navigate = useNavigate()
 
   //par actualizar variables de entorno borrar despues
   return(
     <div className="home-container">
       <Nav
-        login={localStorage.getItem("token") ? true : false}
+        login={localStorage.getItem("token")||isAuthenticated ? true : false}
+        userAuth0={isAuthenticated?user:null}
       />
       
       <TitleHeading
