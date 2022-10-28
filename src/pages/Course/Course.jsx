@@ -12,7 +12,7 @@ const Course = () => {
     console.log('courseTitle de params:', courseTitle.courseTitle)
 
     useEffect(() => {
-      axios.get('http://localhost:8081/courses'
+      axios.get(`${process.env.REACT_APP_HEROKU_URL}/courses`
       ).then((res) => {
         const allCourses = res.data.data
         console.log('allcourses:', allCourses)  
