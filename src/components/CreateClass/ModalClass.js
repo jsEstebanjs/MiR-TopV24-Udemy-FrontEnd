@@ -26,6 +26,7 @@ function ModalClass({titleClass,id,description,urlVideo,isActive}){
         description={description} 
         urlVideo={urlVideo}
         isActive={isActive}
+        isDelete={true}
         
         /> : null}
 

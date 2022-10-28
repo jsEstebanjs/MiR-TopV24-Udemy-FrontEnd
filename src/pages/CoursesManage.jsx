@@ -25,7 +25,7 @@ function CoursesManage(){
     const dispatch = useDispatch()
 
     const state = useSelector((state) => state.CreateCourse)
-    console.log('state:', state)
+
     //para descripcion
     const [value, setValue] = useState('');
 
@@ -148,9 +148,9 @@ function CoursesManage(){
                 </div>
                 <InputTitleLanding  value={state.primaryTaught} action={obj.SetTeaching} limitNum={-1} place='e.g Landscape Photography.'>What is primarily taught in your course?</InputTitleLanding>
                 <p className="label-input-landing">Course image</p>
-                <PromotionalSource accept=".png, .jpg, .jpeg" id='source-image' video={false}/>
+                <PromotionalSource isCourse={true} accept=".png, .jpg, .jpeg" id='source-image' video={false}/>
                 <p className="label-input-landing">Promotional video</p>
-                <PromotionalSource accept="video/mp4,video/x-m4v,video/*" id='source-video' video={true}/>
+                <PromotionalSource isCourse={true} accept="video/mp4,video/x-m4v,video/*" id='source-video' video={true}/>
 
 
 
