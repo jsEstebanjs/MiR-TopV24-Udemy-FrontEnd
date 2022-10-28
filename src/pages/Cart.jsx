@@ -9,6 +9,7 @@ var handler = window.ePayco.checkout.configure({
     key: 'ba2787cf058fe4931c78108fb6f8e551',
     test: true
   });
+
   
   const handleClick = (amount) => {
 
@@ -86,15 +87,13 @@ const Cart = () => {
               <button onClick={()=> handleClick(amount)}>Checkout</button>
             </div>
           </div>
-          
+
         </div>
         <Footer />
       </>
-       
+
       );
 }
 
 export default Cart;
-
-
 
