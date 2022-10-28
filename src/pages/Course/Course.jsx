@@ -41,7 +41,7 @@ const Course = () => {
                 languageCourse={course.language}
                 objectivesList={course.learningObjectives}
                 courseDescription={course.description}
-                primaryTaught={course.primaryTaught}
+                principalObjective={course.primaryTaught}
             />
         <Footer />
         </>
