@@ -4,7 +4,7 @@ import { MdOutlineKeyboardArrowRight, MdSubtitles, MdLanguage } from 'react-icon
 import { BiCheck } from 'react-icons/bi'
 
 
-function CourseInfo({mainCategory, courseTitle, courseSubtitle, rating, primaryTaught, courseOwner, languageCourse, objectivesList, courseDescription}) {
+function CourseInfo({mainCategory, courseTitle, courseSubtitle, rating, principalObjective, courseOwner, languageCourse, objectivesList, courseDescription}) {
 
     //const listItems = objectivesList.map((item) => <li><BiCheck />{item.val}</li>);
 
@@ -48,7 +48,7 @@ function CourseInfo({mainCategory, courseTitle, courseSubtitle, rating, primaryT
                 <div className='objectives-container'>
                     <h2>What you'll learn</h2>
                     <div className='objectives and primaryTaught-container'>
-                        <h3>{primaryTaught}</h3>
+                        <h3>{principalObjective}</h3>
                         <ul>
                             {objectivesList.map((item) => <li><BiCheck />{item.val}</li>)}
                         </ul>
