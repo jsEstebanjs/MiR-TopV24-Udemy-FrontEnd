@@ -14,23 +14,31 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 function CreateClass() {
+  const handleVisible = (value) => {
+    setIsVisible(value);
+  };
+
+  document.addEventListener('click', function(event) {
+    if(event.target.className === "btn-edit-class-close" || event.target.className === "opacity-manage" || event.target.className ===  "btn-save-edit-class" ){
+      handleVisible(false)
+    }
+  });
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleVisible = () => {
-    setIsVisible(!isVisible);
-  };
+
 
   const dispatch = useDispatch();
   const classesFromCourse = useSelector((state) => state.CreateCourse.classes);
 
   return (
     <div className="main-container-create-class">
-      {isVisible ? <FormCreateCourse isDelete={false} isNew={true} /> : null}
+      {isVisible ? <div className="opacity-manage"></div> : null}
+      {isVisible ? <FormCreateCourse  isDelete={false} isNew={true} /> : null}
 
       <div className="container-btn-title-create-course">
         <h3 className="create-class-title">Your classes</h3>
         <button
-          onClick={handleVisible}
+          onClick={()=> handleVisible(true)}
           type="button"
           className="create-class-btn"
         >
