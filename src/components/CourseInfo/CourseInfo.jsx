@@ -4,17 +4,15 @@ import { MdOutlineKeyboardArrowRight, MdSubtitles, MdLanguage } from 'react-icon
 import { BiCheck } from 'react-icons/bi'
 
 
-function CourseInfo({mainCategory, secondCategory, courseTitle, courseSubtitle, rating, ratings, totalStudents, courseLink, userLink, languageCourse, languagesubsCourse, objectivesList, courseDescription}) {
+function CourseInfo({mainCategory, courseTitle, courseSubtitle, rating, primaryTaught, courseOwner, languageCourse, objectivesList, courseDescription}) {
 
-    const listItems = objectivesList.map((objective) =>
-        <li><BiCheck />{objective}</li>
-    );
+    //const listItems = objectivesList.map((item) => <li><BiCheck />{item.val}</li>);
 
     return (
         <div className='principal-container'>
             <div className="main-content">
                 <div className="course-categories">
-                    <p>{mainCategory} <MdOutlineKeyboardArrowRight /> {secondCategory} </p>
+                    <p>{mainCategory}</p>
                 </div>
                 <div className="course-title">
                     <h1>{courseTitle}</h1>
@@ -36,20 +34,25 @@ function CourseInfo({mainCategory, secondCategory, courseTitle, courseSubtitle, 
                         <Ratings.Widget widgetRatedColor="#e59819" />
                         <Ratings.Widget widgetRatedColor="#e59819" />
                     </Ratings>
-                    <a href={`/course/${courseLink}`}>{`(${ratings} ratings)`}</a>
-                    <p className="total-students">{totalStudents} students</p>
+                    {/*<p>{`(${ratings} ratings)`}</p>
+                    <p className="total-students">{totalStudents} students</p>*/}
                 </div>
                 <div className="created-by-container">
-                    <p>Created by <a href={`/user/${userLink}`}>{`${userLink}`}</a></p>
+                    <p>{`Created by ${courseOwner}`}</p>
                 </div>
                 <div className='basic-information-container'>
-                    <p><MdLanguage />{languageCourse} <MdSubtitles />{languagesubsCourse}</p>
+                    <p><MdLanguage />{languageCourse} </p>
                 </div>
             </div>
             <div className='second-content'>
                 <div className='objectives-container'>
                     <h2>What you'll learn</h2>
-                    <ul>{listItems}</ul>
+                    <div className='objectives and primaryTaught-container'>
+                        <h3>{primaryTaught}</h3>
+                        <ul>
+                            {objectivesList.map((item) => <li><BiCheck />{item.val}</li>)}
+                        </ul>
+                    </div>
                 </div>
                 <div className='curriculum-course-container'>
                     <h2>Course content</h2>

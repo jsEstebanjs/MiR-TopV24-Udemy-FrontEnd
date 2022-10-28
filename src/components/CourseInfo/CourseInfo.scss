@@ -34,7 +34,8 @@
     align-items: center;
     justify-content: space-between;
     padding-bottom: 10px;
-    width: 350px;
+    width: 120px;
+    color: #e59819
 }
 
 .created-by-container{
@@ -48,7 +49,7 @@
 .objectives-container {
     border: 1px solid #d1d7dc;
     width: 700px;
-    height: 130px;
+    height: 400px;
     padding-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -60,10 +61,13 @@
     align-items: center;
     ul {
         display: flex;
-        flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    //justify-content: space-between;
+    };
+    h2 {
+        width: 100%;
     }
 }
 
