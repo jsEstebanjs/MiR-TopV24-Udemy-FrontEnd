@@ -32,6 +32,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/response" element={<InstructorPerformanceReviews />} />
           <Route path="/join/signup/" element={<SignUp />} />
           <Route path="/join/login/" element={<LogIn/>} />
           <Route path="/home" element={<HomeLoggedTest/>} />
@@ -47,7 +48,6 @@ function App() {
               <Route path="overview" element={<InstructorPerformanceOverview />} />
               <Route path="students" element={<InstructorPerformanceStudents />} />
               <Route path="reviews" element={<InstructorPerformanceReviews />} />
-              <Route path="/response?ref_payco=" element={<InstructorPerformanceReviews />} />
 
             </Route>
           </Route>
