@@ -50,7 +50,7 @@ function Nav({ login, userAuth0 }) {
           },
         })
           .then((res) => {
-            console.log("res:", res);
+            console.log("Desde Nav Index -> res:", res);
             dispatch(SetUserInfo(res.data.data))
           })
           .catch((err) => {
@@ -147,6 +147,7 @@ function Nav({ login, userAuth0 }) {
 
       <button className={user.email ? "nav-btn-learning" : "displayNone"}>
         My learning
+        navigate("/home/my-courses/learning");
       </button>
       <button className={user.email? "nav-btn-favorites" : "displayNone"}>
         <AiOutlineHeart />
