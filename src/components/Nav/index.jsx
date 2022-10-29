@@ -97,6 +97,9 @@ function Nav({ login, userAuth0 }) {
   const handleNavToCourses = () => {
     navigate("/instructor/courses")
   }
+  const handleMyLearning = () => {
+    navigate("/home/my-courses/learning");
+  }
 
   return (
     <div className="main-nav">
@@ -145,9 +148,8 @@ function Nav({ login, userAuth0 }) {
         </button>
       )}
 
-      <button className={user.email ? "nav-btn-learning" : "displayNone"}>
+      <button onClick={handleMyLearning} className={user.email ? "nav-btn-learning" : "displayNone"}>
         My learning
-        navigate("/home/my-courses/learning");
       </button>
       <button className={user.email? "nav-btn-favorites" : "displayNone"}>
         <AiOutlineHeart />
