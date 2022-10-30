@@ -13,7 +13,8 @@ export const shopCourses = createSlice({
       state.itemShop.unshift(action.payload)
     },
     deleteItemShop:(state,action)=>{
-      // state.itemShop = state.itemShop.filter((item)=> item.id !== action.payload.id)
+      state.itemShop = state.itemShop.filter((item)=> item.id !== action.payload.id)
+      console.log('action.payload', action.payload)
       console.log("borrado item del shop")
     }
 
