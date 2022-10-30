@@ -90,7 +90,7 @@ function Nav({ login, userAuth0 }) {
   };
 
   const handleNavigateMyCourses = () => {
-    navigate("/my-courses/learning");
+    navigate("/home/my-courses/learning");
   }
 
   const handleLogOut = () => {
@@ -103,15 +103,12 @@ function Nav({ login, userAuth0 }) {
   const handleNavToCourses = () => {
     navigate("/home/my-courses/learning")
   }
-  const handleMyLearning = () => {
-    navigate("/home/my-courses/learning");
-  }
 
   return (
     <div className="main-nav">
-      {langModal ? (
-        <LanguageModal handleLanguageModal={handleLanguageModal} />
-      ) : null}
+      {langModal
+        ? <LanguageModal handleLanguageModal={handleLanguageModal} />
+        : null}
       {isTeacherModal ? (
         <IsTeacherModal handleIsTeacherModal={handleIsTeacherModal} />
       ) : null}
@@ -154,7 +151,7 @@ function Nav({ login, userAuth0 }) {
         </button>
       )}
       <button
-        onCLik={user.email ? handleNavigateMyCourses : null} className={user.email ? "nav-btn-learning" : "displayNone" }>
+        onClick={handleNavigateMyCourses} className={user.email ? "nav-btn-learning" : "displayNone" }>
         My learning
       </button>
       <button className={user.email? "nav-btn-favorites" : "displayNone"}>
