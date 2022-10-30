@@ -19,6 +19,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { SetUserInfo, ResetUserInfo } from "../../store/UserInfo.Slice";
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 function Nav({ login, userAuth0 }) {
   const { isAuthenticated, logout } = useAuth0();
   const [isVisible, setIsvisible] = useState(false);
@@ -30,6 +31,7 @@ function Nav({ login, userAuth0 }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.UserInfo);
   const itemShopCourses = useSelector((state)=> state.ShopCourses.itemShop)
+
 
 
   document.addEventListener("click", function (event) {
@@ -87,6 +89,10 @@ function Nav({ login, userAuth0 }) {
     setIsTeacherModal((isTeacherModal) => !isTeacherModal);
   };
 
+  const handleNavigateMyCourses = () => {
+    navigate("/my-courses/learning");
+  }
+
   const handleLogOut = () => {
     localStorage.clear();
     if(isAuthenticated) logout();
@@ -95,7 +101,7 @@ function Nav({ login, userAuth0 }) {
   };
 
   const handleNavToCourses = () => {
-    navigate("/instructor/courses")
+    navigate("/home/my-courses/learning")
   }
 
   return (
@@ -145,9 +151,9 @@ function Nav({ login, userAuth0 }) {
         </button>
       )}
 
-      <button className={user.email ? "nav-btn-learning" : "displayNone"}>
+      <button
+      onCLik={user.email ? handleNavigateMyCourses : null} className={user.email ? "nav-btn-learning" : "displayNone" }>
         My learning
-        navigate("/home/my-courses/learning");
       </button>
       <button className={user.email? "nav-btn-favorites" : "displayNone"}>
         <AiOutlineHeart />
