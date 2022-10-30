@@ -8,16 +8,22 @@ function IsTeacherModal({ handleIsTeacherModal }){
 
     const handleClickTeachOnUdemy = () => {
         dispatch(ChangeIsInstructor())
-        navigate('/instructor/courses')   
+        navigate('/instructor/courses')
+    }
+
+    const handleMaybeLater = () => {
+        handleIsTeacherModal()
     }
 
     return(
         <>
-        <div className="opacity-manage"></div> 
+        <div className="opacity-manage"></div>
         <div className="main-container-isteacher-modal">
-            <p className="title-class-edit">Do you want to become and instructor?</p>
-            <button onClick={handleClickTeachOnUdemy}  type="button">Yes</button>
-            <button   type="button">Maybe later</button>
+            <h5 className="title-class-edit">Do you want to become and instructor?</h5>
+            <div className='isteacher-modal-butn-container'>
+                <button className='isteacher-modal-btn-yes' onClick={handleClickTeachOnUdemy}  type="button">Yes</button>
+                <button className='isteacher-modal-btn-maybelater' onClick={handleMaybeLater} type="button">Maybe later</button>
+            </div>
         </div>
 
         </>
