@@ -47,6 +47,8 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        position: sticky;
+        top: 0px;
         .btn-save-settings{
             height: 36px;
             width: 80px;
