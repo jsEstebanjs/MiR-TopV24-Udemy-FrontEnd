@@ -101,7 +101,7 @@ function Nav({ login, userAuth0 }) {
   };
 
   const handleNavToCourses = () => {
-    navigate("/home/my-courses/learning")
+    navigate("/instructor/courses")
   }
 
   return (
