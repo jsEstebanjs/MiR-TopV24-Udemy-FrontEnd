@@ -9,7 +9,7 @@
     padding: 11px 16px;
     flex-wrap: wrap;
     gap: 10px;
-    position: absolute;
+    position: sticky;
     top: 0;
     right: 0;
     left: 0;
@@ -47,8 +47,6 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        position: sticky;
-        top: 0px;
         .btn-save-settings{
             height: 36px;
             width: 80px;
