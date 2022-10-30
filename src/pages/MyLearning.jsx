@@ -9,7 +9,7 @@ function MyLearning(){
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        axios.get('http://localhost:8081/courses/test', {
+        axios.get(process.env.REACT_APP_HEROKU_URL+'/courses/test' || 'http://localhost:8081/courses/test', {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             }
@@ -17,7 +17,7 @@ function MyLearning(){
             console.log('cursos por usuario modif:', courses.data.data)
             setCourses(courses.data.data)
         })
-        .catch(err => console.log(err))   
+        .catch(err => console.log(err))
         .finally(()=>{
             console.log('Este es el finally');
             setLoading(false);

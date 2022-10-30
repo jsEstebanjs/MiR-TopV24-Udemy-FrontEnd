@@ -185,7 +185,7 @@ function Nav({ login, userAuth0 }) {
       >
         <AiOutlineSearch />
       </button>
-      <button className="nav-btn-shopping" onClick={navigateToCart}>
+      <button className="nav-btn-shopping" onClick={user.email ? navigateToCart : navigateToLogin}>
         <span className="nav-btn-shopping-num">{itemShopCourses.length}</span>
         <AiOutlineShoppingCart />
       </button>
