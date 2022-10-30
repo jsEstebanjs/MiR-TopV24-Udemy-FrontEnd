@@ -103,6 +103,9 @@ function Nav({ login, userAuth0 }) {
   const handleNavToCourses = () => {
     navigate("/home/my-courses/learning")
   }
+  const handleMyLearning = () => {
+    navigate("/home/my-courses/learning");
+  }
 
   return (
     <div className="main-nav">
@@ -150,9 +153,8 @@ function Nav({ login, userAuth0 }) {
           Teach on Udemy
         </button>
       )}
-
       <button
-      onCLik={user.email ? handleNavigateMyCourses : null} className={user.email ? "nav-btn-learning" : "displayNone" }>
+        onCLik={user.email ? handleNavigateMyCourses : null} className={user.email ? "nav-btn-learning" : "displayNone" }>
         My learning
       </button>
       <button className={user.email? "nav-btn-favorites" : "displayNone"}>

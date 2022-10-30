@@ -3,6 +3,7 @@ import Footer from '../components/Footer/index';
 import MyLearningTabs from '../components/MyLearningTabs/index'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function MyLearning(){
     const [courses, setCourses] = useState([]);
@@ -23,14 +24,28 @@ function MyLearning(){
           })
     },[])
 
+    const handleClick = (course) => {
+        console.log('curso click', course);
+    }
+
     return(
         <div>
             <Nav />
             {/* <MyLearningTabs /> */}
             {loading?<p>No hay datos</p>:courses.map((course) => (
                 <>
-                    <h1>{course.title}</h1>
+                    <h1 onClick={()=>handleClick(course)}>{course.title}</h1>
                     <h2>{course.subtitle}</h2>
+                    <Link
+                        to={{
+                        pathname: "/test-courseView",
+                        search: `?id=${course._id}`,
+                        state: { fromHome: true },
+                        someState: 'some text'
+                        }}
+                    >
+                        Go to Course
+                    </Link>
                 </>
             ))}
             {typeof courses}
