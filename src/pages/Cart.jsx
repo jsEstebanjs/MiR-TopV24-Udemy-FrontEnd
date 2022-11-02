@@ -35,7 +35,7 @@ var handler = window.ePayco.checkout.configure({
       extra3: "extra3",
       // confirmation: "http://secure2.payco.co/prueba_curl.php",
       // response: "http://secure2.payco.co/prueba_curl.php", //Redirección
-      response: "http://localhost:3000/response", //Redirección además agrega: ?ref_payco=...
+      response: "https://mir-topv24-udemy-frontend.vercel.app/", //Redirección además agrega: ?ref_payco=...
       // Seguir el tutorial de epayco checkout -> medios de pagos de prueba
       // luego se hace una peticion GET a la ruta señalada en páginas personalizadas del tutorial.
       // VER STRIPE
