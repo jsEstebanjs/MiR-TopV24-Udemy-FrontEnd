@@ -1,4 +1,3 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
 @import './styles/abstracts/variables.scss';
 @import './styles/base/resets.scss';
 @import './components/Nav/index.scss';
@@ -52,6 +51,8 @@
 @import './components/CartShopItem/index.scss';
 @import './pages/CoursesByCategory/CoursesByCategory.scss';
 @import './components/CourseCard/CourseCard.scss';
+@import './components/FormRegisterAndLogin/index.scss';
+
 
 body {
   margin: 0;
