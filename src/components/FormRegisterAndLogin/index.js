@@ -11,9 +11,7 @@ function FormRegisterAndLogin({ Submit, btn, login }) {
     register,
     formState: { errors },
     handleSubmit,
-    getValues,
   } = useForm();
-  //   const onSubmit = (data) => console.log(data);
   return (
     <form
       data-disable-loader="true"
@@ -37,8 +35,7 @@ function FormRegisterAndLogin({ Submit, btn, login }) {
             {...register("name", {
               onChange:(e) => setDataForm({ ...dataForm, name: e.target.value }),
               required: true,
-              pattern:
-                /^(?:[A-ZÄËÏÖÜÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙ][a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+(?:\s+[a-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ]+)+)$/,
+              pattern:/^[A-Z]+$/i
             })}
           />
         </div>
@@ -110,7 +107,7 @@ function FormRegisterAndLogin({ Submit, btn, login }) {
         <p className="errors-form-register-and-login">Max length 16</p>
       )}
 
-      <button type="submit">{btn}</button>
+      <button className="btn-submit-form-register-and-login" type="submit">{btn}</button>
     </form>
   );
 }
