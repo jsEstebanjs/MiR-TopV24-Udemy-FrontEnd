@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import { BsGlobe } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
-import { MdOutlineNotificationsNone, MdClose } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import Options from "./options";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -18,7 +18,6 @@ import IsTeacherModal from "./IsTeacheModel";
 import { useSelector, useDispatch } from "react-redux";
 import { SetUserInfo, ResetUserInfo } from "../../store/UserInfo.Slice";
 import { useAuth0 } from "@auth0/auth0-react";
-
 
 function Nav({ login, userAuth0 }) {
   const { isAuthenticated, logout } = useAuth0();
@@ -30,37 +29,31 @@ function Nav({ login, userAuth0 }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.UserInfo);
-  const itemShopCourses = useSelector((state)=> state.ShopCourses.itemShop)
-
-
-
-  document.addEventListener("click", function (event) {
-    if (
-      event.target.className === "nav-close" ||
-      event.target.className === "nav-opacity"
-    ) {
-      setMainHamburguer(false);
-      document.body.style = null;
-    }
-  });
+  const itemShopCourses = useSelector((state) => state.ShopCourses.itemShop);
 
   useEffect(() => {
-    (localStorage.getItem("token")
-      ? axios.get(`${process.env.REACT_APP_HEROKU_URL}/users`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
+    localStorage.getItem("token")
+      ? axios
+          .get(`${process.env.REACT_APP_HEROKU_URL}/users`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          })
           .then((res) => {
             console.log("Desde Nav Index -> res:", res);
-            dispatch(SetUserInfo(res.data.data))
+            dispatch(SetUserInfo(res.data.data));
           })
           .catch((err) => {
             console.log(err);
           })
           .finally(() => {})
-      : console.log("no hay token"))
+      : console.log("no hay token");
   }, []);
+
+  const handleHamburguerMenu = (value) => {
+    setMainHamburguer(value);
+    document.body.style = null;
+  };
 
   const navigateToCart = () => {
     navigate("/cart");
@@ -91,24 +84,24 @@ function Nav({ login, userAuth0 }) {
 
   const handleNavigateMyCourses = () => {
     navigate("/home/my-courses/learning");
-  }
+  };
 
   const handleLogOut = () => {
     localStorage.clear();
-    if(isAuthenticated) logout();
+    if (isAuthenticated) logout();
     dispatch(ResetUserInfo());
     navigate("/");
   };
 
   const handleNavToCourses = () => {
-    navigate("/instructor/courses")
-  }
+    navigate("/instructor/courses");
+  };
 
   return (
     <div className="main-nav">
-      {langModal
-        ? <LanguageModal handleLanguageModal={handleLanguageModal} />
-        : null}
+      {langModal ? (
+        <LanguageModal handleLanguageModal={handleLanguageModal} />
+      ) : null}
       {isTeacherModal ? (
         <IsTeacherModal handleIsTeacherModal={handleIsTeacherModal} />
       ) : null}
@@ -120,8 +113,18 @@ function Nav({ login, userAuth0 }) {
           document.body.style.overflow = "hidden";
         }}
       >
-        <FaBars /> {mainHamburguer ? <Hamburguer name={user.fullName} funcLogOut={handleLogOut} user={user} /> : null}
+        <FaBars />
       </div>
+      {mainHamburguer ? (
+        <Hamburguer
+          handleIsTeacherModal={handleIsTeacherModal}
+          handleNavToCourses={handleNavToCourses}
+          name={user.fullName}
+          funcLogOut={handleLogOut}
+          user={user}
+          handler={handleHamburguerMenu}
+        />
+      ) : null}
       <div onClick={navigateToHome}>
         <img src={logo} alt="logo-udemy" className="nav-logo-udemy" />
       </div>
@@ -139,22 +142,28 @@ function Nav({ login, userAuth0 }) {
         <input type="search" placeholder="Search for anything" />
       </form>
       {user.isInstructor ? (
-        <button className="nav-btn-instructor" onClick={handleNavToCourses}>Instructor</button>
+        <button className="nav-btn-instructor" onClick={handleNavToCourses}>
+          Instructor
+        </button>
       ) : (
         <button
           className="nav-btn-tech"
           onClick={
-            user.email ? () => setIsTeacherModal(true) : navigateToInstructorSignup
+            user.email
+              ? () => setIsTeacherModal(true)
+              : navigateToInstructorSignup
           }
         >
           Teach on Udemy
         </button>
       )}
       <button
-        onClick={handleNavigateMyCourses} className={user.email ? "nav-btn-learning" : "displayNone" }>
+        onClick={handleNavigateMyCourses}
+        className={user.email ? "nav-btn-learning" : "displayNone"}
+      >
         My learning
       </button>
-      <button className={user.email? "nav-btn-favorites" : "displayNone"}>
+      <button className={user.email ? "nav-btn-favorites" : "displayNone"}>
         <AiOutlineHeart />
       </button>
       {searchMovil ? (
@@ -168,7 +177,7 @@ function Nav({ login, userAuth0 }) {
               type="button"
               onClick={() => {
                 document.body.style = null;
-                setSearchMovil(false);
+                handleHamburguerMenu(false);
               }}
             >
               <MdClose />
@@ -185,12 +194,12 @@ function Nav({ login, userAuth0 }) {
       >
         <AiOutlineSearch />
       </button>
-      <button className="nav-btn-shopping" onClick={user.email ? navigateToCart : navigateToLogin}>
+      <button
+        className="nav-btn-shopping"
+        onClick={user.email ? navigateToCart : navigateToLogin}
+      >
         <span className="nav-btn-shopping-num">{itemShopCourses.length}</span>
         <AiOutlineShoppingCart />
-      </button>
-      <button className={user.email? "nav-btn-notification" : "displayNone"}>
-        <MdOutlineNotificationsNone />
       </button>
 
       <div className={user.email ? "displayNone" : "container-btns"}>
@@ -206,13 +215,33 @@ function Nav({ login, userAuth0 }) {
       </div>
 
       <div className={login ? "nav-user" : "displayNone"}>
-        {!isAuthenticated && user.picture ?<img src={user.picture} alt='user' loading="lazy"/> :user.fullName.substring(0, 2).toUpperCase()}
+        {!isAuthenticated && user.picture ? (
+          <img src={user.picture} alt="user" loading="lazy" />
+        ) : (
+          user.fullName.substring(0, 2).toUpperCase()
+        )}
         <div className="nav-options-user">
           <span></span>
           <div className="nav-options">
             <Link to="/cart">
               <p>My Cart</p>
             </Link>
+            {user.isInstructor ? (
+              <p className="/cart" onClick={handleNavToCourses}>
+                Instructor
+              </p>
+            ) : (
+              <p
+                className="/cart"
+                onClick={
+                  user.email
+                    ? () => setIsTeacherModal(true)
+                    : navigateToInstructorSignup
+                }
+              >
+                Teach on Udemy
+              </p>
+            )}
             <Link to="./">
               <p>Account Settings</p>
             </Link>

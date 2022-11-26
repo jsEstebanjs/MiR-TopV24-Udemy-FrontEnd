@@ -121,6 +121,14 @@
     }
 
     }
+    .nav-btn-instructor{
+        &:hover{
+            color: $main-purple;
+        }
+         @media(max-width: 920px) {
+            display: none;
+        }
+    }
     .nav-btn-learning{
         min-width: 48px;
         &:hover{
