@@ -21,9 +21,9 @@ function FormRegisterAndLogin({ Submit, btn, login }) {
       {!login ? (
         <div className="container-form-register-and-login">
           <label
-            htmlFor="name"
+            htmlFor="fullName"
             className={`${"label-form-register-and-login"} ${
-              dataForm.name ? "label-form-register-and-login-Active" : ""
+              dataForm.fullName ? "label-form-register-and-login-Active" : ""
             }`}
           >
             Full name
@@ -31,19 +31,19 @@ function FormRegisterAndLogin({ Submit, btn, login }) {
           <input
             type="text"
             className="input-form-register-and-login"
-            id="name"
-            {...register("name", {
-              onChange:(e) => setDataForm({ ...dataForm, name: e.target.value }),
+            id="fullName"
+            {...register("fullName", {
+              onChange:(e) => setDataForm({ ...dataForm, fullName: e.target.value }),
               required: true,
-              pattern:/^[A-Z]+$/i
+              pattern:/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/
             })}
           />
         </div>
       ) : null}
-      {errors.name?.type === "required" && (
+      {errors.fullName?.type === "required" && (
         <p className="errors-form-register-and-login">Full name is required</p>
       )}
-      {errors.name?.type === "pattern" && (
+      {errors.fullName?.type === "pattern" && (
         <p className="errors-form-register-and-login">
           Full name is not validate
         </p>
@@ -94,9 +94,13 @@ function FormRegisterAndLogin({ Submit, btn, login }) {
             required: true,
             minLength: 8,
             maxLength: 16,
+            pattern:/^[a-zA-Z0-9]+$/
           })}
         />
       </div>
+      {errors.password?.type === "pattern" && (
+        <p className="errors-form-register-and-login">Only numbers and letters</p>
+      )}
       {errors.password?.type === "required" && (
         <p className="errors-form-register-and-login">Password is required</p>
       )}

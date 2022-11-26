@@ -23,7 +23,6 @@ import Cart from './pages/Cart';
 import TestCloudify from './pages/TestCloudify';
 import InstructorSignup from './pages/InstructorSignup';
 import CourseView from './pages/CourseView';
-import HomeLoggedTest from './pages/HomeLoggedTest';
 import CourseByCategory from './pages/CoursesByCategory/CoursesByCategory'
 
 function App() {
@@ -35,7 +34,6 @@ function App() {
           <Route path="/response" element={<InstructorPerformanceReviews />} />
           <Route path="/join/signup/" element={<SignUp />} />
           <Route path="/join/login/" element={<LogIn/>} />
-          <Route path="/home" element={<HomeLoggedTest/>} />
           <Route path="/instructor/signup" element={<InstructorSignup />} />
           <Route path="/home/my-courses/learning" element={<MyLearning />} />
           <Route path="/home/my-courses/wishlist" element={<MyLearningWishList />} />

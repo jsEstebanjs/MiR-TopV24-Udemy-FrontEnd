@@ -11,6 +11,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const handleSubmit = async (data) => {
+    console.log(data)
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_HEROKU_URL}/users` ,

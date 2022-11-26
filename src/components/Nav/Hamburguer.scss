@@ -51,6 +51,7 @@
             justify-content: center;
             align-items: center;
             width: 64px;
+            min-width: 64px;
             min-height: 64px;
             border-radius: 50%;
             color: $white;
@@ -61,12 +62,29 @@
             flex-direction: column;
             justify-content: center;
             gap: 5px;
+            width: 100%;
+            max-width: 150px;
             font-size: 16px;
             text-align: justify;
             font-weight: 700;
             p{
                 font-size: 14px;
                 opacity: 0.5;
+            }
+            .container-info-user-nav-name{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                .info-user-nav-name{
+                    color: $black;
+                    opacity: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;
+                }
+                p{
+                    opacity: 1;
+                }
             }
         }
 
@@ -76,7 +94,7 @@
         flex-direction: column;
         padding: 16px;
         border-bottom: 1px solid grey;
-        p{
+        a{
             font-size: 16px;
             color: $main-purple;
             padding: 8px 0;

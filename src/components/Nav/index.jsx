@@ -120,7 +120,7 @@ function Nav({ login, userAuth0 }) {
           document.body.style.overflow = "hidden";
         }}
       >
-        <FaBars /> {mainHamburguer ? <Hamburguer user={user.email} /> : null}
+        <FaBars /> {mainHamburguer ? <Hamburguer name={user.fullName} funcLogOut={handleLogOut} user={user} /> : null}
       </div>
       <div onClick={navigateToHome}>
         <img src={logo} alt="logo-udemy" className="nav-logo-udemy" />
@@ -206,35 +206,19 @@ function Nav({ login, userAuth0 }) {
       </div>
 
       <div className={login ? "nav-user" : "displayNone"}>
-        {!isAuthenticated?'EC':<img src={user.picture} alt='user' loading="lazy"/>}
+        {!isAuthenticated && user.picture ?<img src={user.picture} alt='user' loading="lazy"/> :user.fullName.substring(0, 2).toUpperCase()}
         <div className="nav-options-user">
           <span></span>
           <div className="nav-options">
-            <Link to="./">
+            <Link to="/cart">
               <p>My Cart</p>
-            </Link>
-            <Link to="./">
-              <p>Wishlist</p>
-            </Link>
-            <Link to="./">
-              <p>Messages</p>
             </Link>
             <Link to="./">
               <p>Account Settings</p>
             </Link>
-            <Link to="./">
-              <p>Payment Methods</p>
-            </Link>
-            <Link to="./">
-              <p>Purchase History</p>
-            </Link>
-            <div className="nav-user-languages">
-              <p>Language</p>
-            </div>
-            <button className="log-out" onClick={handleLogOut}>
+            <p className="btn-log-out" onClick={handleLogOut}>
               Log Out
-            </button>
-            {/*<Link to="./"><p>Log Out</p></Link>*/}
+            </p>
           </div>
         </div>
       </div>

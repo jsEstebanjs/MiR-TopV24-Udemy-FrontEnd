@@ -66,7 +66,6 @@
     .nav-btn-categories{
         font-size: 14px;
         font-weight: 400;
-        // opacity: 0.9;
         height: 100%;
         background-color: $white;
         color: $black;
@@ -265,10 +264,19 @@
                         color: $main-purple;
                     }
                 }
-                .nav-user-languages{
-                    display: flex;
-                    flex-direction: row;
+                .btn-log-out{
+                    width: 100%;
+                    font-size: 14px;
+                    color: $black;
+                    opacity: 0.8;
+                    font-weight: 400;
+                    padding: 8px 16px;
+                    &:hover{
+                        color: $main-purple;
+                    }
+
                 }
+
             }
         }
     }

@@ -20,9 +20,9 @@ const FormularioLogIn = () => {
   const navigate = useNavigate()
 
 
-  const handleSubmit = async (data) => {
+  const handleSubmit = async (dataForm) => {
     try {
-      const { data } = await axios.post(`${process.env.REACT_APP_HEROKU_URL}/users/login`,data);
+      const { data } = await axios.post(`${process.env.REACT_APP_HEROKU_URL}/users/login`,dataForm);
       localStorage.setItem("token", data.data.token)
       localStorage.setItem("email", data.data.email)
         navigate('/')

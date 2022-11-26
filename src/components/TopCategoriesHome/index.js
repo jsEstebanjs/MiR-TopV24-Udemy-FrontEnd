@@ -30,24 +30,6 @@ function TopCategoriesHome({title}){
                 img={itSoftware}
                 title='IT & Software'
                 />
-                <ImageTitle 
-                img={personalDevelopment}
-                title='Personal Development'
-                />
-                <ImageTitle 
-                img={business}
-                title='Business'
-                />
-                <ImageTitle 
-                img={photography}
-                title='Photography'
-                />
-                <ImageTitle 
-                img={music}
-                title='Music'
-                />                
-                
-                
             </div>
         </div>
     )
