@@ -1,38 +1,44 @@
 .main-container-isteacher-modal{
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     z-index: 2;
     background-color: $white;
     top: 20%;
+    left: calc(50% - 140px);
+    width: 280px;
+    border-radius: 10px;
+    padding: 8px;
+    .title-class-edit{
+        font-size: $Noto-Sans;
+        font-size: 14px;
+    }
 }
 
 .isteacher-modal-butn-container {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
     justify-content: space-evenly;
-}
     .isteacher-modal-btn-yes {
-        box-shadow:inset 0px -3px 7px 0px #5d6366;
-        background:linear-gradient(to bottom, #a435f0 5%, #a12cef 100%);
-        background-color:#a435f0;
-        border-radius:42px;
-        border:1px solid #0b0e07;
-        cursor:pointer;
-        color:#ffffff;
-        font-family:Arial;
-        font-size:15px;
-        padding:10px 50px;
-        margin-left: 30px;
-        margin-right: 30px;
-        text-decoration:none;
-        text-shadow:0px 1px 0px #263666;
+        font-size: $Noto-Sans;
+        color: $white;
+        background-color: $main-purple;
+        border-radius: 10px;
+        padding: 10px;
+        width: 100px;
+        margin: 0 auto;
+        border: 1px solid;
+        cursor: pointer;
     }
-    .myButton:hover {
-        background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
-        background-color:#0688fa;
+    .isteacher-modal-btn-maybelater{
+        font-size: $Noto-Sans;
+        border-radius: 10px;
+        padding: 10px;
+        width: 100px;
+        margin: 0 auto;
+        border: 1px solid $black;
+        cursor: pointer;
     }
-    .myButton:active {
-        position:relative;
-        top:1px;
-    }
+}

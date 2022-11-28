@@ -1,6 +1,9 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import { useState } from "react";
+
 function Hamburguer({
   user,
   name,
@@ -9,6 +12,8 @@ function Hamburguer({
   handleNavToCourses,
   handleIsTeacherModal,
 }) {
+  const [visibleCategories, setVisibleCategories] = useState(false);
+
   return (
     <div>
       <div
@@ -18,6 +23,21 @@ function Hamburguer({
         className="nav-opacity"
       ></div>
       <div className="nav-hamburguer">
+        {visibleCategories ? (
+          <div className="main-container-categories-hamburguer">
+            <span
+              className="arrow-left-categories-return"
+              onClick={() => setVisibleCategories(false)}
+            >
+              <MdKeyboardArrowLeft />
+              <p>Menu</p>
+            </span>
+            <Link>Development</Link>
+            <Link>IT & Software</Link>
+            <Link>Design</Link>
+            <Link>Marketing</Link>
+          </div>
+        ) : null}
         {user.email ? (
           <div className="container-nav-user-hamburguer">
             <div className="nav-user-hamburguer">
@@ -54,16 +74,21 @@ function Hamburguer({
               >
                 <p>My Cart</p>
               </Link>
+              <div
+                onClick={() => setVisibleCategories(true)}
+                className="container-categories-arrow"
+              >
+                <p>Categories</p>
+                <MdKeyboardArrowRight />
+              </div>
               {user.isInstructor ? (
-                <p  onClick={handleNavToCourses}>
-                  Instructor
-                </p>
+                <p onClick={handleNavToCourses}>Instructor</p>
               ) : (
                 <p
-                  onClick={()=> {
+                  onClick={() => {
                     handler(false);
-                    handleIsTeacherModal()}
-                }
+                    handleIsTeacherModal();
+                  }}
                 >
                   Teach on Udemy
                 </p>

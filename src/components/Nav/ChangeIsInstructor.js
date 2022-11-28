@@ -1,5 +1,4 @@
 import axios from "axios";
-// import { CreateCourse , SetPetition } from '../../store/InstructorCourses.Slice';
 import { useSelector } from "react-redux";
 
 
