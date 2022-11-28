@@ -1,4 +1,4 @@
-import React from "react"; /* index de nav */
+import React, { useEffect } from "react"; /* index de nav */
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./../../images/logoNav.svg";
 import {
@@ -10,16 +10,15 @@ import { BsGlobe } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import Options from "./options";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import Hamburguer from "./Hamburguer";
 import LanguageModal from "../LanguageModal";
 import IsTeacherModal from "./IsTeacheModel";
 import { useSelector, useDispatch } from "react-redux";
-import { SetUserInfo, ResetUserInfo } from "../../store/UserInfo.Slice";
+import { ResetUserInfo } from "../../store/UserInfo.Slice";
 import { useAuth0 } from "@auth0/auth0-react";
 
-function Nav({ login, userAuth0 }) {
+function Nav({ userAuth0 }) {
   const { isAuthenticated, logout } = useAuth0();
   const [isVisible, setIsvisible] = useState(false);
   const [searchMovil, setSearchMovil] = useState(false);
@@ -27,28 +26,9 @@ function Nav({ login, userAuth0 }) {
   const [langModal, setLangModal] = useState(false);
   const [isTeacherModal, setIsTeacherModal] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.UserInfo);
+  const dispatch = useDispatch(null);
   const itemShopCourses = useSelector((state) => state.ShopCourses.itemShop);
-
-  useEffect(() => {
-    localStorage.getItem("token")
-      ? axios
-          .get(`${process.env.REACT_APP_HEROKU_URL}/users`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          })
-          .then((res) => {
-            console.log("Desde Nav Index -> res:", res);
-            dispatch(SetUserInfo(res.data.data));
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-          .finally(() => {})
-      : console.log("no hay token");
-  }, []);
+  const user = useSelector((state) => state.UserInfo);
 
   const handleHamburguerMenu = (value) => {
     setMainHamburguer(value);
@@ -214,7 +194,7 @@ function Nav({ login, userAuth0 }) {
         </button>
       </div>
 
-      <div className={login ? "nav-user" : "displayNone"}>
+      <div className={user.fullName ? "nav-user" : "displayNone"}>
         {!isAuthenticated && user.picture ? (
           <img src={user.picture} alt="user" loading="lazy" />
         ) : (

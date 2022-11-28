@@ -25,7 +25,6 @@ function Home(){
   return(
     <div className="home-container">
       <Nav
-        login={localStorage.getItem("token")||isAuthenticated ? true : false}
         userAuth0={isAuthenticated?user:null}
       />
       

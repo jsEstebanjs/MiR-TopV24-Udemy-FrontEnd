@@ -1,34 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit';
-
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    email:"",
-    studentCourses:"",
-    teacherCourses:"",
-    isInstructor:"",
-    fullName:"",
-    avatar:""
-}
+  email: "",
+  studentCourses: [],
+  teacherCourses: [],
+  isInstructor: false,
+  fullName: "",
+  avatar: "",
+};
 
 export const userInfo = createSlice({
-  name: 'UserInfo',
+  name: "UserInfo",
   initialState,
   reducers: {
-    SetUserInfo:(state,action)=>{
+    SetUserInfo: (state, action) => {
       return {
         ...state,
-        ...action.payload
-      }
+        ...action.payload,
+      };
     },
-    ResetUserInfo:(state,action)=>{
+    changeIsInstructor: (state, action) => {
+      state.isInstructor = true;
+    },
+    ResetUserInfo: (state, action) => {
       return {
         ...state,
-        ...initialState
-      }
-    }
-  }
-})
+        ...initialState,
+      };
+    },
+  },
+});
 
-export const { SetUserInfo, ResetUserInfo } = userInfo.actions
+export const { SetUserInfo, ResetUserInfo, changeIsInstructor } =
+  userInfo.actions;
 
-export default userInfo.reducer
+export default userInfo.reducer;

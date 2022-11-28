@@ -1,13 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import ChangeIsInstructor from "./ChangeIsInstructor";
 import { useNavigate } from "react-router-dom";
+import { changeIsInstructor } from "../../store/UserInfo.Slice";
 
 function IsTeacherModal({ handleIsTeacherModal }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleClickTeachOnUdemy = () => {
-    dispatch(ChangeIsInstructor());
+    ChangeIsInstructor();
+    dispatch(changeIsInstructor());
     navigate("/instructor/courses");
   };
 
