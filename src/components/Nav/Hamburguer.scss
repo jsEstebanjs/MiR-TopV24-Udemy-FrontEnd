@@ -24,18 +24,60 @@
     display: flex;
     flex-direction: column;
     top: 0;
+    .main-container-categories-hamburguer{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        z-index: 999;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: $white;
+        .arrow-left-categories-return{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 20px;
+            width: 100%;
+            padding:  8px 10px;
+            opacity: 0.7;
+            p{
+                font-size: 16px;
+                margin-left: 10px;
+            }
+        }
+        a{
+            font-size: 16px;
+             font-weight: 400;
+            color: $black;
+            padding:  8px 16px;
+            opacity: 0.7;
+            }
+    }
     .container-nav-user-hamburguer{
         border-bottom: 1px solid grey;
     }
     .nav-hamburguer-learnig{
         display: flex;
         flex-direction: column;
+        gap:10px;
         p{
         font-size: 16px;
          font-weight: 400;
         color: $black;
         padding:  8px 16px;
         opacity: 0.7;
+        }
+        .container-categories-arrow{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            svg{
+                font-size: 20px;
+                opacity: 0.7;
+            }
         }
     }
     .nav-user-hamburguer{
@@ -51,6 +93,7 @@
             justify-content: center;
             align-items: center;
             width: 64px;
+            min-width: 64px;
             min-height: 64px;
             border-radius: 50%;
             color: $white;
@@ -61,12 +104,29 @@
             flex-direction: column;
             justify-content: center;
             gap: 5px;
+            width: 100%;
+            max-width: 150px;
             font-size: 16px;
             text-align: justify;
             font-weight: 700;
             p{
                 font-size: 14px;
                 opacity: 0.5;
+            }
+            .container-info-user-nav-name{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                .info-user-nav-name{
+                    color: $black;
+                    opacity: 1;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;
+                }
+                p{
+                    opacity: 1;
+                }
             }
         }
 
@@ -76,7 +136,7 @@
         flex-direction: column;
         padding: 16px;
         border-bottom: 1px solid grey;
-        p{
+        a{
             font-size: 16px;
             color: $main-purple;
             padding: 8px 0;

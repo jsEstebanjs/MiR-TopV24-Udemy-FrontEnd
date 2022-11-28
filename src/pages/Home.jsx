@@ -14,17 +14,17 @@ import { useEffect } from 'react';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useSelector } from 'react-redux';
 
 
 function Home(){
   const { user, isAuthenticated } = useAuth0();
   const navigate = useNavigate()
+  const userInfo = useSelector((state)=> state.UserInfo)
 
-  //par actualizar variables de entorno borrar despues
   return(
     <div className="home-container">
       <Nav
-        login={localStorage.getItem("token")||isAuthenticated ? true : false}
         userAuth0={isAuthenticated?user:null}
       />
       
@@ -43,13 +43,18 @@ function Home(){
       <TopCategoriesHome
       title='Top Categories'
       />
+      {!userInfo.isInstructor
+      ?
       <BecomeInstructorHome 
-        img={BecomeInstructor}
-        title='Become an instructor'
-        info='Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.'
-        btn='Start teaching today'
-        imgMobile={BecomeInstructorMobile}
-      />
+      img={BecomeInstructor}
+      title='Become an instructor'
+      info='Instructors from around the world teach millions of students on Udemy. We provide the tools and skills to teach what you love.'
+      btn='Start teaching today'
+      imgMobile={BecomeInstructorMobile}
+    />
+    :
+    null
+    }
       <Footer />
     </div>
   )

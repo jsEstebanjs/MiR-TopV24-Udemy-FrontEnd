@@ -24,7 +24,7 @@
     .nav-options-visible{
         background-color: $white;
         min-width: 260px;
-        height: 100vh;
+        height: max-content;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         padding: 18px 0;
         border: 1px solid #D5D8DC  ;
@@ -49,31 +49,8 @@
     .main-li{
         font-size: 14px;
         padding: 8px 0;
-        .ul-two{
-            display: none;
-            background-color: $white;
-            height: 100vh;
-            min-width: 260px;
-            position: absolute;
-            flex-direction: column;
-            padding: 18px 16px;
-            left:260px;
-            top: 6px;
-            border: 1px solid #D5D8DC  ;
-            
-            li{  
-                font-size: 14px;
-                padding: 8px 0;
-                color: $black;
-                &:hover{
-                    color: $main-purple;
-                }
-            }
-        }
     }
 }
-.main-container:hover .ul-two{ 
-    display: flex;
-}
+
 
 
