@@ -51,10 +51,12 @@
 @import './pages/CoursesByCategory/CoursesByCategory.scss';
 @import './components/CourseCard/CourseCard.scss';
 @import './components/FormRegisterAndLogin/index.scss';
+@import './components/LoaderBigUdemy/index.scss';
 
 
 body {
   margin: 0;
+  height: 100vh;
   font-family: $Noto-Sans;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

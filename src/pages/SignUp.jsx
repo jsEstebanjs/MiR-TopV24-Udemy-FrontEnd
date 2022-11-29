@@ -7,26 +7,31 @@ import { useNavigate } from "react-router-dom";
 import FormRegisterAndLogin from "../components/FormRegisterAndLogin";
 import { useDispatch } from "react-redux";
 import { SetUserInfo } from "../store/UserInfo.Slice";
+import { Ring } from "@uiball/loaders";
+import { useState } from "react";
 
 function SignUp() {
   const dispatch = useDispatch();
+  const [loader, setLoader] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (data) => {
+    setLoader(true);
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_HEROKU_URL}/users`,
         data
       );
       if (res.data.data.token) {
-        dispatch(SetUserInfo(res.data.data))
+        dispatch(SetUserInfo(res.data.data));
         localStorage.setItem("token", res.data.data.token);
         navigate("/");
       }
     } catch (err) {
       console.log(err);
     }
+    setLoader(false);
   };
 
   return (
@@ -35,6 +40,11 @@ function SignUp() {
       <div className="signup">
         <div className="signup-container">
           <h2 className="signup__title">Sign up and start learning</h2>
+          {loader ? (
+            <div className="container-loader-signup-form">
+              <Ring size={35} color="#231F20" />
+            </div>
+          ) : null}
           <FormRegisterAndLogin
             login={false}
             btn="Sign up"

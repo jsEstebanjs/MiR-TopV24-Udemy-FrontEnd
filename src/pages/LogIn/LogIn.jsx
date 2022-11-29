@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import React from "react";
 import Nav from "../../components/Nav/index";
 import Footer from "../../components/Footer";
@@ -12,9 +12,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import FormRegisterAndLogin from "../../components/FormRegisterAndLogin";
 import { useDispatch } from "react-redux";
 import { SetUserInfo } from "../../store/UserInfo.Slice";
+import { Ring } from "@uiball/loaders";
+
 
 const FormularioLogIn = () => {
   const dispatch = useDispatch();
+  const [loader,setLoader] = useState(false)
   const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
   useEffect(() => {
     document.title = "Log In | Udemy";
@@ -23,6 +26,7 @@ const FormularioLogIn = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (dataForm) => {
+    setLoader(true)
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_HEROKU_URL}/users/login`,
@@ -36,6 +40,7 @@ const FormularioLogIn = () => {
     } catch (error) {
       console.log(error);
     }
+    setLoader(false)
   };
 
   return (
@@ -65,6 +70,11 @@ const FormularioLogIn = () => {
             <img alt="" id="glogo" src={image3}></img>
             <strong>Continue with Apple</strong>
           </button>
+          {loader ? (
+            <div className="container-loader-login-form">
+              <Ring size={35} color="#231F20" />
+            </div>
+          ) : null}
           <FormRegisterAndLogin
             login={true}
             btn="Log In"
