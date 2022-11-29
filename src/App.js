@@ -1,15 +1,8 @@
-import {
-  React,
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { React, BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn/LogIn.jsx";
-import ForgotPassword from "./pages/ForgotPassword";
 import MyLearning from "./pages/MyLearning";
 import MyLearningWishList from "./pages/MyLearningWishList";
 import InstructorCourses from "./pages/InstructorCourses";
@@ -28,68 +21,77 @@ import TestCloudify from "./pages/TestCloudify";
 import InstructorSignup from "./pages/InstructorSignup";
 import CourseView from "./pages/CourseView";
 import CourseByCategory from "./pages/CoursesByCategory/CoursesByCategory";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { SetUserInfo } from "./store/UserInfo.Slice";
 import { useDispatch } from "react-redux";
-
+import ProtectRoute from "./components/ProtectRoute";
+import LoaderBigUdemy from "./components/LoaderBigUdemy";
 
 function App() {
   const dispatch = useDispatch();
+  const [loader, setLoader] = useState(true);
+
   useEffect(() => {
-      axios
-        .get(`${process.env.REACT_APP_HEROKU_URL}/users`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        .then((res) => {
-          dispatch(SetUserInfo(res.data.data));
-        })
-        .catch((err) => {
-          localStorage.clear();
-        })
-        .finally(() => {})
+    axios
+      .get(`${process.env.REACT_APP_HEROKU_URL}/users`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        dispatch(SetUserInfo(res.data.data));
+      })
+      .catch((err) => {
+        localStorage.clear();
+      })
+      .finally(() => {
+        setLoader(false);
+      });
   }, []);
   return (
     <div className="App">
+      <LoaderBigUdemy loader={loader} />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/response" element={<InstructorPerformanceReviews />} />
+          <Route element={<ProtectRoute loader={loader} />}>
+            <Route
+              path="/response"
+              element={<InstructorPerformanceReviews />}
+            />
+            <Route path="/home/my-courses/learning" element={<MyLearning />} />
+            <Route
+              path="/home/my-courses/wishlist"
+              element={<MyLearningWishList />}
+            />
+            <Route path="instructor" element={<Instructor />}>
+              <Route index element={<InstructorIndex />} />
+              <Route path="courses" element={<InstructorCourses />} />
+              <Route path="performance" element={<InstructorPerformance />}>
+                <Route index element={<PerformanceIndex />} />
+                <Route
+                  path="overview"
+                  element={<InstructorPerformanceOverview />}
+                />
+                <Route
+                  path="students"
+                  element={<InstructorPerformanceStudents />}
+                />
+                <Route
+                  path="reviews"
+                  element={<InstructorPerformanceReviews />}
+                />
+              </Route>
+            </Route>
+            <Route
+              path="/instructor/courses/:course/manage"
+              element={<CoursesManage />}
+            />
+          </Route>
           <Route path="/join/signup/" element={<SignUp />} />
           <Route path="/join/login/" element={<LogIn />} />
           <Route path="/instructor/signup" element={<InstructorSignup />} />
-          <Route path="/home/my-courses/learning" element={<MyLearning />} />
-          <Route
-            path="/home/my-courses/wishlist"
-            element={<MyLearningWishList />}
-          />
-          <Route path="/join/forgot-password/" element={<ForgotPassword />} />
-          <Route path="instructor" element={<Instructor />}>
-            <Route index element={<InstructorIndex />} />
-            <Route path="courses" element={<InstructorCourses />} />
-            <Route path="performance" element={<InstructorPerformance />}>
-              <Route index element={<PerformanceIndex />} />
-              <Route
-                path="overview"
-                element={<InstructorPerformanceOverview />}
-              />
-              <Route
-                path="students"
-                element={<InstructorPerformanceStudents />}
-              />
-              <Route
-                path="reviews"
-                element={<InstructorPerformanceReviews />}
-              />
-            </Route>
-          </Route>
-
-          <Route
-            path="instructor/courses/:course/manage"
-            element={<CoursesManage />}
-          />
 
           <Route
             path="/home/courses-by-category/:Category"

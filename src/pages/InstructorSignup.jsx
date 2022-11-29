@@ -7,13 +7,17 @@ import { useNavigate } from "react-router-dom";
 import FormRegisterAndLogin from "../components/FormRegisterAndLogin";
 import { useDispatch } from "react-redux";
 import { SetUserInfo } from "../store/UserInfo.Slice";
+import { useState } from "react";
+import { Ring } from "@uiball/loaders";
 
 function InstructorSignup() {
   const dispatch = useDispatch();
+  const [loader,setLoader] = useState(false)
 
   const navigate = useNavigate();
 
   const handleSubmit = async (data) => {
+    setLoader(true)
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_HEROKU_URL}/instructors`,
@@ -29,6 +33,7 @@ function InstructorSignup() {
     } catch (err) {
       console.log(`error on signup: ${err}`);
     }
+    setLoader(false)
   };
   return (
     <>
@@ -36,6 +41,11 @@ function InstructorSignup() {
       <div className="signup">
         <div className="signup-container">
           <h2 className="signup__title">Sign up and start teaching</h2>
+          {loader ? (
+            <div className="container-loader-signup-form">
+              <Ring size={35} color="#231F20" />
+            </div>
+          ) : null}
           <FormRegisterAndLogin
             btn="Teacher Sign up"
             login={false}
