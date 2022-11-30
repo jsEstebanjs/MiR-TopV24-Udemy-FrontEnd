@@ -9,13 +9,12 @@ import { useDispatch , useSelector} from 'react-redux';
 import { SetTitle, SetSubTitle, SetDescription,SetLevel,SetCategory,SetTeaching,ResetState,
     SetLearn,SetRequirements,SetThisCourse,Add,Delete,Reorder,SendLearners,
     SetPrice , SetInitialState} from '../store/CreateCourse.Slice';
-import LoaderCreateCourse from "../components/LoaderCreateCourse";
 import CoursesManageNav from '../components/CoursesManageNav';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import LearnInYourCourse from "../components/LearnInYourCourse";
 import CreateClass from "../components/CreateClass";
-import CreateCourseAndReturnId from "../components/CreateCourseAndReturnID";
+import CreateCourseAndReturnId from "../components/CreateCourseTitle";
 import UpdateCourse from "../components/UpdateCourse";
 
 function CoursesManage(){
@@ -90,7 +89,8 @@ function CoursesManage(){
         <div className="container-manage-goals">
               {loading
               ?
-              <LoaderCreateCourse/>
+              true
+              // <LoaderCreateCourse/>
               :
               <>
                 <InputTitleLanding value={state.title} action={obj.SetTitle} id='title' limitNum={60} place='Insert your course title.'>Course title</InputTitleLanding>

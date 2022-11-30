@@ -40,13 +40,12 @@ function HamburguerCoursesPerformance({ name }) {
           <div className="container-options-profile">
             <Link to="/">Home</Link>
             <Link to="/instructor/courses">Courses</Link>
-            <Link
-              to="/instructor/performance/overview"
+            <p
               className="options-profile-performance"
               onClick={() => setIsVisible(true)}
             >
               Performance <MdKeyboardArrowRight />
-            </Link>
+            </p>
             <Link to="/">Account settings</Link>
             <p onClick={handleLogOut}>Log out</p>
           </div>

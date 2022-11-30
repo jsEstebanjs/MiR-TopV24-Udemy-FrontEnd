@@ -32,7 +32,7 @@ function Nav({ userAuth0 }) {
 
   const handleHamburguerMenu = (value) => {
     setMainHamburguer(value);
-    document.body.style = null;
+    document.body.styles.overflow = "hidden"
   };
 
   const navigateToCart = () => {
