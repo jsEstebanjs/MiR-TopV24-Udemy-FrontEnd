@@ -1,62 +1,54 @@
-import { Link } from "react-router-dom";
 import Search from "../components/SearchInstructorCourses";
 import EditCourseInstructor from "../components/EditCourseInstructor";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import LoaderCreateCourse from "../components/LoaderCreateCourse";
-import axios from "axios";
-import { LoadingCourses } from "../store/InstructorCourses.Slice";
 import { useNavigate } from "react-router-dom";
-import { ResetState } from "../store/CreateCourse.Slice";
+import { Ring } from "@uiball/loaders";
+import CreateCourseTitle from "../components/CreateCourseTitle";
 
 function InstructorCourses() {
-  const { courses, petition } = useSelector((state) => state.InstructorCourses);
-  const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-
+  const [modalCreateCourse, setModalCreateCourse] = useState(false);
+  const user = useSelector((state) => state.UserInfo);
+  
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_HEROKU_URL}/users`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        dispatch(LoadingCourses(res.data.data.teacherCourses));
-      })
-      .catch((err) => {
-        localStorage.clear();
-        console.log(err);
-        navigate("/join/login");
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+    if (user.fullName) {
+      setLoading(false);
+    }
+  }, [user.fullName]);
 
-  console.log("courses ", courses[0]);
-
+  const hanldeModalCreateCourse = () => {
+    setModalCreateCourse(!modalCreateCourse);
+    if (!modalCreateCourse) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = null;
+    }
+  };
   return (
     <>
       <div className="main-container-instructor-courses-page">
+        <CreateCourseTitle
+          handle={hanldeModalCreateCourse}
+          visible={modalCreateCourse}
+        />
         <h2 className="title-instructor-courses-page">Courses</h2>
         <div className="container-search-new-course">
           <Search />
-          <Link
-            onClick={() => dispatch(ResetState())}
+          <button
+            onClick={hanldeModalCreateCourse}
             className="link-btn-instructor-courses-page"
-            to="/instructor/courses/newCourse/manage"
           >
             New course
-          </Link>
+          </button>
         </div>
         <div className="container-edit-course-instructor">
-          {loading || petition ? (
-            <LoaderCreateCourse />
+          {loading ? (
+            <div className="container-loader-instructor-courses">
+              <Ring size={60} color="#231F20" />
+            </div>
           ) : (
-            courses.map((item) => {
+            user.teacherCourses.map((item) => {
               return (
                 <EditCourseInstructor
                   key={item._id}

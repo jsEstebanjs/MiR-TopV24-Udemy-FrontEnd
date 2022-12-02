@@ -31,7 +31,7 @@ function MyLearning(){
     return(
         <div>
             <Nav />
-            {/* <MyLearningTabs /> */}
+            <MyLearningTabs />
             {loading?<p>No hay datos</p>:courses.map((course) => (
                 <>
                     <h1 onClick={()=>handleClick(course)}>{course.title}</h1>
@@ -48,7 +48,6 @@ function MyLearning(){
                     </Link>
                 </>
             ))}
-            {typeof courses}
             <Footer/>
         </div>
 

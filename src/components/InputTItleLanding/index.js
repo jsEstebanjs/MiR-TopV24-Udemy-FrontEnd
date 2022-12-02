@@ -1,24 +1,42 @@
-import { useState } from "react"
-import { useDispatch } from 'react-redux'
+import { useState, useEffect } from "react";
 
+function InputTitleLanding({
+  keyObj,
+  place,
+  id,
+  limitNum,
+  children,
+  action,
+  value,
+}) {
+  const [length, setLegth] = useState(limitNum);
 
-
-function InputTitleLanding({place,id,limitNum,children,action,value}){
-    const dispatch = useDispatch();
-
-    const [length,setLegth] = useState(limitNum);
-    return(
-        <>
-        <label htmlFor={id} className='label-input-landing'>{children}</label>
-        <div className="main-container-input-learn container-input-landing">
-        <input  value={value} id={id} className="input-input-learn" maxLength={limitNum} type='text' placeholder={place} onChange={(e)=> {
-            setLegth(limitNum - e.target.value.length)
-            dispatch(action(e.target.value))
-            }}/>
-        { limitNum > 0 ?<span className="num-length-input-learn">{length}</span>:null}
-
-        </div>
-        </>
-    )
+  useEffect(() => {
+    setLegth(limitNum - value?.length);
+  }, [value]);
+  
+  return (
+    <>
+      <label htmlFor={id} className="label-input-landing">
+        {children}
+      </label>
+      <div className="main-container-input-learn container-input-landing">
+        <input
+          value={value || ""}
+          id={id}
+          className="input-input-learn"
+          maxLength={limitNum}
+          type="text"
+          placeholder={place}
+          onChange={(e) => {
+            action(keyObj, e.target.value);
+          }}
+        />
+        {limitNum > 0 ? (
+          <span className="num-length-input-learn">{length}</span>
+        ) : null}
+      </div>
+    </>
+  );
 }
 export default InputTitleLanding;

@@ -2,7 +2,6 @@ import ModalClass from "./ModalClass"; /* create class */
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import { useDispatch, useSelector } from "react-redux";
 import { FaBars } from "react-icons/fa";
-import { Reorder } from "../../store/CreateCourse.Slice";
 import FormCreateCourse from "./FormCreateCourse";
 import { useState } from "react";
 
@@ -27,8 +26,6 @@ function CreateClass() {
 
 
 
-  const dispatch = useDispatch();
-  const classesFromCourse = useSelector((state) => state.CreateCourse.classes);
 
   return (
     <div className="main-container-create-class">
@@ -58,13 +55,13 @@ function CreateClass() {
           ) {
             return;
           }
-          const items = reorder(
-            classesFromCourse,
-            source.index,
-            destination.index
-          );
+          // const items = reorder(
+          //   classesFromCourse,
+          //   source.index,
+          //   destination.index
+          // );
 
-          dispatch(Reorder({ items, seccion: "class" }));
+          // dispatch(Reorder({ items, seccion: "class" }));
         }}
       >
         <Droppable droppableId="class">
@@ -74,7 +71,7 @@ function CreateClass() {
               className="container-class-edit"
               ref={droppableProvided.innerRef}
             >
-              {classesFromCourse.map((item, index) => (
+              {/* {classesFromCourse.map((item, index) => (
                 <Draggable key={item._id} draggableId={item._id} index={index}>
                   {(draggableProvided) => (
                     <div
@@ -98,7 +95,7 @@ function CreateClass() {
                     </div>
                   )}
                 </Draggable>
-              ))}
+              ))} */}
 
               {droppableProvided.placeholder}
             </div>

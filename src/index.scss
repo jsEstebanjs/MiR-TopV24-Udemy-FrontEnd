@@ -29,11 +29,9 @@
 
 @import './components/CoursesManageNav/index.scss';
 @import './styles/pages/CoursesManage.scss';
-@import './styles/pages/CoursesManageGoals.scss';
 @import './components/TitleManageCourse/index.scss';
 @import './components/LearnInYourCourse/index.scss';
 @import './components/LearnInYourCourse/InputLearn.scss';
-@import './styles/pages/CoursesManagePricing.scss';
 @import './components/ComponentPricing/index.scss';
 @import './components/InputTItleLanding/index.scss';
 @import './styles/pages/quill.scss';
@@ -42,7 +40,6 @@
 @import './components/CourseInfo/CourseInfo.scss';
 @import './pages/Cart.scss';
 @import './pages/SignUp.styles.scss';
-@import './components/LoaderCreateCourse/index.scss';
 @import './components/CreateClass/index.scss';
 @import './components/CreateClass/ModalClass.scss';
 @import './components/CreateClass/FormCreateCourse.scss';
@@ -52,6 +49,7 @@
 @import './components/CourseCard/CourseCard.scss';
 @import './components/FormRegisterAndLogin/index.scss';
 @import './components/LoaderBigUdemy/index.scss';
+@import './components/CreateCourseTitle/index.scss';
 
 
 body {
