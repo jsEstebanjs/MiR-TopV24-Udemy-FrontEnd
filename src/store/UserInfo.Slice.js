@@ -28,10 +28,13 @@ export const userInfo = createSlice({
         ...initialState,
       };
     },
+    NewCourse:(state,action)=>{
+      state.teacherCourses.unshift(action.payload);
+    }
   },
 });
 
-export const { SetUserInfo, ResetUserInfo, changeIsInstructor } =
+export const { SetUserInfo, ResetUserInfo, changeIsInstructor , NewCourse } =
   userInfo.actions;
 
 export default userInfo.reducer;

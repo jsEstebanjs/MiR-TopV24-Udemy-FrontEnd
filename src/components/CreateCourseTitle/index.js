@@ -1,16 +1,41 @@
 import { useState } from "react";
+import { createCourse } from "../../apis/createCourse";
+import { Ring } from "@uiball/loaders";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NewCourse } from "../../store/UserInfo.Slice";
 
 function CreateCourseTitle({ visible, handle }) {
   const [length, setLength] = useState(60);
   const [value, setValue] = useState("");
   const [error, setError] = useState(false);
-  const handleCreateCourse = () => {
+  const [loader, setLoader] = useState(false);
+  const [failPetition, setFailPetition] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleCreateCourse = async () => {
     if (value.length === 0 || !/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9 ]+$/.test(value)) {
       setError(true);
     } else {
-      console.log("enviado");
+      setLoader(true);
+      const res = await createCourse({ title: value });
+      setLoader(false);
+      if (res === false) {
+        setFailPetition(true);
+        setTimeout(() => {
+          setFailPetition(false);
+        }, [6000]);
+      } else {
+        dispatch(
+          NewCourse({ title: res.data.data.title, _id: res.data.data._id })
+        );
+        handle();
+        navigate(`/instructor/courses/${res.data.data._id}/manage`);
+      }
     }
   };
+
   return (
     <div
       className={`${"main-container-create-course"} ${
@@ -25,6 +50,11 @@ function CreateCourseTitle({ visible, handle }) {
         className="main-container-opacity-create-course-title"
       ></div>
       <div className="container-create-course-title">
+        {loader ? (
+          <div className="container-loader-createCourse-title">
+            <Ring size={35} color="#231F20" />
+          </div>
+        ) : null}
         <h2 className="title-create-course-title">
           How about a working title?
         </h2>
@@ -56,6 +86,9 @@ function CreateCourseTitle({ visible, handle }) {
           <p className="error-create-course-title">
             Only letters and numbers, minimum length 1
           </p>
+        ) : null}
+        {failPetition ? (
+          <p className="error-create-course-title">Could not create course</p>
         ) : null}
         <button
           onClick={handleCreateCourse}

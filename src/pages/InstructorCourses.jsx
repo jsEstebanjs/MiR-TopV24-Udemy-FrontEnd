@@ -10,8 +10,7 @@ function InstructorCourses() {
   const [loading, setLoading] = useState(true);
   const [modalCreateCourse, setModalCreateCourse] = useState(false);
   const user = useSelector((state) => state.UserInfo);
-  const navigate = useNavigate();
-
+  
   useEffect(() => {
     if (user.fullName) {
       setLoading(false);
@@ -20,16 +19,19 @@ function InstructorCourses() {
 
   const hanldeModalCreateCourse = () => {
     setModalCreateCourse(!modalCreateCourse);
-    if(!modalCreateCourse){
-      document.body.style.overflow = "hidden"
-    }else{
-      document.body.style.overflow = null
+    if (!modalCreateCourse) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = null;
     }
   };
   return (
     <>
       <div className="main-container-instructor-courses-page">
-        <CreateCourseTitle handle={hanldeModalCreateCourse} visible={modalCreateCourse} />
+        <CreateCourseTitle
+          handle={hanldeModalCreateCourse}
+          visible={modalCreateCourse}
+        />
         <h2 className="title-instructor-courses-page">Courses</h2>
         <div className="container-search-new-course">
           <Search />
